@@ -28,6 +28,7 @@ namespace engine
 		virtual void clearScreen(float red, float green, float blue, bool setViewport);
 
 		virtual void swapBuffers();
+		void test();
 
 	private:
 		engine::Ref<Window> m_window;	// Window where graphics is binded

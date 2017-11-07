@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <core/Log.h>
+#include <Soil\SOIL.h>
+
 
 int main(int argc, char* argv[]) {
 	//fclose(stdout);
@@ -19,13 +21,14 @@ int main(int argc, char* argv[]) {
 	int h = 480;
 	LOGI("Application create window (%d, %d)\n", w, h );
 	//fopen(stdout);
-
 	engine::Ref<engine::Win32Window> window = new engine::Win32Window( w, h, L"Engine test application" );
 
 	engine::Ref<engine::OGLGraphicsSystem> graphics = new engine::OGLGraphicsSystem(window);
 	window->setGraphics(graphics); // Set graphics for window
 	engine::Ref<engine::GraphicsApplication> application = new engine::TestApplication(window, graphics);
 	window->setApplication(application); // Set application for window
+	
+	
 	
 	engine::ElapsedTimer frameTimer;
 	frameTimer.reset();
