@@ -23,6 +23,7 @@ namespace engine
 		// Clears the screen using given color
 		virtual void clearScreen(float red, float green, float blue, bool setViewport) = 0;
 
+		virtual bool addimage(unsigned char* image) = 0;
 		// Method for swapping backbuffer to screen.
 		virtual void swapBuffers() = 0;
 	};

@@ -9,6 +9,7 @@
 
 #include <graphics/GraphicsApplication.h>
 #include <core/Log.h>
+#include <string>
 
 namespace engine
 {
@@ -25,7 +26,7 @@ namespace engine
 
 		/// Updates application. Returns true, if application is running.
 		virtual bool update(float deltaTime);
-		
+
 		/// Renders application.
 		virtual void render(Window* window, GraphicsSystem* graphics);
 

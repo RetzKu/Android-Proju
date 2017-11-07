@@ -25,7 +25,7 @@ namespace engine
 
 		/// Updates application. Returns true, if application is running.
 		virtual bool update(float deltaTime) = 0;
-		
+
 		/// Renders application.
 		virtual void render(Window* window, GraphicsSystem* graphics) = 0;
 

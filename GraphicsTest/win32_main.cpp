@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <core/Log.h>
-#include <Soil\SOIL.h>
 
 
 int main(int argc, char* argv[]) {
