@@ -129,10 +129,15 @@ namespace engine
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 	
-	
+
 	void OGLGraphicsSystem::swapBuffers()
 	{
 		eglSwapBuffers(m_eglDisplay, m_eglSurface);
+	}
+
+	bool OGLGraphicsSystem::addimage(unsigned char* image)
+	{
+		return false;
 	}
 
 }

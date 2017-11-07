@@ -26,8 +26,9 @@ namespace engine
 		~OGLGraphicsSystem();
 
 		virtual void clearScreen(float red, float green, float blue, bool setViewport);
-
+		virtual bool addimage(unsigned char* image);
 		virtual void swapBuffers();
+
 
 	private:
 		engine::Ref<Window> m_window;	// Window where graphics is binded

@@ -1,11 +1,12 @@
-﻿  Window.cpp
-  Win32Window.cpp
-  OGLGraphicsSystem.cpp
-  OGL.cpp
-  Object.cpp
-  GraphicsSystem.cpp
-  ElapsedTimer.cpp
-  GraphicsApplication.cpp
-  AndroidWindow.cpp
+﻿  OGLGraphicsSystem.cpp
+c:\users\mikakau\source\repos\android-proju\source\ogl\oglgraphicssystem.cpp(138): warning C4100: 'image': unreferenced formal parameter
   Generating Code...
-  engine.vcxproj -> E:\Codes\Android-Proju\build\win32\Debug\engine.lib
+  Compiling...
+  GraphicsSystem.cpp
+  Generating Code...
+  Compiling...
+  GraphicsApplication.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Win32Window.cpp
+  engine.vcxproj -> C:\Users\MikaKau\source\repos\Android-Proju\build\win32\Debug\engine.lib

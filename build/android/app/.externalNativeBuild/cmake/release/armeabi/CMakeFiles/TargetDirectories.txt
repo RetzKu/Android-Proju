@@ -1,4 +1,4 @@
-E:/Codes/Android-Proju/build/android/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/app-glue.dir
-E:/Codes/Android-Proju/build/android/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/native-activity.dir
-E:/Codes/Android-Proju/build/android/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/edit_cache.dir
-E:/Codes/Android-Proju/build/android/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/rebuild_cache.dir
+C:/Users/MikaKau/source/repos/Android-Proju/build/android/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/app-glue.dir
+C:/Users/MikaKau/source/repos/Android-Proju/build/android/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/native-activity.dir
+C:/Users/MikaKau/source/repos/Android-Proju/build/android/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/edit_cache.dir
+C:/Users/MikaKau/source/repos/Android-Proju/build/android/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/rebuild_cache.dir

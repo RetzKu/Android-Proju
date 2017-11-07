@@ -9,6 +9,7 @@
 #include <graphics/GraphicsSystem.h>
 #include <graphics/Window.h>
 #include <math.h>
+#include <graphics\stb_image.h>
 
 namespace engine
 {
@@ -31,17 +32,33 @@ namespace engine
 		return true;
 	}
 
+	//unsigned char* TestApplication::getimage(std::string filename)
+	//{
+	//	int* width = 0;
+	//	int* height = 0;
+
+	//	unsigned char* image = stbi_load("Untitled.png", width, height, 0, STBI_rgb_alpha);
+
+	//	if (image == 0)
+	//	{
+	//		printf("Image snatching failed");
+	//		return 0;
+	//	}
+	//	else { return image; }
+	//	return 0;
+	//}
 
 	void TestApplication::render(Window* window, GraphicsSystem* graphics)
 	{
 		(void)window;	
 		float val = fabsf(sinf(2.0f*m_totalTime));
-		
 		// Clear screen with pulsating yellow
+		
 		graphics->clearScreen(val, val, 0.0f, true);
-
+		graphics->addimage(0);
 		// Swap buffers
 		graphics->swapBuffers();
 	}
 
 }
+
