@@ -10,6 +10,8 @@
 #include <graphics/GraphicsApplication.h>
 #include <core/Log.h>
 #include <string>
+#include <GLES2/gl2.h>
+
 
 namespace engine
 {
@@ -23,6 +25,9 @@ namespace engine
 		TestApplication(Window* window, GraphicsSystem* graphics);
 
 		~TestApplication();
+
+		GLuint GetImage(std::string filename);
+
 
 		/// Updates application. Returns true, if application is running.
 		virtual bool update(float deltaTime);
