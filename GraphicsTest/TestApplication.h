@@ -11,6 +11,7 @@
 #include <core/Log.h>
 #include <string>
 #include <GLES2/gl2.h>
+#include "Filemanager.h"
 
 
 namespace engine
@@ -26,9 +27,6 @@ namespace engine
 
 		~TestApplication();
 
-		GLuint GetImage(std::string filename);
-
-
 		/// Updates application. Returns true, if application is running.
 		virtual bool update(float deltaTime);
 
@@ -37,6 +35,7 @@ namespace engine
 
 	private:
 		float						m_totalTime;
+		Filemanager* FileData;
 	};
 
 }

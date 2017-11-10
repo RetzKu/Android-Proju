@@ -22,13 +22,16 @@ namespace engine
 		: GraphicsApplication(window, graphics)
 		, m_totalTime(0.0f)
 	{
+		FileData = new Filemanager();
+		GLuint boi = FileData->GetTexture("Untitled.png");
+
 		
 	}
 
 
 	TestApplication::~TestApplication()
 	{
-
+		delete FileData;
 	}
 
 
@@ -36,39 +39,6 @@ namespace engine
 	{
 		m_totalTime += deltaTime;
 		return true;
-	}
-
-	GLuint TestApplication::GetImage(std::string filename)
-	{
-		GLuint texture;
-		glGenTextures(1, &texture);
-		int x, y;
-		int n = 3;
-		//glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texture);
-
-		const char* FileName = filename.c_str();
-
-		unsigned char *data = stbi_load(FileName, &x, &y, &n, 3);
-		if (data != NULL)
-		{
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, x, y, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-			stbi_image_free(data);
-			//glUniform1i(glGetUniformLocation(shaderProgram, "texKitten"), 0);
-
-
-
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-			std::cout << "Kuvan lataus onnistui!" << std::endl;
-		}
-		else
-			std::cout << "Kuvan lataaminen ei onnistunut!" << std::endl;
-
-		return texture;
 	}
 
 	void TestApplication::render(Window* window, GraphicsSystem* graphics)
@@ -80,9 +50,7 @@ namespace engine
 		//stbi_load_from_memory();
 
 		graphics->clearScreen(val, val, 0.0f, true);
-
 		// Tän pitäs saada se kuva ladattua, vielä pitäs miettiä et miten se piirretään ruudulle :D
-		GetImage("Untitled.png");
 
 		// Swap buffers
 		graphics->swapBuffers();
