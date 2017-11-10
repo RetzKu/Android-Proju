@@ -7,9 +7,14 @@
 #include <Win32Window.h>
 #include <graphics/GraphicsApplication.h>
 #include <EGL/eglplatform.h>
+#include <iostream>
+#include <Windows.h>
 
 namespace engine
 {
+	bool keys[256];
+	bool active = false;
+
 	LRESULT WINAPI WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 		LRESULT  lRet = 1;
@@ -20,21 +25,72 @@ namespace engine
 
 		case WM_PAINT:
 		{
-			Win32Window *window = (Win32Window*)(LONG_PTR)GetWindowLongPtr(hWnd, GWL_USERDATA);			
+			Win32Window *window = (Win32Window*)(LONG_PTR)GetWindowLongPtr(hWnd, GWL_USERDATA);
 			// Call application render and pass pointer to Graphics-object.
- 			window->getApplication()->render(window, window->getGraphics());
+			window->getApplication()->render(window, window->getGraphics());
 			ValidateRect(window->getNativeWindow(), NULL);
 		}
 		break;
-
+		case WM_ACTIVATE:			// check to see if window activated...
+		{
+			if (!HIWORD(wParam)) {	// see if minimized...{
+				active = TRUE;		// program is running, so set active true!
+			}
+			else {
+				active = FALSE;		// program done...active false.
+			}
+			return 0;
+		}
 		case WM_DESTROY:
 			PostQuitMessage(0);
 			break;
+		case WM_KEYDOWN:							// check to see if someone pressed a key.
+		{
+			switch (wParam)
+			{
+			case ('W'):
+			{
+				std::cout << "W Pressed" << std::endl;
+			}
+			break;
+			case ('A'):
+			{
+				std::cout << "A Pressed" << std::endl;
+			}
+			break;
+			case ('S'):
+			{
+				std::cout << "S Pressed" << std::endl;
+			}
+			break;
+			case ('D'):
+			{
+				std::cout << "D Pressed" << std::endl;
+			}
+			break;
+			}
+			keys[wParam] = TRUE;					// set the key that person pressed as true.
+			return 0;
+		}
 
+		case WM_KEYUP:								// This message arrives when person lets go of key.
+		{
+			keys[wParam] = FALSE;					// set the right key as false.
+			return 0;
+		}
+		case WM_LBUTTONDOWN:
+		{
+			std::cout << "Mouse Pressed" << std::endl;
+		}
+		break;
+		case WM_RBUTTONDOWN:
+		{
+			std::cout << "right click'd" << std::endl;
+		}
 		case WM_CHAR:
 		{
 			POINT      point;
-//			Win32Window *esContext = (Win32Window*)(LONG_PTR)GetWindowLongPtr(hWnd, GWL_USERDATA);
+			Win32Window *esContext = (Win32Window*)(LONG_PTR)GetWindowLongPtr(hWnd, GWL_USERDATA);
 			GetCursorPos(&point);
 		}
 		break;
@@ -60,7 +116,7 @@ namespace engine
 		DWORD    wStyle = 0;
 		RECT     windowRect;
 		HINSTANCE hInstance = GetModuleHandle(NULL);
-		
+
 		wndclass.style = CS_OWNDC;
 		wndclass.lpfnWndProc = (WNDPROC)WindowProc;
 		wndclass.hInstance = hInstance;
@@ -69,7 +125,7 @@ namespace engine
 
 		if (!RegisterClass(&wndclass))
 			return; // fail!
-		
+
 		wStyle = WS_VISIBLE | WS_POPUP | WS_BORDER | WS_SYSMENU | WS_CAPTION;
 
 		// Adjust the window rectangle so that the client area has
@@ -80,7 +136,7 @@ namespace engine
 		windowRect.bottom = height - windowRect.top;
 
 		AdjustWindowRect(&windowRect, wStyle, FALSE);
-		
+
 		m_hwnd = CreateWindow(
 			L"opengles2.0",
 			title.c_str(),
@@ -97,7 +153,7 @@ namespace engine
 		// Set the ESContext* to the GWL_USERDATA so that it is available to the 
 		// ESWindowProc
 		SetWindowLongPtr(m_hwnd, GWL_USERDATA, (LONG)(LONG_PTR)this);
-		
+
 		if (m_hwnd == NULL)
 		{
 			// TODO: Unregister window class if fail

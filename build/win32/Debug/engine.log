@@ -1,1 +1,3 @@
-﻿  engine.vcxproj -> C:\Users\joonaoik\Documents\GitHub\Android-Proju\build\win32\Debug\engine.lib
+﻿  Win32Window.cpp
+c:\users\aleksivay\documents\github\android-proju\source\win32\win32window.cpp(93): warning C4189: 'esContext': local variable is initialized but not referenced
+  engine.vcxproj -> C:\Users\AleksiVay\Documents\GitHub\Android-Proju\build\win32\Debug\engine.lib

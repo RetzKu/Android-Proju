@@ -1,3 +1,4 @@
 ﻿  TestApplication.cpp
-  GraphicsTest.vcxproj -> C:\Users\joonaoik\Documents\GitHub\Android-Proju\build\win32\Debug\GraphicsTest.exe
-  GraphicsTest.vcxproj -> C:\Users\joonaoik\Documents\GitHub\Android-Proju\build\win32\Debug\GraphicsTest.pdb (Partial PDB)
+c:\users\aleksivay\documents\github\android-proju\graphicstest\testapplication.cpp(75): warning C4715: 'engine::TestApplication::GetImage': not all control paths return a value
+  GraphicsTest.vcxproj -> C:\Users\AleksiVay\Documents\GitHub\Android-Proju\build\win32\Debug\GraphicsTest.exe
+  GraphicsTest.vcxproj -> C:\Users\AleksiVay\Documents\GitHub\Android-Proju\build\win32\Debug\GraphicsTest.pdb (Partial PDB)

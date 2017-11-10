@@ -62,11 +62,14 @@ namespace engine
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
+#if 0
 			std::cout << "Kuvan lataus onnistui!" << std::endl;
+#endif
 		}
 		else
+#if 0
 			std::cout << "Kuvan lataaminen ei onnistunut!" << std::endl;
+#endif
 
 		return texture;
 	}
