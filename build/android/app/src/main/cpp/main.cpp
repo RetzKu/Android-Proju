@@ -2,7 +2,8 @@
 #include <android/sensor.h>
 #include <android/log.h>
 #include <android_native_app_glue.h>
-
+#include <android/asset_manager.h>
+#include <android/asset_manager_jni.h>
 // Engine includes
 #include <OGL/OGLGraphicsSystem.h>
 #include <TestApplication.h>
@@ -172,7 +173,8 @@ void android_main(struct android_app* state)
     state->onInputEvent = AndroidEngine::onInput;
     engine.app = state;
 
-    AAssetManager* Amanager = state->activity->assetManager;
+    AAssetManager* AManager = state->activity->assetManager;
+
 	
     // Prepare to monitor accelerometer
     engine.sensorManager = ASensorManager_getInstance();

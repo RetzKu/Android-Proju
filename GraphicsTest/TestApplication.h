@@ -13,7 +13,6 @@
 #include <GLES2/gl2.h>
 #include <core/Filemanager.h>
 
-
 namespace engine
 {
 	class Window;

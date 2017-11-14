@@ -1,10 +1,17 @@
 #include <core/Filemanager.h>
 
+#if defined(ANDROID)
+#include <android/asset_manager.h>
+#include <android/asset_manager_jni.h>
+#endif
+
 Filemanager::~Filemanager()
 {
 
 }
-#ifdef defined(_WIN32)
+
+
+#if defined(_WIN32)
 
 
 GLuint Filemanager::GetTexture(std::string FileName)
@@ -17,6 +24,7 @@ GLuint Filemanager::GetTexture(std::string FileName)
 	glBindTexture(GL_TEXTURE_2D, texture);
 
 	unsigned char *data = stbi_load(FileName.c_str(), &x, &y, &n, 3);
+	
 	if (data != NULL)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, x, y, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
@@ -32,7 +40,17 @@ GLuint Filemanager::GetTexture(std::string FileName)
 	}
 	else
 	std::cout << FileName << " Kuvan lataaminen ei onnistunut!" << std::endl;
-
+	auto tmp = std::make_pair(FileName, texture);
+	Textures.push_back(tmp);
 	return texture;
 }
-#endif // defined(_WIN32)
+#endif // _WIN32
+
+#if defined(ANDROID)
+AAsset* Filemanager::GetTexture(std::string Filename, int type)
+{
+    return nullptr;
+}
+#endif
+
+

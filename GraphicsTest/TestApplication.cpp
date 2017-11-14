@@ -12,7 +12,6 @@
 #include <GLES2/gl2.h>
 #include <iostream>
 
-
 #define STB_IMAGE_IMPLEMENTATION
 #include <graphics/stb_image.h>
 

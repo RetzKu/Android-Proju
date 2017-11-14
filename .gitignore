@@ -17,3 +17,14 @@
 *.gch
 *.pch
 *.VC
+*.sqlite-journal
+
+*.tlog
+*.log
+*.db
+/.vs/Android-proju2/v15
+*.ipch
+*.json
+*.so
+*.xml
+
