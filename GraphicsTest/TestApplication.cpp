@@ -12,8 +12,9 @@
 #include <GLES2/gl2.h>
 #include <iostream>
 
+
 #define STB_IMAGE_IMPLEMENTATION
-#include <graphics\stb_image.h>
+#include <graphics/stb_image.h>
 
 namespace engine
 {
@@ -23,7 +24,10 @@ namespace engine
 		, m_totalTime(0.0f)
 	{
 		FileData = new Filemanager();
+#ifdef defined(_WIN32)
 		GLuint boi = FileData->GetTexture("Untitled.png");
+#endif // defined(_WIN32)
+
 
 		
 	}
@@ -50,7 +54,7 @@ namespace engine
 		//stbi_load_from_memory();
 
 		graphics->clearScreen(val, val, 0.0f, true);
-		// Tän pitäs saada se kuva ladattua, vielä pitäs miettiä et miten se piirretään ruudulle :D
+		// Tï¿½n pitï¿½s saada se kuva ladattua, vielï¿½ pitï¿½s miettiï¿½ et miten se piirretï¿½ï¿½n ruudulle :D
 
 		// Swap buffers
 		graphics->swapBuffers();

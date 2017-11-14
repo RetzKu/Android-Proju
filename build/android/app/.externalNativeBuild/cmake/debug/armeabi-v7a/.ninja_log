@@ -1,0 +1,15 @@
+# ninja log v5
+3	798	0	CMakeFiles/app-glue.dir/C_/Users/MikaKau/AppData/Local/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c.o	160c914f44f79ea3
+800	956	0	libapp-glue.a	4ff7ae85ab2d12d2
+965	1885	0	CMakeFiles/native-activity.dir/C_/Users/MikaKau/source/repos/Android-proju3/source/ElapsedTimer.cpp.o	8c0065eae7d71c7c
+956	2240	0	CMakeFiles/native-activity.dir/C_/Users/MikaKau/source/repos/Android-proju3/source/Object.cpp.o	63c5e8ba90c41502
+961	2322	0	CMakeFiles/native-activity.dir/C_/Users/MikaKau/source/repos/Android-proju3/source/android/AndroidWindow.cpp.o	865a1ed86aa09b6f
+978	2375	0	CMakeFiles/native-activity.dir/C_/Users/MikaKau/source/repos/Android-proju3/source/GraphicsSystem.cpp.o	ad502f4c22ce9af1
+969	2396	0	CMakeFiles/native-activity.dir/C_/Users/MikaKau/source/repos/Android-proju3/source/Filemanager.cpp.o	b48c3786fb9cac6b
+974	2682	0	CMakeFiles/native-activity.dir/C_/Users/MikaKau/source/repos/Android-proju3/source/GraphicsApplication.cpp.o	ad83e0d3643b02d0
+1885	2737	0	CMakeFiles/native-activity.dir/C_/Users/MikaKau/source/repos/Android-proju3/source/Window.cpp.o	629fdb3518c3bb1d
+2240	3367	0	CMakeFiles/native-activity.dir/C_/Users/MikaKau/source/repos/Android-proju3/source/OGL/OGL.cpp.o	e3ab4674ff500f77
+2323	3540	0	CMakeFiles/native-activity.dir/main.cpp.o	3c2c45f1f0cb6533
+2375	3677	0	CMakeFiles/native-activity.dir/C_/Users/MikaKau/source/repos/Android-proju3/source/OGL/OGLGraphicsSystem.cpp.o	5f7ee0da289555f4
+2396	4300	0	CMakeFiles/native-activity.dir/C_/Users/MikaKau/source/repos/Android-proju3/GraphicsTest/TestApplication.cpp.o	e260fee5df481704
+4300	4914	0	C:/Users/MikaKau/source/repos/Android-proju3/build/android/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-activity.so	2e75c41574259de3

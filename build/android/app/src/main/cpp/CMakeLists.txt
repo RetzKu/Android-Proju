@@ -12,11 +12,15 @@ file(GLOB ENGINE_SOURCES ../../../../../../source/*.cpp)
 
 file(GLOB OGL_SOURCES ../../../../../../source/OGL/*.cpp)
 
+file(GLOB ADDITIONAL ../../../../../../source/*.h)
+
 add_library(native-activity SHARED
             ${ANDROID_SOURCES}
             ${ENGINE_SOURCES}
             ${OGL_SOURCES}
+            ${ADDITIONAL}
             ../../../../../../GraphicsTest/TestApplication.cpp
+            ../../../../../../source/Filemanager.cpp
             main.cpp)
 
 target_include_directories(native-activity PRIVATE

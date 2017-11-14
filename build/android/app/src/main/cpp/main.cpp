@@ -172,6 +172,7 @@ void android_main(struct android_app* state)
     state->onInputEvent = AndroidEngine::onInput;
     engine.app = state;
 
+    AAssetManager* Amanager = state->activity->assetManager;
 	
     // Prepare to monitor accelerometer
     engine.sensorManager = ASensorManager_getInstance();

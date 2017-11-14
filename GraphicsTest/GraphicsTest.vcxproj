@@ -15,7 +15,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>GraphicsTest</RootNamespace>
     <ProjectName>GraphicsTest</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -43,6 +43,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <SourcePath>$(VC_SourcePath);</SourcePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)../include;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -55,7 +57,11 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\include\win32;$(ProjectDir)..\GraphicsTest;$(ProjectDir)..\include;$(ProjectDir)..\include\lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)../source;$(ProjectDir)..\include\win32;$(ProjectDir)..\GraphicsTest;$(ProjectDir)..\include;$(ProjectDir)..\include\lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/FS %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -86,13 +92,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Filemanager.h" />
-    <ClInclude Include="TestApplication.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Filemanager.cpp" />
-    <ClCompile Include="win32_main.cpp" />
+    <ClCompile Include="..\source\Filemanager.cpp" />
     <ClCompile Include="TestApplication.cpp" />
+    <ClCompile Include="win32_main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\build\win32\engine.vcxproj">
@@ -101,6 +103,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\core\Filemanager.h" />
+    <ClInclude Include="TestApplication.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
