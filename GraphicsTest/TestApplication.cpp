@@ -22,13 +22,11 @@ namespace engine
 		: GraphicsApplication(window, graphics)
 		, m_totalTime(0.0f)
 	{
-		FileData = new Filemanager();
+
 #ifdef defined(_WIN32)
-		GLuint boi = FileData->GetTexture("Untitled.png");
+		FileData = new Filemanager();
+		GLuint boi = FileData->GetTexture("Untitled.png"); //tietokone version paikka textuuri haulle
 #endif // defined(_WIN32)
-
-
-		
 	}
 
 

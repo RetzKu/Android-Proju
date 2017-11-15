@@ -8,21 +8,26 @@
 
 #if defined(ANDROID)
 #include <android/asset_manager.h>
+#include <android/asset_manager_jni.h>
 #endif
 
 class Filemanager
 {
 public:
-	Filemanager(){}
-	~Filemanager();
-#if defined(_WIN32)
 
+#if defined(_WIN32)
+    Filemanager(){}
+	~Filemanager();
 
 	GLuint GetTexture(std::string FileName);
 	std::vector<std::pair<std::string, GLuint>> Textures;
 #endif
-
 #if defined(ANDROID)
-	AAsset* GetTexture(std::string Filename, int type);
+    Filemanager(AAssetManager* ASmanager){_ASmanager = ASmanager;}
+    ~Filemanager();
+	AAsset* GetTexture(std::string Filename,int type);
+
+private:
+    AAssetManager* _ASmanager;
 #endif // Win32
 };

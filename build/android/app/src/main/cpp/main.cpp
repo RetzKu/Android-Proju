@@ -9,7 +9,17 @@
 #include <TestApplication.h>
 #include <AndroidWindow.h>
 #include <core/ElapsedTimer.h>
+#include <core/Filemanager.h>
 
+
+enum filetypes
+{
+    PNG,
+    JPEG,
+    AUDIO,
+    MODEL,
+    TXT,
+};
 ///
 /// Shared state for our app.
 struct AndroidEngine
@@ -19,6 +29,7 @@ struct AndroidEngine
     ASensorManager* sensorManager;
     const ASensor* accelerometerSensor;
     ASensorEventQueue* sensorEventQueue;
+    Filemanager* Filedata;
 
     engine::Ref<engine::OGLGraphicsSystem> graphics;
     engine::Ref<engine::GraphicsApplication> application;
@@ -46,6 +57,7 @@ int AndroidEngine::initDisplay()
     window->setApplication(application);
     frameTimer = new engine::ElapsedTimer();
     frameTimer->reset();
+    Filedata = new Filemanager(app->activity->assetManager);
     return 0;
 }
 
@@ -71,6 +83,7 @@ void AndroidEngine::deinitDisplay()
     application = 0;
     window = 0;
     frameTimer = 0;
+    Filedata = 0;
 }
 
 
@@ -173,8 +186,7 @@ void android_main(struct android_app* state)
     state->onInputEvent = AndroidEngine::onInput;
     engine.app = state;
 
-    AAssetManager* AManager = state->activity->assetManager;
-
+    engine.Filedata->GetTexture("Untitled.png",1);//Esimerkki kuinka ladata png tiedosto AAsset*:iin, pitää ottaa selvää että kuinka se sit ladataan meshiin, eli odottaa joonaa
 	
     // Prepare to monitor accelerometer
     engine.sensorManager = ASensorManager_getInstance();

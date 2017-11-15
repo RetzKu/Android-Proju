@@ -1,4 +1,4 @@
-#Fri Nov 03 16:32:06 EET 2017
-base.0=E\:\\Codes\\Android-Proju\\build\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Wed Nov 15 12:27:17 EET 2017
+base.0=C\:\\Users\\MikaKau\\source\\repos\\Android-proju2\\build\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 renamed.0=classes.dex
-file.0=E\:\\Codes\\Android-Proju\\build\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex
+file.0=C\:\\Users\\MikaKau\\source\\repos\\Android-proju2\\build\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex

@@ -3,6 +3,7 @@
 #if defined(ANDROID)
 #include <android/asset_manager.h>
 #include <android/asset_manager_jni.h>
+#include <cstdlib>
 #endif
 
 Filemanager::~Filemanager()
@@ -49,7 +50,17 @@ GLuint Filemanager::GetTexture(std::string FileName)
 #if defined(ANDROID)
 AAsset* Filemanager::GetTexture(std::string Filename, int type)
 {
-    return nullptr;
+    AAsset* ASpointer = AAssetManager_open(_ASmanager,Filename.c_str(),AASSET_MODE_STREAMING);
+    size_t lenght = AAsset_getLength(ASpointer);
+    char* buffer = (char*)malloc(lenght+1);
+    AAsset_read(ASpointer,buffer,lenght);
+    if(ASpointer == 0) {
+        return nullptr;
+    }
+    else
+    {
+        return ASpointer;
+    }
 }
 #endif
 
