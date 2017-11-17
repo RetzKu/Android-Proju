@@ -15,7 +15,7 @@ Filemanager::~Filemanager()
 #if defined(_WIN32)
 
 
-GLuint Filemanager::GetTexture(std::string FileName)
+GLuint Filemanager::GetTexture(std::string FileName, bool save)
 {
 	GLuint texture;
 	glGenTextures(1, &texture);
@@ -41,14 +41,17 @@ GLuint Filemanager::GetTexture(std::string FileName)
 	}
 	else
 	std::cout << FileName << " Kuvan lataaminen ei onnistunut!" << std::endl;
-	auto tmp = std::make_pair(FileName, texture);
-	Textures.push_back(tmp);
+	if (save)
+	{
+		auto tmp = std::make_pair(FileName, texture);
+		Textures.push_back(tmp);
+	}
 	return texture;
 }
 #endif // _WIN32
 
 #if defined(ANDROID)
-AAsset* Filemanager::GetTexture(std::string Filename, int type)
+AAsset* Filemanager::GetTexture(std::string Filename)
 {
     AAsset* ASpointer = AAssetManager_open(_ASmanager,Filename.c_str(),AASSET_MODE_STREAMING);
     size_t lenght = AAsset_getLength(ASpointer);

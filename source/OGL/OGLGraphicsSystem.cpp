@@ -110,14 +110,40 @@ namespace engine
 		LOGI("Surface size: %dx%d", w, h);
 		
 		m_active = true;
+		UI_Class = new UI();
+		ShaderProgram = UI_Class->CreateShaderProgram();
+		glGenBuffers(1, &Vbo);
+		
 	}
 
 
 	OGLGraphicsSystem::~OGLGraphicsSystem()
 	{
+		delete UI_Class;
 	}
 
-	
+	void OGLGraphicsSystem::BufferObject()
+	{
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		float points[] = {
+			0.0f,  0.5f,  0.0f,
+			0.5f, -0.5f,  0.0f,
+			-0.5f, -0.5f,  0.0f
+		};
+		
+		glBindBuffer(GL_ARRAY_BUFFER, Vbo);
+		glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(float), points, GL_STATIC_DRAW);
+
+		glUseProgram(ShaderProgram);
+		
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
+		glDisableVertexAttribArray(0);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
+
 	
 
 	void OGLGraphicsSystem::clearScreen(float red, float green, float blue, bool setViewport)

@@ -186,7 +186,7 @@ void android_main(struct android_app* state)
     state->onInputEvent = AndroidEngine::onInput;
     engine.app = state;
 
-    engine.Filedata->GetTexture("Untitled.png",1);//Esimerkki kuinka ladata png tiedosto AAsset*:iin, pitää ottaa selvää että kuinka se sit ladataan meshiin, eli odottaa joonaa
+    engine.Filedata->GetTexture("Untitled.png");//Esimerkki kuinka ladata png tiedosto AAsset*:iin, pitää ottaa selvää että kuinka se sit ladataan meshiin, eli odottaa joonaa
 	
     // Prepare to monitor accelerometer
     engine.sensorManager = ASensorManager_getInstance();

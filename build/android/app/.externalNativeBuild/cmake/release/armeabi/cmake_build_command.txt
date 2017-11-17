@@ -1,10 +1,10 @@
 Executable : C:\Users\MikaKau\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\cmake.exe
 arguments : 
--HC:\Users\MikaKau\source\repos\Android-proju2\build\android\app\src\main\cpp
--BC:\Users\MikaKau\source\repos\Android-proju2\build\android\app\.externalNativeBuild\cmake\release\armeabi
+-HC:\Users\MikaKau\source\repos\Android-proju\build\android\app\src\main\cpp
+-BC:\Users\MikaKau\source\repos\Android-proju\build\android\app\.externalNativeBuild\cmake\release\armeabi
 -DANDROID_ABI=armeabi
 -DANDROID_PLATFORM=android-14
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\Users\MikaKau\source\repos\Android-proju2\build\android\app\build\intermediates\cmake\release\obj\armeabi
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\Users\MikaKau\source\repos\Android-proju\build\android\app\build\intermediates\cmake\release\obj\armeabi
 -DCMAKE_BUILD_TYPE=Release
 -DANDROID_NDK=C:\Users\MikaKau\AppData\Local\Android\Sdk\ndk-bundle
 -DCMAKE_TOOLCHAIN_FILE=C:\Users\MikaKau\AppData\Local\Android\Sdk\ndk-bundle\build\cmake\android.toolchain.cmake

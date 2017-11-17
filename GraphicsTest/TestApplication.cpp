@@ -23,9 +23,9 @@ namespace engine
 		, m_totalTime(0.0f)
 	{
 
-#ifdef defined(_WIN32)
+#if defined(_WIN32)
 		FileData = new Filemanager();
-		GLuint boi = FileData->GetTexture("Untitled.png"); //tietokone version paikka textuuri haulle
+		GLuint boi = FileData->GetTexture("Untitled.png",true); //tietokone version paikka textuuri haulle
 #endif // defined(_WIN32)
 	}
 
@@ -50,7 +50,9 @@ namespace engine
 		
 		//stbi_load_from_memory();
 
-		graphics->clearScreen(val, val, 0.0f, true);
+		//graphics->clearScreen(val, val, 0.0f, true);
+
+		graphics->BufferObject();
 		// T�n pit�s saada se kuva ladattua, viel� pit�s mietti� et miten se piirret��n ruudulle :D
 
 		// Swap buffers

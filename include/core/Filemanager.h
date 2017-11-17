@@ -19,13 +19,13 @@ public:
     Filemanager(){}
 	~Filemanager();
 
-	GLuint GetTexture(std::string FileName);
+	GLuint GetTexture(std::string FileName, bool Save);
 	std::vector<std::pair<std::string, GLuint>> Textures;
 #endif
 #if defined(ANDROID)
     Filemanager(AAssetManager* ASmanager){_ASmanager = ASmanager;}
     ~Filemanager();
-	AAsset* GetTexture(std::string Filename,int type);
+	AAsset* GetTexture(std::string Filename);
 
 private:
     AAssetManager* _ASmanager;

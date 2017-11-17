@@ -10,6 +10,7 @@
 #include <graphics/GraphicsSystem.h>
 #include <core/Ref.h>
 #include <EGL/egl.h>
+#include <graphics\UI.h>
 
 namespace engine
 {
@@ -25,6 +26,7 @@ namespace engine
 		OGLGraphicsSystem(Window* window);
 		~OGLGraphicsSystem();
 
+		virtual void BufferObject();
 		virtual void clearScreen(float red, float green, float blue, bool setViewport);
 		virtual bool addimage(unsigned char* image);
 		virtual void swapBuffers();
@@ -38,6 +40,11 @@ namespace engine
 		EGLDisplay m_eglDisplay; // Display object
 		EGLContext m_eglContext; // Context object
 		EGLSurface m_eglSurface; // Surface object
+
+		UI* UI_Class;
+		GLuint ShaderProgram;
+		GLuint Vbo;
+		
 	};
 
 }
