@@ -30,13 +30,12 @@ class Texture
 	void setsize(int x, int y) { _Rect.X = x; _Rect.Y = y; }
 	void Bind(unsigned int unit);
 
-#if defined(_WIN32)
+
 private:
 	std::string _Filename;
 	GLuint _TextureID;
 	Rect _Rect;
 	int N;
-#endif
 };
 
 struct UIObject

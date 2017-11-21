@@ -21,6 +21,7 @@ add_library(native-activity SHARED
             ${ADDITIONAL}
             ../../../../../../GraphicsTest/TestApplication.cpp
             ../../../../../../source/Filemanager.cpp
+            ../../../../../../source/UI.cpp
             main.cpp)
 
 target_include_directories(native-activity PRIVATE

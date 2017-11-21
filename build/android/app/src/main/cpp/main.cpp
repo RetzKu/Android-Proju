@@ -57,7 +57,6 @@ int AndroidEngine::initDisplay()
     window->setApplication(application);
     frameTimer = new engine::ElapsedTimer();
     frameTimer->reset();
-    Filedata = new Filemanager(app->activity->assetManager);
     return 0;
 }
 
@@ -185,6 +184,7 @@ void android_main(struct android_app* state)
     state->onAppCmd = AndroidEngine::onCmd;
     state->onInputEvent = AndroidEngine::onInput;
     engine.app = state;
+    engine.Filedata = new Filemanager(state->activity->assetManager);
 
     engine.Filedata->GetTexture("Untitled.png");//Esimerkki kuinka ladata png tiedosto AAsset*:iin, pitää ottaa selvää että kuinka se sit ladataan meshiin, eli odottaa joonaa
 	
