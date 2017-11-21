@@ -11,6 +11,37 @@ UI::~UI()
 {
 }
 
+Texture::Texture(std::string Filename)
+{
+	unsigned char* imagedata = stbi_load(Filename.c_str(), &_Rect.X, &_Rect.Y, &N, 3);
+	if (imagedata == nullptr) {
+		return;
+	}
+	else {
+		glGenTextures(GL_TEXTURE_2D, &_TextureID);
+		glBindTexture(GL_TEXTURE_2D, _TextureID);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, _Rect.X, _Rect.Y, 0, GL_RGB, GL_UNSIGNED_BYTE, imagedata);
+		stbi_image_free(imagedata);
+		//glUniform1i(glGetUniformLocation(shaderProgram, "texKitten"), 0);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		_Filename = Filename;
+	}
+}
+Texture::~Texture()
+{
+	glDeleteTextures(N, &_TextureID);
+}
+
+void Texture::Bind(unsigned int unit)
+{
+	glActiveTexture(GL_TEXTURE0 + unit);
+	glBindTexture(GL_TEXTURE_2D, _TextureID);
+}
+
 void checkCompileErrors(GLuint object, std::string type)
 {
 	GLint success;

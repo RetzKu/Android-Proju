@@ -1,1 +1,3 @@
-﻿  engine.vcxproj -> C:\Users\tervepaterve\Documents\GitHub\Android-Proju\build\win32\Debug\engine.lib
+﻿  OGLGraphicsSystem.cpp
+c:\users\mikakau\source\repos\android-proju4\source\ogl\oglgraphicssystem.cpp(164): warning C4100: 'image': unreferenced formal parameter
+  engine.vcxproj -> C:\Users\MikaKau\source\repos\Android-Proju4\build\win32\Debug\engine.lib
