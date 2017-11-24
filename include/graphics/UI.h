@@ -23,6 +23,7 @@ typedef struct
 	int Y;
 }Rect;
 
+
 class Texture
 {
 	Texture(std::string Filename);

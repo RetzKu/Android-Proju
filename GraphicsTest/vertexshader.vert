@@ -1,6 +1,7 @@
-precision mediump float;
+precision highp float;
 attribute vec3 vp;
 attribute vec2 texCoord;
+
 varying vec2 texCoord0;
 
 void main() {

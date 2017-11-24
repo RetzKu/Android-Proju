@@ -1,6 +1,1 @@
-﻿cl : Command line warning D9007: '/Gm' requires '/Zi or /ZI'; option ignored
-  UI.cpp
-  win32_main.cpp
-  Generating Code...
-  GraphicsTest.vcxproj -> C:\Users\MikaKau\source\repos\Android-Proju4\build\win32\Debug\GraphicsTest.exe
-  GraphicsTest.vcxproj -> C:\Users\MikaKau\source\repos\Android-Proju4\build\win32\Debug\GraphicsTest.pdb (Partial PDB)
+﻿  GraphicsTest.vcxproj -> C:\Users\MikaKau\source\repos\Android-Proju2\build\win32\Debug\GraphicsTest.exe

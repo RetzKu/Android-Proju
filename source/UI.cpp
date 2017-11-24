@@ -11,6 +11,7 @@ UI::~UI()
 {
 }
 
+
 Texture::Texture(std::string Filename)
 {
 	unsigned char* imagedata = stbi_load(Filename.c_str(), &_Rect.X, &_Rect.Y, &N, 3);
