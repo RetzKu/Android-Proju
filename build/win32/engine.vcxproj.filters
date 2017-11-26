@@ -43,6 +43,12 @@
     <Filter Include="Header Files\android">
       <UniqueIdentifier>{460d6632-23e8-43c8-89c0-9faf2fa1b65f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Maths">
+      <UniqueIdentifier>{f165cfa5-9eef-4061-be0f-22a82cff07d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Maths">
+      <UniqueIdentifier>{cc26d7f3-7a83-4767-a8cc-6c569ca74dc3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\win32\Win32Window.h">
@@ -72,6 +78,21 @@
     <ClInclude Include="..\..\include\android\AndroidWindow.h">
       <Filter>Header Files\android</Filter>
     </ClInclude>
+    <ClInclude Include="vec2.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="vec3.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="vec4.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="mat4.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="maths.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\ogl\OGLGraphicsSystem.cpp">
@@ -100,6 +121,18 @@
     </ClCompile>
     <ClCompile Include="..\..\source\android\AndroidWindow.cpp">
       <Filter>Source Files\android</Filter>
+    </ClCompile>
+    <ClCompile Include="vec2.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="vec3.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="vec4.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="mat4.cpp">
+      <Filter>Source Files\Maths</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

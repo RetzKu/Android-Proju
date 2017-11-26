@@ -1,3 +1,6 @@
-﻿  OGLGraphicsSystem.cpp
-c:\users\mikakau\source\repos\android-proju2\source\ogl\oglgraphicssystem.cpp(164): warning C4100: 'image': unreferenced formal parameter
-  engine.vcxproj -> C:\Users\MikaKau\source\repos\Android-Proju2\build\win32\Debug\engine.lib
+﻿  vec4.cpp
+  vec3.cpp
+  mat4.cpp
+c:\users\alexi\documents\github\android-proju\build\win32\maths.h(14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  engine.vcxproj -> C:\Users\Alexi\Documents\GitHub\Android-Proju\build\win32\Debug\engine.lib
