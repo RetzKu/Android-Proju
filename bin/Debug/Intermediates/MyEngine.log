@@ -1,0 +1,6 @@
+﻿  main.cpp
+c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  c:\users\tervepaterve\downloads\myengine\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
+c:\users\tervepaterve\downloads\myengine\myengine\maths.h(15): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  MyEngine.vcxproj -> C:\Users\tervepaterve\Downloads\MyEngine\bin\Debug\MyEngine.exe
+  MyEngine.vcxproj -> C:\Users\tervepaterve\Downloads\MyEngine\bin\Debug\MyEngine.pdb (Partial PDB)

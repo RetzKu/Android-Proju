@@ -1,2 +1,0 @@
-https://stackoverflow.com/questions/23150123/loading-png-with-stb-image-for-opengl-texture-gives-wrong-colors
-https://kamezproxy01.kamit.fi:2252/lib/kajaani-ebooks/reader.action?docID=943409# android ndk kirja

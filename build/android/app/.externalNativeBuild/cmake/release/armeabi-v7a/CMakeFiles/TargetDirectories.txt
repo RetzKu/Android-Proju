@@ -1,4 +1,0 @@
-C:/Users/MikaKau/source/repos/Android-Proju3/build/android/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/app-glue.dir
-C:/Users/MikaKau/source/repos/Android-Proju3/build/android/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/native-activity.dir
-C:/Users/MikaKau/source/repos/Android-Proju3/build/android/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/edit_cache.dir
-C:/Users/MikaKau/source/repos/Android-Proju3/build/android/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/rebuild_cache.dir
