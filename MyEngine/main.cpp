@@ -3,6 +3,16 @@
 #include <iostream>
 #include "Maths.h"
 
+// Jos haluat printit p‰‰lle, t‰ss‰ 1, jos et valitse 0
+#define DEBUG 1
+#if DEBUG
+	#define CONSOLE(x) std::cout << x
+	#define CONSOLEND(x) std::cout << x << std::endl
+#else
+	#define CONSOLE(x)
+	#define CONSOLEND(x)
+#endif
+
 int main()
 {
 	using namespace Engine;
@@ -34,25 +44,24 @@ int main()
 	while (!window.closed())
 	{
 		window.clear();
-#if 0
-
-
 
 		double x, y;
 		if (window.isKeyPressed(GLFW_KEY_S))
 		{
-			std::cout << "KEY S PRESSED!" << std::endl; // katellaan jos S-nappia painetaan
+			CONSOLEND("'S' pressed!");// katellaan jos S-nappia painetaan
 			Sleep(350);
 		}
 		if (window.isButtonPressed(GLFW_MOUSE_BUTTON_1))
 		{
-			std::cout << "MOUSE PRESSED!" << std::endl; // katsotaan jos Klikkej‰ tulee
+			CONSOLEND("Mouse pressed!"); // katsotaan jos Klikkej‰ tulee
 			Sleep(350);
 		}
 		window.GetMousePosition(x, y);
-			std::cout << "X: " << x << " , Y: " << y << std::endl; // Tulostaa mouse positionia
+			CONSOLE("X: "); // Tulostaa mouse positionia
+			CONSOLE(x);
+			CONSOLE(" Y: ");
+			CONSOLEND(y);
 			Sleep(50);
-#endif
 
 #if 1
 			//openGL neliˆn teko

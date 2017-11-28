@@ -1,4 +1,6 @@
-#pragma once
+#ifndef MATHS_H
+#define MATHS_H
+
 //helpotus ettei tarvii tehdä include listaa joka paikkaan (rivi 4-8)
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -16,3 +18,5 @@ namespace Engine {
 		}
 	}
 }
+
+#endif

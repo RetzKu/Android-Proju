@@ -1,5 +1,6 @@
 #include "window.h"
 #include <iostream>
+
 namespace Engine 
 {
 	namespace Graphics
@@ -114,7 +115,6 @@ namespace Engine
 		{
 			glfwPollEvents();
 			glfwGetFramebufferSize(priv_Window, &priv_Width, &priv_Height);
-
 			glfwSwapBuffers(priv_Window);
 		}
 		//window up check
@@ -122,7 +122,7 @@ namespace Engine
 		{
 			return glfwWindowShouldClose(priv_Window);
 		}
-		//keskittää objektit ja skaalaa niitä (tässä tapauksessa neliö
+		//keskittää objektit ja skaalaa niitä (tässä tapauksessa neliö)
 		void WindowResize(GLFWwindow *window, int width, int height)
 		{
 			glViewport(0, 0, width, height); // (resize function) ** kokeile kommentoida rivi ja resize ikkunaa **

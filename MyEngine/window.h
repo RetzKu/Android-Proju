@@ -1,4 +1,6 @@
-#pragma once
+#ifndef WINDOW_H
+#define WINDOW_H
+
 #include <iostream>
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
@@ -45,3 +47,5 @@ namespace Engine
 		};
 	}
 }
+
+#endif
