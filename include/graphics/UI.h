@@ -4,7 +4,13 @@
 #include <string>
 #include <map>
 #include <GLES2/gl2.h>
-#include <graphics\stb_image.h>
+
+#include <graphics/stb_image.h>
+
+
+GLenum glCheckError_(const char *file, int line);
+
+#define glCheckError() glCheckError_(__FILE__, __LINE__) 
 
 enum UIEvents
 {
@@ -26,15 +32,17 @@ typedef struct
 
 class Texture
 {
-	Texture(std::string Filename);
+public:
+
+
+	Texture(const std::string& Filename);
 	~Texture();
 	void setsize(int x, int y) { _Rect.X = x; _Rect.Y = y; }
 	void Bind(unsigned int unit);
 
-
 private:
-	std::string _Filename;
 	GLuint _TextureID;
+	std::string _Filename;
 	Rect _Rect;
 	int N;
 };

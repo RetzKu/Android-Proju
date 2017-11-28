@@ -11,15 +11,37 @@ UI::~UI()
 {
 }
 
+GLenum glCheckError_(const char *file, int line)
+{	
+	GLenum errorCode;
+	while ((errorCode = glGetError()) != GL_NO_ERROR)
+	{
+		std::string error;
+		switch (errorCode)
+		{
+		case GL_INVALID_ENUM:                  error = "INVALID_ENUM"; break;
+		case GL_INVALID_VALUE:                 error = "INVALID_VALUE"; break;
+		case GL_INVALID_OPERATION:             error = "INVALID_OPERATION"; break;
+			//case GL_STACK_OVERFLOW:                error = "STACK_OVERFLOW"; break;
+			//case GL_STACK_UNDERFLOW:               error = "STACK_UNDERFLOW"; break;
+		case GL_OUT_OF_MEMORY:                 error = "OUT_OF_MEMORY"; break;
+		case GL_INVALID_FRAMEBUFFER_OPERATION: error = "INVALID_FRAMEBUFFER_OPERATION"; break;
+		}
+		std::cout << error << " | " << file << " (" << line << ")" << std::endl;
+	}
+	return errorCode;
+}
 
-Texture::Texture(std::string Filename)
+
+
+Texture::Texture(const std::string& Filename)
 {
 	unsigned char* imagedata = stbi_load(Filename.c_str(), &_Rect.X, &_Rect.Y, &N, 3);
 	if (imagedata == nullptr) {
 		return;
 	}
 	else {
-		glGenTextures(GL_TEXTURE_2D, &_TextureID);
+		glGenTextures(1, &_TextureID);
 		glBindTexture(GL_TEXTURE_2D, _TextureID);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, _Rect.X, _Rect.Y, 0, GL_RGB, GL_UNSIGNED_BYTE, imagedata);
 		stbi_image_free(imagedata);
@@ -129,7 +151,7 @@ GLuint UI::CreateShaderProgram()
 
 	// Muutetaan stringi muotoon missä glShaderSource() haluaa sen
 	GLchar const* fragment_shader[] = { fragment_shader_string.c_str() };
-		
+
 	GLuint vs = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vs, 1, vertex_shader, NULL);
 	glCompileShader(vs);
@@ -137,13 +159,12 @@ GLuint UI::CreateShaderProgram()
 	GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fs, 1, fragment_shader, NULL);
 	glCompileShader(fs);
-	checkCompileErrors(fs, "FRAGMENT");
 
 	GLuint shader_programme = glCreateProgram();
 	glAttachShader(shader_programme, fs);
 	glAttachShader(shader_programme, vs);
 	glLinkProgram(shader_programme);
-	checkCompileErrors(fs, "PROGRAM");
+	checkCompileErrors(shader_programme, "PROGRAM");
 
 	return shader_programme;
 }

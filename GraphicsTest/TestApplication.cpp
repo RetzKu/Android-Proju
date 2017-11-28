@@ -24,8 +24,7 @@ namespace engine
 	{
 
 #if defined(_WIN32)
-		FileData = new Filemanager();
-		GLuint boi = FileData->GetTexture("Untitled.png",true); //tietokone version paikka textuuri haulle
+		//GLuint boi = FileData->GetTexture("Untitled.png",true); //tietokone version paikka textuuri haulle
 #endif // defined(_WIN32)
 	}
 
@@ -35,23 +34,22 @@ namespace engine
 		delete FileData;
 	}
 
-
 	bool TestApplication::update(float deltaTime)
 	{
 		m_totalTime += deltaTime;
 		return true;
 	}
 
+	void TestApplication::Add_Textures()
+	{
+		Texture tmp = Texture("Untitled.png");
+	}
+
 	void TestApplication::render(Window* window, GraphicsSystem* graphics)
 	{
 		(void)window;	
-		float val = fabsf(sinf(2.0f*m_totalTime));
-		// Clear screen with pulsating yellow
 		
-		//stbi_load_from_memory();
-
 		//graphics->clearScreen(val, val, 0.0f, true);
-
 		graphics->BufferObject();
 		// T�n pit�s saada se kuva ladattua, viel� pit�s mietti� et miten se piirret��n ruudulle :D
 

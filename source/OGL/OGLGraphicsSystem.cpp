@@ -113,7 +113,7 @@ namespace engine
 		UI_Class = new UI();
 		ShaderProgram = UI_Class->CreateShaderProgram();
 		glGenBuffers(1, &Vbo);
-		
+
 	}
 
 

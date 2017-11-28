@@ -12,6 +12,7 @@
 #include <string>
 #include <GLES2/gl2.h>
 #include <core/Filemanager.h>
+#include <graphics\UI.h>
 
 
 namespace engine
@@ -29,6 +30,8 @@ namespace engine
 
 		/// Updates application. Returns true, if application is running.
 		virtual bool update(float deltaTime);
+
+		virtual void Add_Textures();
 
 		/// Renders application.
 		virtual void render(Window* window, GraphicsSystem* graphics);

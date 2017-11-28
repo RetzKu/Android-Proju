@@ -24,13 +24,20 @@ int main(int argc, char* argv[]) {
 
 	engine::Ref<engine::OGLGraphicsSystem> graphics = new engine::OGLGraphicsSystem(window);
 	window->setGraphics(graphics); // Set graphics for window
+
+	glCheckError();
 	engine::Ref<engine::GraphicsApplication> application = new engine::TestApplication(window, graphics);
 	window->setApplication(application); // Set application for window
 	
-	
+	glCheckError();
+
 	
 	engine::ElapsedTimer frameTimer;
 	frameTimer.reset();
+	glCheckError();
+
+	application->Add_Textures();
+
 	while (window->updateMessages())
 	{
 		// updateMessages palautta true. Päivitä peliä.
