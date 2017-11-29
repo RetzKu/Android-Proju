@@ -13,13 +13,45 @@
 	#define CONSOLEND(x)
 #endif
 
+#define SCREENWIDTH 1024
+#define SCREENHEIGHT 720
+
+using namespace Engine;
+using namespace Graphics;
+using namespace Maths;
+
+void new_square(vec2 left_corner, vec2 right_corner);
+vec2 get_relativeMSCoord(double x, double y);
+double get_relative_width(double x);
+double get_relavive_height(double y);
+double get_correct_width(double x);
+double get_correct_height(double y);
+
+class box
+{
+public:
+	box(int x, int y, int width, int height) { this->x = x;this->y = y;this->height = height;this->width = width; }
+	void set_new_pos(int x, int y) { this->x = x; this->y = y; }
+	void draw_box()
+	{
+		glBegin(GL_QUADS);
+		glVertex2f(get_relative_width(x) + get_correct_width(width), get_relavive_height(y) + get_correct_height(height)); // 1,1
+		glVertex2f(get_relative_width(x) + get_correct_width(width), get_relavive_height(y) - get_correct_height(height)); //1,-1
+		glVertex2f(get_relative_width(x) - get_correct_width(width), get_relavive_height(y) - get_correct_height(height)); //-1,-1
+		glVertex2f(get_relative_width(x) - get_correct_width(width), get_relavive_height(y) + get_correct_height(height)); //-1,1
+		glEnd();
+	}
+private:
+	int x; //sijainti
+	int y; //sijainti
+	int width; //leveys
+	int height; //korkeus
+};
+
 int main()
 {
-	using namespace Engine;
-	using namespace Graphics;
-	using namespace Maths;
 	//asetetaan ikkunan parametrit
-	Window window("Engine", 1024, 720);
+	Window window("Engine", SCREENWIDTH, SCREENHEIGHT);
 	//clearataan näyttö mustalla
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
@@ -38,7 +70,7 @@ int main()
 	//testattu vektoreiden toimintaa
 	vec4 a(0.2f, 0.3f, 0.8f, 1.0f);
 	vec4 b(0.5f, 0.2f, 0.1f, 1.0f);
-
+	box* tmp = new box(100, 100, 20,50 ); //luodaan mun testi boxi (x,y,leveys,korkeus)
 	vec4 c = a + b;
 
 	while (!window.closed())
@@ -64,13 +96,16 @@ int main()
 			Sleep(50);
 
 #if 1
+		tmp->set_new_pos(x, y); //nopea funkki joka osaa siirtää neliön paikkaa atm hiiressä
+		tmp->draw_box(); //normi glvertex2f funktio
+		
 			//openGL neliön teko
-		glBegin(GL_QUADS);
-		glVertex2f(-0.5f, -0.5f);
-		glVertex2f(-0.5f,  0.5f);
-		glVertex2f( 0.5f,  0.5f);
-		glVertex2f(	0.5f, -0.5f);
-		glEnd();
+		//glBegin(GL_QUADS);
+		//glVertex2f(-0.5f, -0.5f);
+		//glVertex2f(-0.5f,  0.5f);
+		//glVertex2f( 0.5f,  0.5f);
+		//glVertex2f(	0.5f, -0.5f);
+		//glEnd();
 #endif
 		glDrawArrays(GL_ARRAY_BUFFER, 0, 6);
 		window.update();
@@ -78,4 +113,48 @@ int main()
 
 	return 0;
 
+}
+
+// TAVARAT ALAPUOLELLA ON MIKAN TESTI PIIRTO HELPOKKEITA
+void new_square(vec2 left_corner, vec2 right_corner) //voit antaa vasemman ylänurkan ja oikean alanurkan sijainnin niin tekee suoraan niihin neliön
+{
+	glBegin(GL_QUADS);
+	glVertex2f(left_corner.x, left_corner.y);
+	glVertex2f(left_corner.x, -left_corner.y);
+	glVertex2f(right_corner.x, right_corner.y);
+	glVertex2f(right_corner.x, -right_corner.y);
+	glEnd();
+}
+
+vec2 get_relativeMSCoord(double x, double y) //palauttaa vec2 objektin joka on -1/1 väliltä
+{
+	float relative_x = x - SCREENWIDTH / 2;
+	relative_x = relative_x / (SCREENWIDTH / 2);
+	float relative_y = y - SCREENHEIGHT / 2;
+	relative_y = relative_y/ (SCREENHEIGHT/ 2);
+	return vec2(relative_x, relative_y);
+}
+double get_relative_width(double x) //osaatte varmaan päätellä
+{
+	float relative_x = x - SCREENWIDTH / 2;
+	relative_x = relative_x / (SCREENWIDTH / 2);
+	return relative_x;
+}
+double get_relavive_height(double y)//osaatte varmaan päätellä x2
+{
+	float relative_y = y - SCREENHEIGHT / 2;
+	relative_y = relative_y/ (SCREENHEIGHT/ 2);
+	return -relative_y;
+}
+double get_correct_width(double x)
+{
+	float tmp = SCREENWIDTH / 2;
+	tmp = x/tmp;
+	return tmp/2;
+}
+double get_correct_height(double y)
+{
+	float tmp = SCREENHEIGHT / 2;
+	tmp = y / tmp;
+	return tmp / 2;
 }
