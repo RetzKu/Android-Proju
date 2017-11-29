@@ -73,10 +73,14 @@ int main()
 	box* tmp = new box(100, 100, 20,50 ); //luodaan mun testi boxi (x,y,leveys,korkeus)
 	vec4 c = a + b;
 
+	mat4 position = mat4::translation(vec3(2, 3, 4));
+	position *= mat4::identity();
+
 	while (!window.closed())
 	{
 		window.clear();
-
+		
+#if 1
 		double x, y;
 		if (window.isKeyPressed(GLFW_KEY_S))
 		{
@@ -94,7 +98,7 @@ int main()
 			CONSOLE(" Y: ");
 			CONSOLEND(y);
 			Sleep(50);
-
+#endif
 #if 1
 		tmp->set_new_pos(x, y); //nopea funkki joka osaa siirtää neliön paikkaa atm hiiressä
 		tmp->draw_box(); //normi glvertex2f funktio

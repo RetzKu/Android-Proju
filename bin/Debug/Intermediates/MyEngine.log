@@ -1,16 +1,12 @@
 ﻿  main.cpp
 c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  c:\users\loyalist\source\repos\android-proju3\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
-c:\users\loyalist\source\repos\android-proju3\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android-proju3\myengine\main.cpp(38): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\loyalist\source\repos\android-proju3\myengine\main.cpp(39): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\loyalist\source\repos\android-proju3\myengine\main.cpp(40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\loyalist\source\repos\android-proju3\myengine\main.cpp(41): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\loyalist\source\repos\android-proju3\myengine\main.cpp(102): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\loyalist\source\repos\android-proju3\myengine\main.cpp(134): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android-proju3\myengine\main.cpp(136): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android-proju3\myengine\main.cpp(142): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android-proju3\myengine\main.cpp(148): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android-proju3\myengine\main.cpp(155): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android-proju3\myengine\main.cpp(161): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  MyEngine.vcxproj -> C:\Users\Loyalist\Source\Repos\Android-Proju3\bin\Debug\MyEngine.exe
+  c:\users\tervepaterve\documents\github\android-proju\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
+c:\users\tervepaterve\documents\github\android-proju\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  Compiling...
+  vec4.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  mat4.cpp
+  MyEngine.vcxproj -> C:\Users\tervepaterve\Documents\GitHub\Android-Proju\bin\Debug\MyEngine.exe
+  MyEngine.vcxproj -> C:\Users\tervepaterve\Documents\GitHub\Android-Proju\bin\Debug\MyEngine.pdb (Partial PDB)
