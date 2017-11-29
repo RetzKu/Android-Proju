@@ -41,10 +41,14 @@ int main()
 
 	vec4 c = a + b;
 
+	mat4 position = mat4::translation(vec3(2, 3, 4));
+	position *= mat4::identity();
+
 	while (!window.closed())
 	{
 		window.clear();
-
+		
+#if 1
 		double x, y;
 		if (window.isKeyPressed(GLFW_KEY_S))
 		{
@@ -62,7 +66,7 @@ int main()
 			CONSOLE(" Y: ");
 			CONSOLEND(y);
 			Sleep(50);
-
+#endif
 #if 1
 			//openGL neliön teko
 		glBegin(GL_QUADS);

@@ -1,3 +1,12 @@
-﻿  window.cpp
+﻿  main.cpp
+c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  c:\users\tervepaterve\documents\github\android-proju\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
+c:\users\tervepaterve\documents\github\android-proju\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  Compiling...
+  vec4.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  mat4.cpp
   MyEngine.vcxproj -> C:\Users\tervepaterve\Documents\GitHub\Android-Proju\bin\Debug\MyEngine.exe
   MyEngine.vcxproj -> C:\Users\tervepaterve\Documents\GitHub\Android-Proju\bin\Debug\MyEngine.pdb (Partial PDB)

@@ -7,7 +7,7 @@ namespace Engine {
 		{
 			float x, y, z, w;
 
-			vec4();
+			vec4() = default;
 			vec4(const float& x, const float& y, const float& z, const float& w);
 
 			//metodit
