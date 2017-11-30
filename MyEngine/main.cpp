@@ -2,6 +2,15 @@
 #include <windows.h>
 #include <iostream>
 #include "Maths.h"
+#include "fileutils.h"
+#include "Shader.h"
+
+#define SCREENWIDTH 1024
+#define SCREENHEIGHT 720
+
+using namespace Engine;
+using namespace Graphics;
+using namespace Maths;
 
 // Jos haluat printit päälle, tässä 1, jos et valitse 0
 #define DEBUG 1
@@ -12,13 +21,6 @@
 	#define CONSOLE(x)
 	#define CONSOLEND(x)
 #endif
-
-#define SCREENWIDTH 1024
-#define SCREENHEIGHT 720
-
-using namespace Engine;
-using namespace Graphics;
-using namespace Maths;
 
 void new_square(vec2 left_corner, vec2 right_corner);
 vec2 get_relativeMSCoord(double x, double y);
@@ -65,70 +67,53 @@ private:
 
 int main()
 {
-	//asetetaan ikkunan parametrit
-	Window window("Engine", SCREENWIDTH, SCREENHEIGHT);
-	//clearataan näyttö mustalla
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	// Asetetaan ikkunan parametrit
+	Window window("Engine", 1024, 720);
+	// Tausta väri
+	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	//gluint = unsigned int mutta koska eri platformeilla se on erikokoinen (16bit tai 64bit) niin käytetään GL-u-int:tiä
-	GLuint vao;
-	//luo tietyn määrän tietyn nimisiä alustamattomia objekteja (1 vao objekti) 
-	glGenVertexArrays(1, &vao);
-	//OpenGL sivuilta sitaatti:
-	/*glBindVertexArray binds the vertex array object with name array.
-	array is the name of a vertex array object previously returned from a call to glGenVertexArrays, or zero to break the existing vertex array object binding.
-	If no vertex array object with name array exists, one is created when array is first bound.
-	If the bind is successful no change is made to the state of the vertex array object, and any previous vertex array object binding is broken.
-	*/
-	glBindVertexArray(vao);
+	GLfloat vertices[] =
+	{
+		0,  0,  0,
+		8,  0,  0,
+		0,  3,  0,
+		0,  3,  0,
+		8,  3,  0,
+		8,  0,  0
+	};
 
-	//testattu vektoreiden toimintaa
-	vec4 a(0.2f, 0.3f, 0.8f, 1.0f);
-	vec4 b(0.5f, 0.2f, 0.1f, 1.0f);
-	box* tmp = new box(100, 100, 20, 80); //luodaan testi boxi (x,y,leveys,korkeus)
-	GLfloat Vertices[12] = { 0 }; //tehdään testi vertices taulukko
-	tmp->ConvertToVertices(Vertices); //muutetaan boxiin annetut sijainnit vertices taulukoksi
-	vec4 c = a + b;
+	GLuint vbo;
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(0);
 
-	mat4 position = mat4::translation(vec3(2, 3, 4));
-	position *= mat4::identity();
+	// Luodaan matriisi
+	mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
+
+	Shader shader("basic.vert", "basic.frag");
+	shader.enable();
+	// Heitetään matriisi shaderille
+	shader.setUniformMat4("pr_matrix", ortho);
+
+	// Vaihdetaan kuvion paikkaa, 0 0 0 vasen alareuna
+	shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
+	// Esimerkki rotatesta, 45 astetta z suunnassa
+	//shader.setUniformMat4("ml_matrix", mat4::rotation(45.0f, vec3(0, 0, 1)));
+
+	// Valot shaderiin, 0.0f 0.0f on vasen alareuna
+	// Jos objekti on vaikka 4.0f 2.0f kokoinen, luonnollisesti valo keskellä 2.0f 1.0f
+	shader.setUniformMat2f("light_pos", vec2(0.0f, 0.0f));
+	// Shaderin värin vaihto
+	shader.setUniformMat4f("colour", vec4(0.2f, 0.3f, 0.8f, 1.0f));
+
 
 	while (!window.closed())
 	{
 		window.clear();
 		
-#if 1
-		double x, y;
-		if (window.isKeyPressed(GLFW_KEY_S))
-		{
-			CONSOLEND("'S' pressed!");// katellaan jos S-nappia painetaan
-			Sleep(350);
-		}
-		if (window.isButtonPressed(GLFW_MOUSE_BUTTON_1))
-		{
-			CONSOLEND("Mouse pressed!"); // katsotaan jos Klikkejä tulee
-			Sleep(350);
-		}
-		window.GetMousePosition(x, y);
-			CONSOLE("X: "); // Tulostaa mouse positionia
-			CONSOLE(x);
-			CONSOLE(" Y: ");
-			CONSOLEND(y);
-			Sleep(5);
-#endif
-#if 1
-		tmp->set_new_pos(x, y); //nopea funkki joka osaa siirtää neliön paikkaa atm hiiressä
-		tmp->draw_box(); //normi glvertex2f funktio
-		
-			//openGL neliön teko
-		//glBegin(GL_QUADS);
-		//glVertex2f(-0.5f, -0.5f);
-		//glVertex2f(-0.5f,  0.5f);
-		//glVertex2f( 0.5f,  0.5f);
-		//glVertex2f(	0.5f, -0.5f);
-		//glEnd();
-#endif
-		glDrawArrays(GL_ARRAY_BUFFER, 0, 6);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
 		window.update();
 	}
 
@@ -179,3 +164,59 @@ double get_correct_height(double y)
 	tmp = y / tmp;
 	return tmp / 2;
 }
+
+// Piti siivota mainia :)
+
+
+//gluint = unsigned int mutta koska eri platformeilla se on erikokoinen (16bit tai 64bit) niin käytetään GL-u-int:tiä
+//GLuint vao;
+//luo tietyn määrän tietyn nimisiä alustamattomia objekteja (1 vao objekti) 
+//glGenVertexArrays(1, &vao);
+//OpenGL sivuilta sitaatti:
+/*glBindVertexArray binds the vertex array object with name array.
+array is the name of a vertex array object previously returned from a call to glGenVertexArrays, or zero to break the existing vertex array object binding.
+If no vertex array object with name array exists, one is created when array is first bound.
+If the bind is successful no change is made to the state of the vertex array object, and any previous vertex array object binding is broken.
+*/
+//glBindVertexArray(vao);
+
+//////// INPUT
+/*
+
+double x, y;
+if (window.isKeyPressed(GLFW_KEY_S))
+{
+CONSOLEND("'S' pressed!");// katellaan jos S-nappia painetaan
+Sleep(350);
+}
+if (window.isButtonPressed(GLFW_MOUSE_BUTTON_1))
+{
+CONSOLEND("Mouse pressed!"); // katsotaan jos Klikkejä tulee
+Sleep(350);
+}
+window.GetMousePosition(x, y);
+CONSOLE("X: "); // Tulostaa mouse positionia
+CONSOLE(x);
+CONSOLE(" Y: ");
+CONSOLEND(y);
+Sleep(50);
+
+*/
+
+
+////////// NELIÖ
+/*
+
+
+#if 1
+//openGL neliön teko
+glBegin(GL_QUADS);
+glVertex2f(-0.5f, -0.5f);
+glVertex2f(-0.5f,  0.5f);
+glVertex2f( 0.5f,  0.5f);
+glVertex2f(	0.5f, -0.5f);
+glEnd();
+#endif
+
+
+*/
