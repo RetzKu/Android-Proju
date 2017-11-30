@@ -2,23 +2,25 @@
 c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   c:\users\tervepaterve\documents\github\android-proju\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
 c:\users\tervepaterve\documents\github\android-proju\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(47): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(48): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(49): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
 c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(50): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(55): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(56): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(51): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(52): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(53): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
 c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(58): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(59): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(61): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(62): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(64): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(207): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(209): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(215): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(221): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(228): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(234): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(67): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(68): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(104): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(134): warning C4018: '<': signed/unsigned mismatch
+c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(161): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(163): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(169): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(175): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(182): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\tervepaterve\documents\github\android-proju\myengine\main.cpp(188): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   MyEngine.vcxproj -> C:\Users\tervepaterve\Documents\GitHub\Android-Proju\bin\Debug\MyEngine.exe
   MyEngine.vcxproj -> C:\Users\tervepaterve\Documents\GitHub\Android-Proju\bin\Debug\MyEngine.pdb (Partial PDB)

@@ -10,7 +10,10 @@
 #include "renderer2d.h"
 #include "renderable2d.h"
 #include "simple2drenderer.h"
-
+#include "static_sprite.h"
+#include "BatchRenderer2D.h"
+#include "sprite.h"
+#include <time.h>
 
 #define SCREENWIDTH 960
 #define SCREENHEIGHT 540
@@ -86,25 +89,38 @@ int main()
 	shader.enable();
 	// Heitet‰‰n matriisi shaderille
 	shader.setUniformMat4("pr_matrix", ortho);
-
 	// Vaihdetaan kuvion paikkaa, 0 0 0 vasen alareuna
-	shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
+	//shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
+
 	// Esimerkki rotatesta, 45 astetta z suunnassa
 	//shader.setUniformMat4("ml_matrix", mat4::rotation(45.0f, vec3(0, 0, 1)));
 	
 	// Luodaan uusia spritej‰
 	// M‰‰ritell‰‰n paikka, koko, v‰ri ja shader
-	Renderable2D sprite(Maths::vec3(5, 5, 0), Maths::vec2(4, 4), Maths::vec4(1, 0, 1, 1), shader);
-	Renderable2D sprite3(Maths::vec3(7, 1, 0), Maths::vec2(2, 3), Maths::vec4(0.2f, 0, 1, 1), shader);
+	//shader.setUniformMat4("ml_matrix", mat4::rotation(15.0f, vec3(0, 0, 1)));
 
-	Simple2DRenderer renderer;
+	std::vector<Renderable2D*> sprites;
+
+	srand(time(NULL));
+
+	Sprite sprite(5, 5, 4, 4, Maths::vec4(1, 0, 1, 1));
+	Sprite sprite3(7, 1, 7, 2, Maths::vec4(0.2f, 0, 1, 1));
+	BatchRenderer2D renderer;
+
+	for (float y = 0; y < 9.0f; y += 0.05f)
+	{
+		for(float x = 0; x < 16.0f; x += 0.05f)
+		{
+			sprites.push_back(new Sprite(x, y, 0.04f, 0.04f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
+		}
+	}
+
 
 	// Valot shaderiin, 0.0f 0.0f on vasen alareuna
 	// Jos objekti on vaikka 4.0f 2.0f kokoinen, luonnollisesti valo keskell‰ 2.0f 1.0f
-	shader.setUniformMat2f("light_pos", vec2(4.0f, 2.0f));
+	//shader.setUniformMat2f("light_pos", vec2(4.0f, 2.0f));
 	// Shaderin v‰rin vaihto
-	shader.setUniformMat4f("colour", vec4(0.2f, 0.3f, 0.8f, 1.0f));
-
+	//shader.setUniformMat4f("colour", vec4(0.2f, 0.3f, 0.8f, 1.0f));
 
 	while (!window.closed())
 	{
@@ -112,11 +128,14 @@ int main()
 		double x, y;
 		window.GetMousePosition(x, y);
 		shader.setUniformMat2f("light_pos", vec2((float)(x * 16.0f / 960.0f), (float)(9.0f - y * 9.0f / 540.0f)));
-
 		// Sanotaan renderille ett‰ alkaa tˆihi
 		// Submit laittaa ne spritet jonoon ja flush sitte tyhjent‰‰ jonon samalla ku nakkaa kamaa ruudulle
-		renderer.submit(&sprite);
-		renderer.submit(&sprite3);
+		renderer.begin();
+		for(int i = 0; i < sprites.size(); i++)
+		{
+			renderer.submit(sprites[i]);
+		}
+		renderer.end();
 		renderer.flush();
 
 		window.update();

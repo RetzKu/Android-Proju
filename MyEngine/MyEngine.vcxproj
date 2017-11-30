@@ -122,12 +122,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BatchRenderer2D.cpp" />
     <ClCompile Include="buffer.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mat4.cpp" />
     <ClCompile Include="simple2drenderer.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="static_sprite.cpp" />
     <ClCompile Include="vec2.cpp" />
     <ClCompile Include="vec3.cpp" />
     <ClCompile Include="vec4.cpp" />
@@ -135,6 +138,7 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BatchRenderer2D.h" />
     <ClInclude Include="buffer.h" />
     <ClInclude Include="fileutils.h" />
     <ClInclude Include="indexbuffer.h" />
@@ -144,6 +148,8 @@
     <ClInclude Include="renderer2d.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="simple2drenderer.h" />
+    <ClInclude Include="sprite.h" />
+    <ClInclude Include="static_sprite.h" />
     <ClInclude Include="vec2.h" />
     <ClInclude Include="vec3.h" />
     <ClInclude Include="vec4.h" />

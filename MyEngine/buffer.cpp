@@ -14,6 +14,11 @@ namespace Engine { namespace Graphics {
 
 	}
 
+	Buffer::~Buffer()
+	{
+		glDeleteBuffers(1, &_bufferID);
+	}
+
 	void Buffer::bind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, _bufferID);

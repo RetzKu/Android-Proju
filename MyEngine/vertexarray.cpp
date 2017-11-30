@@ -14,6 +14,7 @@ namespace Engine { namespace Graphics {
 		{
 			delete _buffers[x];
 		}
+		glDeleteVertexArrays(1, &_arrayID);
 	}
 	
 	void VertexArray::addBuffer(Buffer* buffer, GLuint index)
