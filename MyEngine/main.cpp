@@ -4,6 +4,11 @@
 #include "Maths.h"
 #include "fileutils.h"
 #include "Shader.h"
+#include "buffer.h"
+#include "indexbuffer.h"
+#include "vertexarray.h"
+
+
 
 #define SCREENWIDTH 1024
 #define SCREENHEIGHT 720
@@ -72,6 +77,9 @@ int main()
 	// Tausta väri
 	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
+	// OpenGL piirtoa, mutta meh, halutaan omat bufferit
+#if 0
+
 	GLfloat vertices[] =
 	{
 		0,  0,  0,
@@ -89,6 +97,53 @@ int main()
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
 
+#else // Custom bufferihommia
+
+	GLfloat vertices[] =
+	{
+		0,  0,  0,
+		0,  3,  0,
+		8,  3,  0,
+		8,  0,  0
+	};
+
+	GLushort indices[] =
+	{
+		0, 1, 2,
+		2, 3, 0
+	};
+
+	GLfloat colorsA[] =
+	{
+		1, 0, 1, 1,
+		1, 0, 1, 1,
+		1, 0, 1, 1,
+		1, 0, 1, 1
+	};
+
+	GLfloat colorsB[] =
+	{
+		0.2f, 0.3f, 0.8f, 1,
+		0.2f, 0.3f, 0.8f, 1,
+		0.2f, 0.3f, 0.8f, 1,
+		0.2f, 0.3f, 0.8f, 1
+	};
+
+	VertexArray sprite1;
+	VertexArray sprite2;
+	IndexBuffer ibo(indices, 6);
+
+
+	sprite1.addBuffer(new Buffer(vertices, 4 * 3, 3), 0);
+	sprite1.addBuffer(new Buffer(colorsA, 4 * 4, 4), 1);
+	sprite2.addBuffer(new Buffer(vertices, 4 * 3, 3), 0);
+	sprite2.addBuffer(new Buffer(colorsB, 4 * 4, 4), 1);
+
+
+
+	
+#endif
+
 	// Luodaan matriisi
 	mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 
@@ -104,7 +159,7 @@ int main()
 
 	// Valot shaderiin, 0.0f 0.0f on vasen alareuna
 	// Jos objekti on vaikka 4.0f 2.0f kokoinen, luonnollisesti valo keskellä 2.0f 1.0f
-	shader.setUniformMat2f("light_pos", vec2(0.0f, 0.0f));
+	shader.setUniformMat2f("light_pos", vec2(4.0f, 2.0f));
 	// Shaderin värin vaihto
 	shader.setUniformMat4f("colour", vec4(0.2f, 0.3f, 0.8f, 1.0f));
 
@@ -112,8 +167,23 @@ int main()
 	while (!window.closed())
 	{
 		window.clear();
-		
+#if 0
 		glDrawArrays(GL_TRIANGLES, 0, 6);
+#else
+		sprite1.bind();
+		ibo.bind();
+		shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
+		glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
+		ibo.unbind();
+		sprite1.unbind();
+
+		sprite2.bind();
+		ibo.bind();
+		shader.setUniformMat4("ml_matrix", mat4::translation(vec3(0, 0, 0)));
+		glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
+		ibo.unbind();
+		sprite2.unbind();
+#endif
 		window.update();
 	}
 

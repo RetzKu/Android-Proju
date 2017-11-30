@@ -113,8 +113,15 @@ namespace Engine
 		//update metodi
 		void Window::update()
 		{
+			// Error check
+			GLenum error = glGetError();
+			if(error != GL_NO_ERROR)
+			{
+				std::cout << "OpenGL Error: " << error << std::endl;
+			}
+
 			glfwPollEvents();
-			glfwGetFramebufferSize(priv_Window, &priv_Width, &priv_Height);
+			//glfwGetFramebufferSize(priv_Window, &priv_Width, &priv_Height);
 			glfwSwapBuffers(priv_Window);
 		}
 		//window up check
