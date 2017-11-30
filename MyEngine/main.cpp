@@ -41,6 +41,21 @@ public:
 		glVertex2f(get_relative_width(x) - get_correct_width(width), get_relavive_height(y) + get_correct_height(height)); //-1,1
 		glEnd();
 	}
+	void ConvertToVertices(GLfloat* Vertices)
+	{
+		Vertices[0] = get_relative_width(x) + get_correct_width(width);
+		Vertices[1] = get_relavive_height(y) + get_correct_height(height);
+		Vertices[2] = 0;
+		Vertices[3] = get_relative_width(x) + get_correct_width(width);
+		Vertices[4] = get_relavive_height(y) - get_correct_height(height);
+		Vertices[5] = 0;
+		Vertices[6] = get_relative_width(x) - get_correct_width(width);
+		Vertices[7] = get_relavive_height(y) - get_correct_height(height);
+		Vertices[8] = 0;
+		Vertices[9] = get_relative_width(x) - get_correct_width(width);
+		Vertices[10] = get_relavive_height(y) + get_correct_height(height);
+		Vertices[11] = 0;
+	}
 private:
 	int x; //sijainti
 	int y; //sijainti
@@ -70,7 +85,9 @@ int main()
 	//testattu vektoreiden toimintaa
 	vec4 a(0.2f, 0.3f, 0.8f, 1.0f);
 	vec4 b(0.5f, 0.2f, 0.1f, 1.0f);
-	box* tmp = new box(100, 100, 20,50 ); //luodaan mun testi boxi (x,y,leveys,korkeus)
+	box* tmp = new box(100, 100, 20, 80); //luodaan testi boxi (x,y,leveys,korkeus)
+	GLfloat Vertices[12] = { 0 }; //tehdään testi vertices taulukko
+	tmp->ConvertToVertices(Vertices); //muutetaan boxiin annetut sijainnit vertices taulukoksi
 	vec4 c = a + b;
 
 	mat4 position = mat4::translation(vec3(2, 3, 4));
@@ -97,7 +114,7 @@ int main()
 			CONSOLE(x);
 			CONSOLE(" Y: ");
 			CONSOLEND(y);
-			Sleep(50);
+			Sleep(5);
 #endif
 #if 1
 		tmp->set_new_pos(x, y); //nopea funkki joka osaa siirtää neliön paikkaa atm hiiressä
