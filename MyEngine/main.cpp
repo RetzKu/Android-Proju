@@ -7,11 +7,13 @@
 #include "buffer.h"
 #include "indexbuffer.h"
 #include "vertexarray.h"
+#include "renderer2d.h"
+#include "renderable2d.h"
+#include "simple2drenderer.h"
 
 
-
-#define SCREENWIDTH 1024
-#define SCREENHEIGHT 720
+#define SCREENWIDTH 960
+#define SCREENHEIGHT 540
 
 using namespace Engine;
 using namespace Graphics;
@@ -77,73 +79,6 @@ int main()
 	// Tausta väri
 	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	// OpenGL piirtoa, mutta meh, halutaan omat bufferit
-#if 0
-
-	GLfloat vertices[] =
-	{
-		0,  0,  0,
-		8,  0,  0,
-		0,  3,  0,
-		0,  3,  0,
-		8,  3,  0,
-		8,  0,  0
-	};
-
-	GLuint vbo;
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glEnableVertexAttribArray(0);
-
-#else // Custom bufferihommia
-
-	GLfloat vertices[] =
-	{
-		0,  0,  0,
-		0,  3,  0,
-		8,  3,  0,
-		8,  0,  0
-	};
-
-	GLushort indices[] =
-	{
-		0, 1, 2,
-		2, 3, 0
-	};
-
-	GLfloat colorsA[] =
-	{
-		1, 0, 1, 1,
-		1, 0, 1, 1,
-		1, 0, 1, 1,
-		1, 0, 1, 1
-	};
-
-	GLfloat colorsB[] =
-	{
-		0.2f, 0.3f, 0.8f, 1,
-		0.2f, 0.3f, 0.8f, 1,
-		0.2f, 0.3f, 0.8f, 1,
-		0.2f, 0.3f, 0.8f, 1
-	};
-
-	VertexArray sprite1;
-	VertexArray sprite2;
-	IndexBuffer ibo(indices, 6);
-
-
-	sprite1.addBuffer(new Buffer(vertices, 4 * 3, 3), 0);
-	sprite1.addBuffer(new Buffer(colorsA, 4 * 4, 4), 1);
-	sprite2.addBuffer(new Buffer(vertices, 4 * 3, 3), 0);
-	sprite2.addBuffer(new Buffer(colorsB, 4 * 4, 4), 1);
-
-
-
-	
-#endif
-
 	// Luodaan matriisi
 	mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 
@@ -156,6 +91,13 @@ int main()
 	shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
 	// Esimerkki rotatesta, 45 astetta z suunnassa
 	//shader.setUniformMat4("ml_matrix", mat4::rotation(45.0f, vec3(0, 0, 1)));
+	
+	// Luodaan uusia spritejä
+	// Määritellään paikka, koko, väri ja shader
+	Renderable2D sprite(Maths::vec3(5, 5, 0), Maths::vec2(4, 4), Maths::vec4(1, 0, 1, 1), shader);
+	Renderable2D sprite3(Maths::vec3(7, 1, 0), Maths::vec2(2, 3), Maths::vec4(0.2f, 0, 1, 1), shader);
+
+	Simple2DRenderer renderer;
 
 	// Valot shaderiin, 0.0f 0.0f on vasen alareuna
 	// Jos objekti on vaikka 4.0f 2.0f kokoinen, luonnollisesti valo keskellä 2.0f 1.0f
@@ -167,23 +109,16 @@ int main()
 	while (!window.closed())
 	{
 		window.clear();
-#if 0
-		glDrawArrays(GL_TRIANGLES, 0, 6);
-#else
-		sprite1.bind();
-		ibo.bind();
-		shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
-		glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
-		ibo.unbind();
-		sprite1.unbind();
+		double x, y;
+		window.GetMousePosition(x, y);
+		shader.setUniformMat2f("light_pos", vec2((float)(x * 16.0f / 960.0f), (float)(9.0f - y * 9.0f / 540.0f)));
 
-		sprite2.bind();
-		ibo.bind();
-		shader.setUniformMat4("ml_matrix", mat4::translation(vec3(0, 0, 0)));
-		glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
-		ibo.unbind();
-		sprite2.unbind();
-#endif
+		// Sanotaan renderille että alkaa töihi
+		// Submit laittaa ne spritet jonoon ja flush sitte tyhjentää jonon samalla ku nakkaa kamaa ruudulle
+		renderer.submit(&sprite);
+		renderer.submit(&sprite3);
+		renderer.flush();
+
 		window.update();
 	}
 
@@ -237,6 +172,97 @@ double get_correct_height(double y)
 
 // Piti siivota mainia :)
 
+// OpenGL piirtoa, mutta meh, halutaan omat bufferit
+//#if 0
+//
+//GLfloat vertices[] =
+//{
+//	0,  0,  0,
+//	8,  0,  0,
+//	0,  3,  0,
+//	0,  3,  0,
+//	8,  3,  0,
+//	8,  0,  0
+//};
+//
+//GLuint vbo;
+//glGenBuffers(1, &vbo);
+//glBindBuffer(GL_ARRAY_BUFFER, vbo);
+//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+//glEnableVertexAttribArray(0);
+//
+//#else // Custom bufferihommia
+//
+//// Pisteet mitä piirretään
+//GLfloat vertices[] =
+//{
+//	0,  0,  0,
+//	0,  3,  0,
+//	8,  3,  0,
+//	8,  0,  0
+//};
+//
+//// Piirretään neliö kellon suuntaan
+//GLushort indices[] =
+//{
+//	0, 1, 2,
+//	2, 3, 0
+//};
+//
+//// Neliön väri
+//GLfloat colorsA[] =
+//{
+//	1, 0, 1, 1,
+//	1, 0, 1, 1,
+//	1, 0, 1, 1,
+//	1, 0, 1, 1
+//};
+//
+//// Neliön väri
+//GLfloat colorsB[] =
+//{
+//	0.2f, 0.3f, 0.8f, 1,
+//	0.2f, 0.3f, 0.8f, 1,
+//	0.2f, 0.3f, 0.8f, 1,
+//	0.2f, 0.3f, 0.8f, 1
+//};
+//
+//VertexArray sprite1;
+//VertexArray sprite2;
+//IndexBuffer ibo(indices, 6);
+//
+//// Kaikille pitää tehä omat bufferit koska muuten ne poistaa toisilta bufferit
+//sprite1.addBuffer(new Buffer(vertices, 4 * 3, 3), 0);
+//sprite1.addBuffer(new Buffer(colorsA, 4 * 4, 4), 1);
+//sprite2.addBuffer(new Buffer(vertices, 4 * 3, 3), 0);
+//sprite2.addBuffer(new Buffer(colorsB, 4 * 4, 4), 1);
+//
+//#endif
+
+// EP 7 koodia poistoon alta pois
+//#if 0
+//glDrawArrays(GL_TRIANGLES, 0, 6);
+//#else
+//// Bindataan sprite ja index bufferi
+//sprite1.bind();
+//ibo.bind();
+//// Siirretään neliötä
+//shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
+//// Piirretään neliö
+//glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
+//// Unbindataan molemmat
+//ibo.unbind();
+//sprite1.unbind();
+//
+//// Samat jutut toiselle neliölle
+//sprite2.bind();
+//ibo.bind();
+//shader.setUniformMat4("ml_matrix", mat4::translation(vec3(0, 0, 0)));
+//glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
+//ibo.unbind();
+//sprite2.unbind();
+//#endif
 
 //gluint = unsigned int mutta koska eri platformeilla se on erikokoinen (16bit tai 64bit) niin käytetään GL-u-int:tiä
 //GLuint vao;

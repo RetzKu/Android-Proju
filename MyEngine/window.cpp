@@ -6,32 +6,32 @@ namespace Engine
 	namespace Graphics
 	{
 		//array johon voi laittaa nappeja
-		bool Window::priv_Keys[MAX_KEYS];
+		bool Window::_keys[MAX_KEYS];
 		//array johon tulee hiiren napit &/ joystick
-		bool Window::priv_Buttons[MAX_BUTTONS];
+		bool Window::_buttons[MAX_BUTTONS];
 		//mouse pos
-		double Window::priv_MouseX;
-		double Window::priv_MouseY;
+		double Window::_mouseX;
+		double Window::_mouseY;
 
 		void WindowResize(GLFWwindow *window, int width, int height);
 
 		//ikkunan konstruktori
 		Window::Window(const char *title, int width, int height)
 		{
-			priv_Title = title;
-			priv_Width = width;
-			priv_Height = height;
+			_title = title;
+			_width = width;
+			_height = height;
 			if (!init())
 			{
 				glfwTerminate(); // tuhoaa ikkunan / dekonstruktori
 			}
 			for (int i = 0; i < MAX_KEYS; i++)
 			{
-				priv_Keys[1] = false;
+				_keys[1] = false;
 			}
 			for (int i = 0; i < MAX_BUTTONS; i++)
 			{
-				priv_Buttons[1] = false;
+				_buttons[1] = false;
 			}
 		}
 		// -||- dekonstruktori
@@ -48,21 +48,21 @@ namespace Engine
 				return false;
 			}
 			//kutsutaan ikkunaa
-			priv_Window = glfwCreateWindow(priv_Width, priv_Height, priv_Title, NULL, NULL);
+			_window = glfwCreateWindow(_width, _height, _title, NULL, NULL);
 			//ikkuna check,
-			if (!priv_Window)
+			if (!_window)
 			{
 				std::cout << "Failed to create GLFW window!" << std::endl;
 				return false;
 			}
 			//
-			glfwMakeContextCurrent(priv_Window);
-			glfwSetWindowUserPointer(priv_Window, this);
-			glfwSetWindowSizeCallback(priv_Window, WindowResize);
+			glfwMakeContextCurrent(_window);
+			glfwSetWindowUserPointer(_window, this);
+			glfwSetWindowSizeCallback(_window, WindowResize);
 			//input hommia
-			glfwSetKeyCallback(priv_Window, key_callback);
-			glfwSetMouseButtonCallback(priv_Window, button_callback);
-			glfwSetCursorPosCallback(priv_Window, cursor_callback);
+			glfwSetKeyCallback(_window, key_callback);
+			glfwSetMouseButtonCallback(_window, button_callback);
+			glfwSetCursorPosCallback(_window, cursor_callback);
 			
 			//glew (OpenGL Extension Wrangler Library) init check
 			//GLEW on libi joka mahdollistaa cross-platform extensionit CPP filuihin
@@ -84,7 +84,7 @@ namespace Engine
 				return false;
 				std::cout << "Keycode is out of range!" << std::endl;
 			}
-			return priv_Keys[keycode];
+			return _keys[keycode];
 		}
 		//napit -> hiiri/joystick
 		bool Window::isButtonPressed(unsigned int button)
@@ -94,14 +94,14 @@ namespace Engine
 				return false;
 				std::cout << "Buttons are out of range!" << std::endl;
 			}
-			return priv_Buttons[button];
+			return _buttons[button];
 		}
 
 		//mouse pos
 		void Window::GetMousePosition(double& x, double& y)
 		{
-			x = priv_MouseX;
-			y = priv_MouseY;
+			x = _mouseX;
+			y = _mouseY;
 		}
 
 		// clear metodi
@@ -121,13 +121,13 @@ namespace Engine
 			}
 
 			glfwPollEvents();
-			//glfwGetFramebufferSize(priv_Window, &priv_Width, &priv_Height);
-			glfwSwapBuffers(priv_Window);
+			//glfwGetFramebufferSize(_Window, &_Width, &_Height);
+			glfwSwapBuffers(_window);
 		}
 		//window up check
 		bool Window::closed() const
 		{
-			return glfwWindowShouldClose(priv_Window);
+			return glfwWindowShouldClose(_window);
 		}
 		//keskittää objektit ja skaalaa niitä (tässä tapauksessa neliö)
 		void WindowResize(GLFWwindow *window, int width, int height)
@@ -138,21 +138,21 @@ namespace Engine
 		void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 		{
 			Window* win = (Window*) glfwGetWindowUserPointer(window);
-			win->priv_Keys[key] = action != GLFW_RELEASE;
+			win->_keys[key] = action != GLFW_RELEASE;
 
 		}	
 		//Hiirennapit -> openGL:n callback funktio (osa inputtia)
 		void button_callback(GLFWwindow* window, int button, int action, int mods)
 		{
 			Window* win = (Window*)glfwGetWindowUserPointer(window);
-			win->priv_Buttons[button] = action != GLFW_RELEASE;
+			win->_buttons[button] = action != GLFW_RELEASE;
 		}
 		//Cursor position -> openGL:n callback funktio (osa inputtia)
 		void cursor_callback(GLFWwindow* window, double MouseX, double MouseY)
 		{
 			Window* win = (Window*)glfwGetWindowUserPointer(window);
-			win->priv_MouseX = MouseX;
-			win->priv_MouseY = MouseY;
+			win->_mouseX = MouseX;
+			win->_mouseY = MouseY;
 		}
 	}
 }

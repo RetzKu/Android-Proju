@@ -64,6 +64,9 @@
     <ClCompile Include="vertexarray.cpp">
       <Filter>Source Files\Graphics\Buffers</Filter>
     </ClCompile>
+    <ClCompile Include="simple2drenderer.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -98,6 +101,15 @@
     </ClInclude>
     <ClInclude Include="vertexarray.h">
       <Filter>Source Files\Graphics\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="renderable2d.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer2d.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="simple2drenderer.h">
+      <Filter>Source Files\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

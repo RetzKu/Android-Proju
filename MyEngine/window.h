@@ -15,14 +15,14 @@ namespace Engine
 		{
 		private:
 			//osaa varmaan jokanen lukea.
-			const char *priv_Title;
-			int priv_Width, priv_Height;
-			GLFWwindow *priv_Window;
-			bool priv_Closed; // onko ikkuna auki vai ei
+			const char *_title;
+			int _width, _height;
+			GLFWwindow *_window;
+			bool _Closed; // onko ikkuna auki vai ei
 
-			static bool priv_Keys[MAX_KEYS];
-			static bool priv_Buttons[MAX_BUTTONS];
-			static double priv_MouseX, priv_MouseY;
+			static bool _keys[MAX_KEYS];
+			static bool _buttons[MAX_BUTTONS];
+			static double _mouseX, _mouseY;
 
 			bool init();
 			friend static void key_callback(GLFWwindow* Window, int key, int scancode, int action, int mods);
@@ -36,8 +36,8 @@ namespace Engine
 			void update();
 			bool closed() const;
 
-			inline int getWidth() const { return priv_Width; } //ei kutsuta mit‰‰n funktiota vaan tehd‰‰n jokin toimenpide. esim t‰ss‰ return width;
-			inline int getHeight() const { return priv_Height; } // return height;
+			inline int getWidth() const { return _width; } //ei kutsuta mit‰‰n funktiota vaan tehd‰‰n jokin toimenpide. esim t‰ss‰ return width;
+			inline int getHeight() const { return _height; } // return height;
 
 			static bool isKeyPressed(unsigned int keycode);
 			static bool isButtonPressed(unsigned int button);
