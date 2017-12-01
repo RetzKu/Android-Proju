@@ -20,7 +20,7 @@ namespace Engine { namespace Graphics {
 		GLuint _VBO;
 		IndexBuffer* _IBO;
 		GLsizei _indexCount;
-		VertexData* _buffer;
+		VertexData* _buffer, *_bufferStart;
 	public:
 		BatchRenderer2D();
 		~BatchRenderer2D();

@@ -46,12 +46,15 @@ namespace Engine { namespace Graphics {
 
 		_IBO = new IndexBuffer(indices, RENDERER_INDICES_SIZE);
 		//glBindVertexArray(0);
+
+		_bufferStart = _buffer = new VertexData[RENDERER_MAX_SPRITES * 4];
 	}
 
 	void BatchRenderer2D::begin()
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, _VBO);
-		_buffer = (VertexData*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+		//_buffer = (VertexData*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+		_buffer = _bufferStart;
 	}
 
 	void BatchRenderer2D::submit(const Renderable2D* renderable)
@@ -82,7 +85,8 @@ namespace Engine { namespace Graphics {
 	
 	void BatchRenderer2D::end()
 	{
-		glUnmapBuffer(GL_ARRAY_BUFFER);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, RENDERER_MAX_SPRITES * RENDERER_SPRITE_SIZE, _bufferStart);
+		//glUnmapBuffer(GL_ARRAY_BUFFER);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
