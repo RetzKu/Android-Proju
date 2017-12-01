@@ -10,8 +10,8 @@ namespace Engine { namespace Graphics {
 #define RENDERER_SPRITE_SIZE	RENDERER_VERTEX_SIZE * 4
 #define RENDERER_BUFFER_SIZE	RENDERER_SPRITE_SIZE * RENDERER_MAX_SPRITES
 #define RENDERER_INDICES_SIZE	RENDERER_MAX_SPRITES * 6
-#define SHADER_VERTEX_INDEX 0
-#define SHADER_COLOR_INDEX	1
+#define SHADER_VERTEX_INDEX		0
+#define SHADER_COLOR_INDEX		1
 
 	class BatchRenderer2D : public Renderer2D
 	{
@@ -20,7 +20,7 @@ namespace Engine { namespace Graphics {
 		GLuint _VBO;
 		IndexBuffer* _IBO;
 		GLsizei _indexCount;
-		VertexData* _buffer;
+		VertexData* _buffer, *_bufferStart;
 	public:
 		BatchRenderer2D();
 		~BatchRenderer2D();
