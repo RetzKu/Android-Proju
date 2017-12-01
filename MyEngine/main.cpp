@@ -11,6 +11,7 @@
 #include "renderable2d.h"
 #include "simple2drenderer.h"
 #include "static_sprite.h"
+#include <chrono>
 #include "BatchRenderer2D.h"
 #include "sprite.h"
 #include <time.h>
@@ -94,26 +95,35 @@ int main()
 	unsigned int frames = 0;
 
 	printf("Sprites: %d\n", sprites.size());
-
+	int spritelistsize = sprites.size();
 	using namespace std::chrono_literals;
-	
+	float TimeInteval = 1 / 60;
+	std::chrono::time_point<std::chrono::system_clock> DeltaTime = std::chrono::system_clock::now();
 	while (!window.closed())
 	{
 		window.clear();
-		double x, y;
-		window.GetMousePosition(x, y);
-		MikanTestit->GetCameraMovement();
-		shader.setUniformMat2f("light_pos", vec2((float)(x * 16.0f / 960.0f), (float)(9.0f - y * 9.0f / 540.0f)));
+		vec2 MouseLoc = MikanTestit->MouseWorldLocation();
+		auto Delta = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - DeltaTime);
+		if ((float)Delta.count() > TimeInteval)
+		{
+			DeltaTime += std::chrono::milliseconds(10);
+		    //xrange = abs(middle.x - point.x
+			//y -||-
+			//return xrange < säde.x && yrange < sädey
+			MikanTestit->GetCameraMovement();
+			MikanTestit->MouseWorldLocation();
+			MikanTestit->MouseUILocation();
+		}
+		shader.setUniformMat2f("light_pos", vec2((float)(MouseLoc.x * 16.0f / 960.0f), (float)(9.0f - MouseLoc.y * 9.0f / 540.0f)));
 		// Sanotaan renderille että alkaa töihi
 		// Submit laittaa ne spritet jonoon ja flush sitte tyhjentää jonon samalla ku nakkaa kamaa ruudulle
 		renderer.begin();
-		for(int i = 0; i < sprites.size(); i++)
+		for(int i = 0; i < spritelistsize; i++)
 		{
-			renderer.submit(sprites[i]);
+			renderer.submit(sprites[i]); //choke point
 		}
 		renderer.end();
 		renderer.flush();
-
 
 		window.update();
 		frames++;

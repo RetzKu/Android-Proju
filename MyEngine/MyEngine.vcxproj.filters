@@ -34,6 +34,9 @@
     <Filter Include="Source Files\Graphics\Buffers">
       <UniqueIdentifier>{b73b6091-314f-4760-898a-ea369feca937}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{7a54c35b-6cf6-4cfe-b5be-d20d926411ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="window.cpp">
@@ -99,9 +102,6 @@
     <ClInclude Include="mat4.h">
       <Filter>Source Files\Maths</Filter>
     </ClInclude>
-    <ClInclude Include="fileutils.h">
-      <Filter>Source Files\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="Shader.h">
       <Filter>Source Files\Graphics</Filter>
     </ClInclude>
@@ -132,11 +132,14 @@
     <ClInclude Include="static_sprite.h">
       <Filter>Source Files\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="timer.h">
-      <Filter>Source Files\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="MikaTestijuttuja.h">
-      <Filter>Source Files\Utils</Filter>
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="fileutils.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

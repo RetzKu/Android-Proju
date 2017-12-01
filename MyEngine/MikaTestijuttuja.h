@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <iostream>
 #include "Maths.h"
+#include <chrono>
 #include "fileutils.h"
 #include "Shader.h"
 #include "buffer.h"
@@ -32,15 +33,18 @@ public:
 		this->CameraCoordinates = vec2(0.0f, 0.0f);
 		DefineAspectRatio();
 	}
-	void new_square(vec2 left_corner, vec2 right_corner);
 	vec2 get_relativeMSCoord(double x, double y);
 	double get_relative_width(double x);
 	double get_relavive_height(double y);
 	double get_correct_width(double x);
 	double get_correct_height(double y);
 	void GetCameraMovement();
+	vec2 MouseWorldLocation();
+	vec2 MouseUILocation();
 	void SetUniforMat4(std::string UniformName, mat4 Ortho) { ShaderObject->setUniformMat4(UniformName.c_str(), Ortho); }
 	double GetCameraSpeed() { return CameraSpeed; }
+	void ButtonCooldownThread(bool* Cooldown);
+	void ResetCooldown() { Cooldown = false; }
 	void DefineAspectRatio()
 	{
 		float ratio = (float)SCREENHEIGHT / (float)SCREENWIDTH;
@@ -57,18 +61,11 @@ private:
 	vec2 CameraCoordinates;
 	double CameraSpeed = 1;
 	vec2 AspectRatio;
+	bool Cooldown;
 };
 
 //TestClassin funktiot määritelty alapuolella
-void TestClass::new_square(vec2 left_corner, vec2 right_corner) //voit antaa vasemman ylänurkan ja oikean alanurkan sijainnin niin tekee suoraan niihin neliön
-{
-	glBegin(GL_QUADS);
-	glVertex2f(left_corner.x, left_corner.y);
-	glVertex2f(left_corner.x, -left_corner.y);
-	glVertex2f(right_corner.x, right_corner.y);
-	glVertex2f(right_corner.x, -right_corner.y);
-	glEnd();
-}
+
 vec2 TestClass::get_relativeMSCoord(double x, double y) //palauttaa vec2 objektin joka on -1/1 väliltä
 {
 	float relative_x = x - SCREENWIDTH / 2;
@@ -101,6 +98,31 @@ double TestClass::get_correct_height(double y)
 	tmp = y / tmp;
 	return tmp / 2;
 }
+void TestClass::ButtonCooldownThread(bool* Cooldown) //tämä on esimerkki siitä kuinka tehdään threadille sopiva funktio joka pystyy muuttamaan classin arvoa. Rakenna std::thread(&class::funktio, *this, parameters).detatch()
+{ 
+	*Cooldown = true;
+	std::cout << "went to thread";
+	using namespace std::chrono_literals;
+	std::this_thread::sleep_for(10ms);
+	*Cooldown = false;
+}
+
+vec2 TestClass::MouseUILocation()
+{
+	double x, y;
+	WindowObject->GetMousePosition(x, y);
+	std::cout << "\nX: " << x << " Y: " << y;
+	return vec2(x, y);
+}
+
+vec2 TestClass::MouseWorldLocation()
+{
+	double x, y;
+	WindowObject->GetMousePosition(x, y);
+	std::cout << "\nX: " << x << " Y: " << y;
+	return vec2(x, y);
+}
+
 void TestClass::GetCameraMovement()
 {
 	for (int i = 60; i < 95; i++)
