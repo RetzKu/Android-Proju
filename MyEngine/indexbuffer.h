@@ -12,7 +12,6 @@ namespace Engine { namespace Graphics {
 
 		public:
 			IndexBuffer(GLushort* data, GLsizei count);
-			// oli GLushort, mutta ku pitää saada paljo neliöitä ruutuun nii väliaikasesti int
 			IndexBuffer(GLuint* data, GLsizei count);
 			~IndexBuffer();
 			void bind() const;

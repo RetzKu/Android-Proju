@@ -32,9 +32,5 @@ namespace Engine {
 			delete[] data;
 			return result;
 		}
-
 	};
-
-
-
 }
