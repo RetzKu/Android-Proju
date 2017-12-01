@@ -14,6 +14,7 @@
 #include "BatchRenderer2D.h"
 #include "sprite.h"
 #include <time.h>
+#include "timer.h"
 #include <thread>
 #include "MikaTestijuttuja.h"
 
@@ -48,7 +49,7 @@ public:
 	void set_new_pos(int x, int y) { this->x = x; this->y = y; }
 	void draw_box()
 	{
-		glBegin(GL_QUADS);
+		glBegin(GL_QUADS); 
 		glVertex2f(get_relative_width(x) + get_correct_width(width), get_relavive_height(y) + get_correct_height(height)); // 1,1
 		glVertex2f(get_relative_width(x) + get_correct_width(width), get_relavive_height(y) - get_correct_height(height)); //1,-1
 		glVertex2f(get_relative_width(x) - get_correct_width(width), get_relavive_height(y) - get_correct_height(height)); //-1,-1
@@ -80,7 +81,7 @@ private:
 int main()
 {
 	// Asetetaan ikkunan parametrit
-	Window window("Engine", 1024, 720);
+	Window window("Engine", SCREENWIDTH, SCREENHEIGHT);
 	// Tausta väri
 	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -110,6 +111,7 @@ int main()
 	
 	FileUtils::LoadTextureFromFile("Pekka.png");
 
+
 	Sprite sprite(5, 5, 4, 4, Maths::vec4(1, 0, 1, 1));
 	Sprite sprite3(7, 1, 7, 2, Maths::vec4(0.2f, 0, 1, 1));
 	BatchRenderer2D renderer;
@@ -127,6 +129,13 @@ int main()
 	//shader.setUniformMat2f("light_pos", vec2(4.0f, 2.0f));
 	// Shaderin värin vaihto
 	//shader.setUniformMat4f("colour", vec4(0.2f, 0.3f, 0.8f, 1.0f));
+
+	// Jatkuva aika
+	Timer time;
+	float timer = 0.0f;
+	unsigned int frames = 0;
+
+	printf("Sprites: %d\n", sprites.size());
 
 	using namespace std::chrono_literals;
 	
@@ -147,7 +156,15 @@ int main()
 		renderer.end();
 		renderer.flush();
 
+
 		window.update();
+		frames++;
+		if(time.elapsed() - timer > 1.0f)
+		{
+			timer += 1.0f;
+			printf("%d FPS\n", frames);
+			frames = 0;
+		}
 	}
 
 	return 0;

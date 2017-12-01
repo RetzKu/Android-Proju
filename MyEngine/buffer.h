@@ -18,6 +18,4 @@ namespace Engine { namespace Graphics {
 
 			inline GLuint getComponentCount() const { return _componentCount; }
 		};
-
-
 } }

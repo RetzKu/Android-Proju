@@ -63,6 +63,8 @@ namespace Engine
 			glfwSetKeyCallback(_window, key_callback);
 			glfwSetMouseButtonCallback(_window, button_callback);
 			glfwSetCursorPosCallback(_window, cursor_callback);
+			// Otetaan Vsync pois p‰‰lt‰
+			glfwSwapInterval(0);
 			
 			//glew (OpenGL Extension Wrangler Library) init check
 			//GLEW on libi joka mahdollistaa cross-platform extensionit CPP filuihin

@@ -76,9 +76,6 @@
     <ClCompile Include="static_sprite.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="FileUtils.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -132,10 +129,10 @@
     <ClInclude Include="static_sprite.h">
       <Filter>Source Files\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="MikaTestijuttuja.h">
+    <ClInclude Include="timer.h">
       <Filter>Source Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="stbi_image.h">
+    <ClInclude Include="MikaTestijuttuja.h">
       <Filter>Source Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
