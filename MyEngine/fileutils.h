@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-
+#include <stb_image.h>
 
 namespace Engine {
 
