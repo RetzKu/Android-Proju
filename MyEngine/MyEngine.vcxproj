@@ -124,6 +124,7 @@
   <ItemGroup>
     <ClCompile Include="BatchRenderer2D.cpp" />
     <ClCompile Include="buffer.cpp" />
+    <ClCompile Include="FileUtils.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mat4.cpp" />
@@ -138,7 +139,6 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Dependencies\stbi_image.h" />
     <ClInclude Include="BatchRenderer2D.h" />
     <ClInclude Include="buffer.h" />
     <ClInclude Include="fileutils.h" />
@@ -152,6 +152,7 @@
     <ClInclude Include="simple2drenderer.h" />
     <ClInclude Include="sprite.h" />
     <ClInclude Include="static_sprite.h" />
+    <ClInclude Include="stbi_image.h" />
     <ClInclude Include="vec2.h" />
     <ClInclude Include="vec3.h" />
     <ClInclude Include="vec4.h" />

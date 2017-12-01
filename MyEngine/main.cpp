@@ -89,7 +89,6 @@ int main()
 	float x_axis = 0;
 	float y_axis = 0;
 	mat4 ortho = mat4::orthographic(x_axis, 16.0f, y_axis, 9.0f, -1.0f, 1.0f);
-
 	Shader shader("basic.vert", "basic.frag");
 	shader.enable();
 	TestClass* MikanTestit = new TestClass(&window,&shader);
@@ -109,12 +108,11 @@ int main()
 
 	srand(time(NULL));
 	
-	
+	FileUtils::LoadTextureFromFile("Pekka.png");
 
 	Sprite sprite(5, 5, 4, 4, Maths::vec4(1, 0, 1, 1));
 	Sprite sprite3(7, 1, 7, 2, Maths::vec4(0.2f, 0, 1, 1));
 	BatchRenderer2D renderer;
-
 	for (float y = 0; y < 9.0f; y += 0.05f)
 	{
 		for(float x = 0; x < 16.0f; x += 0.05f)
@@ -131,6 +129,7 @@ int main()
 	//shader.setUniformMat4f("colour", vec4(0.2f, 0.3f, 0.8f, 1.0f));
 
 	using namespace std::chrono_literals;
+	
 	while (!window.closed())
 	{
 		window.clear();

@@ -12,6 +12,6 @@ c:\users\mikakau\source\repos\android-proju3\myengine\mikatestijuttuja.h(113): w
 c:\users\mikakau\source\repos\android-proju3\myengine\mikatestijuttuja.h(116): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
 c:\users\mikakau\source\repos\android-proju3\myengine\mikatestijuttuja.h(119): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
 c:\users\mikakau\source\repos\android-proju3\myengine\mikatestijuttuja.h(122): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-c:\users\mikakau\source\repos\android-proju3\myengine\main.cpp(110): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\mikakau\source\repos\android-proju3\myengine\main.cpp(144): warning C4018: '<': signed/unsigned mismatch
+c:\users\mikakau\source\repos\android-proju3\myengine\main.cpp(109): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\mikakau\source\repos\android-proju3\myengine\main.cpp(143): warning C4018: '<': signed/unsigned mismatch
   MyEngine.vcxproj -> C:\Users\MikaKau\source\repos\Android-Proju3\bin\Debug\MyEngine.exe

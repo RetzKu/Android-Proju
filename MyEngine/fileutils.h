@@ -2,8 +2,8 @@
 
 #include <string>
 #include <fstream>
-#include <stbi_image.h>
 #include <iostream>
+
 
 namespace Engine {
 
@@ -34,19 +34,7 @@ namespace Engine {
 			delete[] data;
 			return result;
 		}
-		static unsigned char* LoadTextureFromFile(std::string Filename)
-		{
-			int x, y;
-			int n = 3;
-			char* FileDir = "Assets";
-			unsigned char *data = stbi_load("assets/asdsada.png",&x, &y, &n, 3);
+		static unsigned char* LoadTextureFromFile(const std::string Filename);
 
-			if (data == nullptr)
-			{
-				std::cout << "\nKuvan lataus epäonnistui <NULLPTR>";
-			}
-			else
-				return data;
-		}
 	};
 }
