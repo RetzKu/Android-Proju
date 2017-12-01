@@ -1,5 +1,6 @@
 #pragma once
 
+// T‰‰ perkele ei toimi sit ku winukalla et t‰h‰n pit‰‰ sit teh‰ oma android #define :&
 #include <Windows.h>
 
 namespace Engine {

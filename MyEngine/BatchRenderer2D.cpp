@@ -15,16 +15,15 @@ namespace Engine { namespace Graphics {
 
 	void BatchRenderer2D::init()
 	{
-		glGenVertexArrays(1, &_VAO);
+		//glGenVertexArrays(1, &_VAO);
 		glGenBuffers(1, &_VBO);
-
-		glBindVertexArray(_VAO);
+		//glBindVertexArray(_VAO);
 		glBindBuffer(GL_ARRAY_BUFFER, _VBO);
 		glBufferData(GL_ARRAY_BUFFER, RENDERER_BUFFER_SIZE, NULL, GL_DYNAMIC_DRAW);
 		glEnableVertexAttribArray(SHADER_VERTEX_INDEX);
 		glEnableVertexAttribArray(SHADER_COLOR_INDEX);
-		glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*) 0);
-		glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(3 * sizeof(GLfloat)));
+		glVertexAttribPointer(SHADER_VERTEX_INDEX,	3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*) 0);
+		glVertexAttribPointer(SHADER_COLOR_INDEX,	4, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(3 * sizeof(GLfloat)));
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 		// oli GLushort, mutta ku pitää saada paljo neliöitä ruutuun nii väliaikasesti int
@@ -46,7 +45,7 @@ namespace Engine { namespace Graphics {
 		}
 
 		_IBO = new IndexBuffer(indices, RENDERER_INDICES_SIZE);
-		glBindVertexArray(0);
+		//glBindVertexArray(0);
 	}
 
 	void BatchRenderer2D::begin()
@@ -89,7 +88,8 @@ namespace Engine { namespace Graphics {
 
 	void BatchRenderer2D::flush()
 	{
-		glBindVertexArray(_VAO);
+		//glBindVertexArray(_VAO);
+
 		_IBO->bind();
 		// oli GL_UNSIGNED_SHORT, mutta ku pitää saada paljo neliöitä ruutuun nii väliaikasesti int
 		glDrawElements(GL_TRIANGLES, _indexCount, GL_UNSIGNED_INT, NULL);
