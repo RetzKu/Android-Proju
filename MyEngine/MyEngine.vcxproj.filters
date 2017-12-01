@@ -130,6 +130,12 @@
       <Filter>Source Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="timer.h">
+		<Filter>Source Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\stbi_image.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MikaTestijuttuja.h">
       <Filter>Source Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>

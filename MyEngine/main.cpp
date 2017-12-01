@@ -15,6 +15,8 @@
 #include "sprite.h"
 #include <time.h>
 #include "timer.h"
+#include <thread>
+#include "MikaTestijuttuja.h"
 
 #define SCREENWIDTH 960
 #define SCREENHEIGHT 540
@@ -33,14 +35,14 @@ using namespace Maths;
 	#define CONSOLEND(x)
 #endif
 
-void new_square(vec2 left_corner, vec2 right_corner);
-vec2 get_relativeMSCoord(double x, double y);
-double get_relative_width(double x);
-double get_relavive_height(double y);
-double get_correct_width(double x);
-double get_correct_height(double y);
+//void new_square(vec2 left_corner, vec2 right_corner);
+//vec2 get_relativeMSCoord(double x, double y);
+//double get_relative_width(double x);
+//double get_relavive_height(double y);
+//double get_correct_width(double x);
+//double get_correct_height(double y);
 
-class box
+/*class box
 {
 public:
 	box(int x, int y, int width, int height) { this->x = x;this->y = y;this->height = height;this->width = width; }
@@ -74,7 +76,7 @@ private:
 	int y; //sijainti
 	int width; //leveys
 	int height; //korkeus
-};
+};*/
 
 int main()
 {
@@ -83,11 +85,15 @@ int main()
 	// Tausta väri
 	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
+
 	// Luodaan matriisi
-	mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
+	float x_axis = 0;
+	float y_axis = 0;
+	mat4 ortho = mat4::orthographic(x_axis, 16.0f, y_axis, 9.0f, -1.0f, 1.0f);
 
 	Shader shader("basic.vert", "basic.frag");
 	shader.enable();
+	TestClass* MikanTestit = new TestClass(&window,&shader);
 	// Heitetään matriisi shaderille
 	shader.setUniformMat4("pr_matrix", ortho);
 	// Vaihdetaan kuvion paikkaa, 0 0 0 vasen alareuna
@@ -103,6 +109,8 @@ int main()
 	std::vector<Renderable2D*> sprites;
 
 	srand(time(NULL));
+	
+	
 
 
 	Sprite sprite(5, 5, 4, 4, Maths::vec4(1, 0, 1, 1));
@@ -131,12 +139,14 @@ int main()
 
 	printf("Sprites: %d\n", sprites.size());
 
-
+	using namespace std::chrono_literals;
+	
 	while (!window.closed())
 	{
 		window.clear();
 		double x, y;
 		window.GetMousePosition(x, y);
+		MikanTestit->GetCameraMovement();
 		shader.setUniformMat2f("light_pos", vec2((float)(x * 16.0f / 960.0f), (float)(9.0f - y * 9.0f / 540.0f)));
 		// Sanotaan renderille että alkaa töihi
 		// Submit laittaa ne spritet jonoon ja flush sitte tyhjentää jonon samalla ku nakkaa kamaa ruudulle
@@ -163,7 +173,7 @@ int main()
 
 }
 
-// TAVARAT ALAPUOLELLA ON MIKAN TESTI PIIRTO HELPOKKEITA
+/*// TAVARAT ALAPUOLELLA ON MIKAN TESTI PIIRTO HELPOKKEITA
 void new_square(vec2 left_corner, vec2 right_corner) //voit antaa vasemman ylänurkan ja oikean alanurkan sijainnin niin tekee suoraan niihin neliön
 {
 	glBegin(GL_QUADS);
@@ -206,6 +216,7 @@ double get_correct_height(double y)
 	tmp = y / tmp;
 	return tmp / 2;
 }
+*/
 
 // Piti siivota mainia :)
 

@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{3A9136F9-5E9B-49D9-82DC-45A28F543A84}</ProjectGuid>
     <RootNamespace>MyEngine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)..\Dependencies\GLEW\include;$(ProjectDir)..\Dependencies\GLFW\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\Dependencies\GLEW\include;$(ProjectDir)..\Dependencies\GLFW\include;$(IncludePath);$(SolutionDir)\Dependencies;</IncludePath>
     <LibraryPath>$(ProjectDir)..\Dependencies\GLEW\libs;$(ProjectDir)..\Dependencies\GLFW\lib-vc2015;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\$(Configuration)\Intermediates\</IntDir>
@@ -150,12 +150,14 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Dependencies\stbi_image.h" />
     <ClInclude Include="BatchRenderer2D.h" />
     <ClInclude Include="buffer.h" />
     <ClInclude Include="fileutils.h" />
     <ClInclude Include="indexbuffer.h" />
     <ClInclude Include="mat4.h" />
     <ClInclude Include="Maths.h" />
+    <ClInclude Include="MikaTestijuttuja.h" />
     <ClInclude Include="renderable2d.h" />
     <ClInclude Include="renderer2d.h" />
     <ClInclude Include="Shader.h" />
