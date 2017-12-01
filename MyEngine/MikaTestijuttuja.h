@@ -49,7 +49,7 @@ public:
 			this->AspectRatio.x = 16;
 			this->AspectRatio.y = 9;
 		}
-		std::cout << "\nAspectRatio is " << this->AspectRatio.x << ":" << this->AspectRatio.y;
+		std::cout << "\nAspectRatio is " << this->AspectRatio.x << ":" << this->AspectRatio.y << "\n";
 	}
 private:
 	Shader* ShaderObject;
