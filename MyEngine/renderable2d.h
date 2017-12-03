@@ -11,7 +11,8 @@ namespace Engine { namespace Graphics
 		struct VertexData
 		{
 			Maths::vec3 vertices;
-			Maths::vec4 color;
+			//Maths::vec4 color;
+			unsigned int color;
 		};
 
 

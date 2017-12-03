@@ -102,6 +102,7 @@ int main()
 	while (!window.closed())
 	{
 		window.clear();
+		/*
 		vec2 MouseLoc = MikanTestit->MouseWorldLocation();
 		auto Delta = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - DeltaTime);
 		if ((float)Delta.count() > TimeInteval)
@@ -114,7 +115,16 @@ int main()
 			MikanTestit->MouseWorldLocation();
 			MikanTestit->MouseUILocation();
 		}
-		shader.setUniformMat2f("light_pos", vec2((float)(MouseLoc.x * 16.0f / 960.0f), (float)(9.0f - MouseLoc.y * 9.0f / 540.0f)));
+		*/
+
+		mat4 mat = mat4::translation(vec3(5, 5, 5));
+		mat = mat * mat4::rotation(time.elapsed() * 10.0f, vec3(0, 0, 1));
+		mat = mat * mat4::translation(vec3(-5, -5, -5));
+		shader.setUniformMat4("ml_matrix", mat);
+
+		double x, y;
+		window.GetMousePosition(x, y);
+		shader.setUniformMat2f("light_pos", vec2((float)(x * 16.0f / 960.0f), (float)(9.0f - y * 9.0f / 540.0f)));
 		// Sanotaan renderille että alkaa töihi
 		// Submit laittaa ne spritet jonoon ja flush sitte tyhjentää jonon samalla ku nakkaa kamaa ruudulle
 		renderer.begin();
