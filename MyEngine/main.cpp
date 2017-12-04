@@ -117,6 +117,10 @@ int main()
 		shader2.enable();
 		shader2.setUniformMat2f("light_pos", vec2((float)(x * 32.0f / 960.0f - 16.0f), (float)(9.0f - y * 18.0f / 540.0f)));
 
+		// Pyöritetään toisen layerin isoa neliöta
+		mat4 mat = mat4::rotation(time.elapsed() * 25.0f, vec3(0, 0, 1));
+		shader2.setUniformMat4("ml_matrix", mat);
+
 		// Piirretään molemmat layerit
 		layer.render();
 		layer2.render();
