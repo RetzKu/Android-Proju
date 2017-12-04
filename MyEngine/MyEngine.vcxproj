@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{3A9136F9-5E9B-49D9-82DC-45A28F543A84}</ProjectGuid>
     <RootNamespace>MyEngine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -88,6 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)..\Dependencies\GLEW\include;$(ProjectDir)..\Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>UninitializedLocalUsageCheck</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -138,6 +139,7 @@
     <ClCompile Include="BatchRenderer2D.cpp" />
     <ClCompile Include="buffer.cpp" />
     <ClCompile Include="fileutils.cpp" />
+    <ClCompile Include="group.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
     <ClCompile Include="layer.cpp" />
     <ClCompile Include="main.cpp" />
@@ -157,6 +159,7 @@
     <ClInclude Include="BatchRenderer2D.h" />
     <ClInclude Include="buffer.h" />
     <ClInclude Include="fileutils.h" />
+    <ClInclude Include="group.h" />
     <ClInclude Include="indexbuffer.h" />
     <ClInclude Include="layer.h" />
     <ClInclude Include="mat4.h" />

@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include "renderer2d.h"
+#include "renderable2d.h"
 #include "indexbuffer.h"
 
 namespace Engine { namespace Graphics {

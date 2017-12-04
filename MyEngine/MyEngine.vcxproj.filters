@@ -91,6 +91,9 @@
     <ClCompile Include="tilelayer.cpp">
       <Filter>Source Files\Graphics\Layers</Filter>
     </ClCompile>
+    <ClCompile Include="group.cpp">
+      <Filter>Source Files\Graphics\Layers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -154,6 +157,9 @@
       <Filter>Source Files\Graphics\Layers</Filter>
     </ClInclude>
     <ClInclude Include="tilelayer.h">
+      <Filter>Source Files\Graphics\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="group.h">
       <Filter>Source Files\Graphics\Layers</Filter>
     </ClInclude>
   </ItemGroup>

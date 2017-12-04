@@ -1,32 +1,34 @@
 #include "mat4.h"
-namespace Engine {
-	namespace Maths {
-		//vaikea kommentoida tätä mutta katso episode 5: Matrices ja sisäistä homma (tärkeä osata)
+
+namespace Engine { namespace Maths {
+		
+
 		mat4::mat4()
 		{
 			for (int i = 0; i < 4 * 4; i++)
 				elements[i] = 0.0f;
 		}
+		
 		mat4::mat4(float diagonal)
 		{
 			for (int i = 0; i < 4 * 4; i++)
 			{
 				elements[i] = 0.0f;
-
+			}
 				elements[0 + 0 * 4] = diagonal;
 				elements[1 + 1 * 4] = diagonal;
 				elements[2 + 2 * 4] = diagonal;
 				elements[3 + 3 * 4] = diagonal;
-			}
 		}
+		
 		mat4 mat4::identity()
 		{
 			return mat4(1.0f);
 		}
+		
 		mat4& mat4::multiply(const mat4& other)
 		{
 			float data[16];
-
 			for (int y = 0; y < 4; y++)
 			{
 				for (int x = 0; x < 4; x++)
@@ -44,14 +46,48 @@ namespace Engine {
 
 			return *this;
 		}
+		
+		vec3 mat4::multiply(const vec3& other) const
+		{
+			return vec3(
+				columns[0].x * other.x + columns[1].x * other.y + columns[2].x * other.z + columns[3].x,
+				columns[0].y * other.x + columns[1].y * other.y + columns[2].y * other.z + columns[3].y,
+				columns[0].z * other.x + columns[1].z * other.y + columns[2].z * other.z + columns[3].z
+			);
+		}
+
+		vec4 mat4::multiply(const vec4& other) const
+		{
+			return vec4(
+				columns[0].x * other.x + columns[1].x * other.y + columns[2].x * other.z + columns[3].x * other.w,
+				columns[0].y * other.x + columns[1].y * other.y + columns[2].y * other.z + columns[3].y * other.w,
+				columns[0].z * other.x + columns[1].z * other.y + columns[2].z * other.z + columns[3].z * other.w,
+				columns[0].w * other.x + columns[1].w * other.y + columns[2].w * other.z + columns[3].w * other.w
+			);
+		}
+		
+
+
 		mat4 operator*(mat4 left, const mat4& right)
 		{
 			return left.multiply(right);
 		}
+
 		mat4& mat4::operator*=(const mat4& other)
 		{
 			return multiply(other);
 		}
+
+		vec3 operator*(const mat4& left, const vec3& right)
+		{
+			return left.multiply(right);
+		}
+
+		vec4 operator*(const mat4& left, const vec4& right)
+		{
+			return left.multiply(right);
+		}
+
 		//google orthographic matrix
 		mat4 mat4::orthographic(float left, float right, float bottom, float top, float near, float far)
 		{
@@ -107,7 +143,7 @@ namespace Engine {
 			float r = toRadians(angle);
 			float c = cos(r);
 			float s = sin(r);
-			float omc = 1.0f - c; // one minus C --> omc
+			float omc = 1.0f - c;
 
 			float x = axis.x;
 			float y = axis.y;

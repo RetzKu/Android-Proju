@@ -19,6 +19,9 @@
 #include <thread>
 #include "MikaTestijuttuja.h"
 #include "tilelayer.h"
+#include "group.h"
+
+#define TEST_50K_SPRITES 0
 
 
 // Jos haluat printit päälle, tässä 1, jos et valitse 0
@@ -67,14 +70,29 @@ int main()
 	// Tehdään layeri
 	TileLayer layer(&shader);
 
-	// Laitetaan sinne se sama ~vajaa 60k neliöö
-	for (float y = -9.0f; y < 9.0f; y += 0.1f)
+#if TEST_50K_SPRITES
+	for (float y = -9.0f; y < 9.0f; y += 0.1)
 	{
-		for (float x = -16.0f; x < 16.0f; x += 0.1f)
+		for (float x = -16.0f; x < 16.0f; x += 0.1)
 		{
 			layer.add(new Sprite(x, y, 0.09f, 0.09f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
 		}
 	}
+#else
+
+	mat4 transform = mat4::translation(vec3(-15.0f, 5.0f, 0.0f)) * mat4::rotation(45.0f, vec3(0, 0, 1));
+
+	Group* group = new Group(transform);
+	group->add(new Sprite(0, 0, 6, 3, Maths::vec4(1, 1, 1, 1)));
+	
+	Group* button = new Group(mat4::translation(vec3(0.5f, 0.5f, 0.0f)));
+	button->add(new Sprite(0, 0, 5.0f, 2.0f, Maths::vec4(1, 0, 1, 1)));
+	button->add(new Sprite(0.5f, 0.5f, 3.0f, 1.0f, Maths::vec4(0.2f, 0.3f, 0.8f, 1)));
+	group->add(button);
+	
+	layer.add(group);
+
+#endif
 
 	// Toinen layeri
 	TileLayer layer2(&shader2);

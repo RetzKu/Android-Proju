@@ -73,19 +73,19 @@ namespace Engine { namespace Graphics {
 
 		unsigned int c = a << 24 | b << 16 | g << 8 | r;
 		
-		_buffer->vertices = position;
+		_buffer->vertex = *_transformationBack * position;
 		_buffer->color = c;
 		_buffer++;	
 
-		_buffer->vertices = Maths::vec3(position.x, position.y + size.y, position.z);
+		_buffer->vertex = *_transformationBack * Maths::vec3(position.x, position.y + size.y, position.z);
 		_buffer->color = c;
 		_buffer++;
 
-		_buffer->vertices = Maths::vec3(position.x + size.x, position.y + size.y, position.z);
+		_buffer->vertex = *_transformationBack * Maths::vec3(position.x + size.x, position.y + size.y, position.z);
 		_buffer->color = c;
 		_buffer++;
 
-		_buffer->vertices = Maths::vec3(position.x + size.x, position.y, position.z);
+		_buffer->vertex = *_transformationBack * Maths::vec3(position.x + size.x, position.y, position.z);
 		_buffer->color = c;
 		_buffer++;
 
