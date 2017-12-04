@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{3A9136F9-5E9B-49D9-82DC-45A28F543A84}</ProjectGuid>
     <RootNamespace>MyEngine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -70,16 +70,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)..\Dependencies\GLEW\include;$(ProjectDir)..\Dependencies\GLFW\include;$(IncludePath);$(SolutionDir)\Dependencies;$(SolutionDir)\Dependencies\FreeImage\include</IncludePath>
-    <LibraryPath>$(ProjectDir)..\Dependencies\GLEW\libs;$(ProjectDir)..\Dependencies\GLFW\lib-vc2015;$(SolutionDir)Dependencies\FreeImage\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\Dependencies\GLEW\include;$(ProjectDir)..\Dependencies\GLFW\include;$(IncludePath);$(SolutionDir)\Dependencies;$(SolutionDir)\Dependencies\FreeImage\include;$(SolutionDir)Dependencies\libvorbis\include;$(SolutionDir)Dependencies\OpenAL\include</IncludePath>
+    <LibraryPath>$(ProjectDir)..\Dependencies\GLEW\libs;$(ProjectDir)..\Dependencies\GLFW\lib-vc2015;$(SolutionDir)Dependencies\FreeImage\lib;$(LibraryPath);$(SolutionDir)Dependencies\OpenAL\libs\Win32;$(SolutionDir)Dependencies\libvorbis\bin;$(SolutionDir)Dependencies\libogg\bin;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\$(Configuration)\Intermediates\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\$(Configuration)\Intermediates\</IntDir>
-    <IncludePath>$(ProjectDir)..\Dependencies\GLEW\include;$(ProjectDir)..\Dependencies\GLFW\include;$(IncludePath);$(SolutionDir)\Dependencies;$(SolutionDir)\Dependencies\FreeImage\include</IncludePath>
-    <LibraryPath>$(ProjectDir)..\Dependencies\GLEW\libs;$(ProjectDir)..\Dependencies\GLFW\lib-vc2015;$(SolutionDir)Dependencies\FreeImage\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\Dependencies\GLEW\include;$(ProjectDir)..\Dependencies\GLFW\include;$(IncludePath);$(SolutionDir)\Dependencies;$(SolutionDir)\Dependencies\FreeImage\include;$(SolutionDir)Dependencies\libvorbis\include;$(SolutionDir)Dependencies\OpenAL\include</IncludePath>
+    <LibraryPath>$(ProjectDir)..\Dependencies\GLEW\libs;$(ProjectDir)..\Dependencies\GLFW\lib-vc2015;$(SolutionDir)Dependencies\FreeImage\lib;$(LibraryPath);$(SolutionDir)Dependencies\OpenAL\libs\Win32;$(SolutionDir)Dependencies\libvorbis\bin;$(SolutionDir)Dependencies\libogg\bin;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -91,7 +91,7 @@
       <BasicRuntimeChecks>UninitializedLocalUsageCheck</BasicRuntimeChecks>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;FreeImage.lib;OpenAL32.lib;libvorbis.lib;libogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -119,7 +119,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;FreeImage.lib;OpenAL32.lib;libvorbis.lib;libogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -138,6 +138,12 @@
   <ItemGroup>
     <ClCompile Include="BatchRenderer2D.cpp" />
     <ClCompile Include="buffer.cpp" />
+    <ClCompile Include="ext\gorilla-audio\common\gc_common.c" />
+    <ClCompile Include="ext\gorilla-audio\common\gc_thread.c" />
+    <ClCompile Include="ext\gorilla-audio\devices\ga_openal.c" />
+    <ClCompile Include="ext\gorilla-audio\ga.c" />
+    <ClCompile Include="ext\gorilla-audio\gau.c" />
+    <ClCompile Include="ext\gorilla-audio\ga_stream.c" />
     <ClCompile Include="fileutils.cpp" />
     <ClCompile Include="group.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
@@ -159,6 +165,13 @@
   <ItemGroup>
     <ClInclude Include="BatchRenderer2D.h" />
     <ClInclude Include="buffer.h" />
+    <ClInclude Include="ext\gorilla-audio\common\gc_common.h" />
+    <ClInclude Include="ext\gorilla-audio\common\gc_thread.h" />
+    <ClInclude Include="ext\gorilla-audio\common\gc_types.h" />
+    <ClInclude Include="ext\gorilla-audio\devices\ga_openal.h" />
+    <ClInclude Include="ext\gorilla-audio\ga.h" />
+    <ClInclude Include="ext\gorilla-audio\gau.h" />
+    <ClInclude Include="ext\gorilla-audio\ga_internal.h" />
     <ClInclude Include="fileutils.h" />
     <ClInclude Include="group.h" />
     <ClInclude Include="imageload.h" />
