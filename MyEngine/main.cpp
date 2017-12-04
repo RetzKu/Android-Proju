@@ -18,6 +18,7 @@
 #include "timer.h"
 #include <thread>
 #include "MikaTestijuttuja.h"
+#include "tilelayer.h"
 
 
 // Jos haluat printit p‰‰lle, t‰ss‰ 1, jos et valitse 0
@@ -49,53 +50,45 @@ int main()
 	float x_axis = 0;
 	float y_axis = 0;
 	mat4 ortho = mat4::orthographic(x_axis, 16.0f, y_axis, 9.0f, -1.0f, 1.0f);
-	Shader shader("basic.vert", "basic.frag");
+
+	// Ladataan 2x samanlaisia shadereita
+	Shader* s = new Shader("basic.vert", "basic.frag");
+	Shader* s2 = new Shader("basic.vert", "basic.frag");
+	// Vaihdetaan nime‰mist‰ laiskasti koska ei jaksa muuttaa . merkint‰‰ ->
+	Shader& shader = *s;
+	Shader& shader2 = *s2;
 	shader.enable();
-	TestClass* MikanTestit = new TestClass(&window,&shader);
-	// Heitet‰‰n matriisi shaderille
-	shader.setUniformMat4("pr_matrix", ortho);
-	// Vaihdetaan kuvion paikkaa, 0 0 0 vasen alareuna
-	//shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
+	shader2.enable();
 
-	// Esimerkki rotatesta, 45 astetta z suunnassa
-	//shader.setUniformMat4("ml_matrix", mat4::rotation(45.0f, vec3(0, 0, 1)));
-	
-	// Luodaan uusia spritej‰
-	// M‰‰ritell‰‰n paikka, koko, v‰ri ja shader
-	//shader.setUniformMat4("ml_matrix", mat4::rotation(15.0f, vec3(0, 0, 1)));
+	// Heitet‰‰n shadereill‰ valotusta
+	shader.setUniformMat2f("light_pos", vec2(4.0f, 1.5f));
+	shader2.setUniformMat2f("light_pos", vec2(4.0f, 1.5f));
 
-	std::vector<Renderable2D*> sprites;
+	// Tehd‰‰n layeri
+	TileLayer layer(&shader);
 
-	srand(time(NULL));
-	
-	FileUtils::LoadTextureFromFile("Pekka.png");
-
-
-	Sprite sprite(5, 5, 4, 4, Maths::vec4(1, 0, 1, 1));
-	Sprite sprite3(7, 1, 7, 2, Maths::vec4(0.2f, 0, 1, 1));
-	BatchRenderer2D renderer;
-	for (float y = 0; y < 9.0f; y += 0.05f)
+	// Laitetaan sinne se sama ~vajaa 60k neliˆˆ
+	for (float y = -9.0f; y < 9.0f; y += 0.1f)
 	{
-		for(float x = 0; x < 16.0f; x += 0.05f)
+		for (float x = -16.0f; x < 16.0f; x += 0.1f)
 		{
-			sprites.push_back(new Sprite(x, y, 0.04f, 0.04f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
+			layer.add(new Sprite(x, y, 0.09f, 0.09f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
 		}
 	}
 
-
-	// Valot shaderiin, 0.0f 0.0f on vasen alareuna
-	// Jos objekti on vaikka 4.0f 2.0f kokoinen, luonnollisesti valo keskell‰ 2.0f 1.0f
-	//shader.setUniformMat2f("light_pos", vec2(4.0f, 2.0f));
-	// Shaderin v‰rin vaihto
-	//shader.setUniformMat4f("colour", vec4(0.2f, 0.3f, 0.8f, 1.0f));
-
+	// Toinen layeri
+	TileLayer layer2(&shader2);
+	// Yks iso neliˆ
+	layer2.add(new Sprite(-2, -2, 4, 4, Maths::vec4(1, 0, 1, 1)));
+	
+	//TestClass* MikanTestit = new TestClass(&window,&shader);
+	
 	// Jatkuva aika
 	Timer time;
 	float timer = 0.0f;
 	unsigned int frames = 0;
 
-	printf("Sprites: %d\n", sprites.size());
-	int spritelistsize = sprites.size();
+	//int spritelistsize = sprites.size();
 	using namespace std::chrono_literals;
 	float TimeInteval = 1 / 60;
 	std::chrono::time_point<std::chrono::system_clock> DeltaTime = std::chrono::system_clock::now();
@@ -116,24 +109,17 @@ int main()
 			MikanTestit->MouseUILocation();
 		}
 		*/
-
-		mat4 mat = mat4::translation(vec3(5, 5, 5));
-		mat = mat * mat4::rotation(time.elapsed() * 10.0f, vec3(0, 0, 1));
-		mat = mat * mat4::translation(vec3(-5, -5, -5));
-		shader.setUniformMat4("ml_matrix", mat);
-
 		double x, y;
 		window.GetMousePosition(x, y);
-		shader.setUniformMat2f("light_pos", vec2((float)(x * 16.0f / 960.0f), (float)(9.0f - y * 9.0f / 540.0f)));
-		// Sanotaan renderille ett‰ alkaa tˆihi
-		// Submit laittaa ne spritet jonoon ja flush sitte tyhjent‰‰ jonon samalla ku nakkaa kamaa ruudulle
-		renderer.begin();
-		for(int i = 0; i < spritelistsize; i++)
-		{
-			renderer.submit(sprites[i]); //choke point
-		}
-		renderer.end();
-		renderer.flush();
+		// Shaderit p‰‰lle ja valotus seuraamaan hiirt‰
+		shader.enable();
+		shader.setUniformMat2f("light_pos", vec2((float)(x * 32.0f / 960.0f - 16.0f), (float)(9.0f - y * 18.0f / 540.0f)));
+		shader2.enable();
+		shader2.setUniformMat2f("light_pos", vec2((float)(x * 32.0f / 960.0f - 16.0f), (float)(9.0f - y * 18.0f / 540.0f)));
+
+		// Piirret‰‰n molemmat layerit
+		layer.render();
+		layer2.render();
 
 		window.update();
 		frames++;
@@ -144,7 +130,68 @@ int main()
 			frames = 0;
 		}
 	}
-
 	return 0;
-
 }
+
+/*
+
+// shadereitten latauksen j‰lkeen
+
+shader.enable();
+// Heitet‰‰n matriisi shaderille
+shader.setUniformMat4("pr_matrix", ortho);
+// Vaihdetaan kuvion paikkaa, 0 0 0 vasen alareuna
+//shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
+
+// Esimerkki rotatesta, 45 astetta z suunnassa
+//shader.setUniformMat4("ml_matrix", mat4::rotation(45.0f, vec3(0, 0, 1)));
+
+// Luodaan uusia spritej‰
+// M‰‰ritell‰‰n paikka, koko, v‰ri ja shader
+//shader.setUniformMat4("ml_matrix", mat4::rotation(15.0f, vec3(0, 0, 1)));
+
+std::vector<Renderable2D*> sprites;
+
+srand(time(NULL));
+
+FileUtils::LoadTextureFromFile("Pekka.png");
+
+
+Sprite sprite(5, 5, 4, 4, Maths::vec4(1, 0, 1, 1));
+Sprite sprite3(7, 1, 7, 2, Maths::vec4(0.2f, 0, 1, 1));
+BatchRenderer2D renderer;
+for (float y = 0; y < 9.0f; y += 0.05f)
+{
+for(float x = 0; x < 16.0f; x += 0.05f)
+{
+sprites.push_back(new Sprite(x, y, 0.04f, 0.04f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
+}
+}
+
+
+// Valot shaderiin, 0.0f 0.0f on vasen alareuna
+// Jos objekti on vaikka 4.0f 2.0f kokoinen, luonnollisesti valo keskell‰ 2.0f 1.0f
+//shader.setUniformMat2f("light_pos", vec2(4.0f, 2.0f));
+// Shaderin v‰rin vaihto
+//shader.setUniformMat4f("colour", vec4(0.2f, 0.3f, 0.8f, 1.0f));
+
+
+printf("Sprites: %d\n", sprites.size());
+
+
+// ikkuna loopista
+
+mat4 mat = mat4::translation(vec3(5, 5, 5));
+mat = mat * mat4::rotation(time.elapsed() * 10.0f, vec3(0, 0, 1));
+mat = mat * mat4::translation(vec3(-5, -5, -5));
+shader.setUniformMat4("ml_matrix", mat);
+
+renderer.begin();
+for(int i = 0; i < spritelistsize; i++)
+{
+renderer.submit(sprites[i]); //choke point
+}
+renderer.end();
+renderer.flush();
+
+*/

@@ -37,6 +37,9 @@
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{7a54c35b-6cf6-4cfe-b5be-d20d926411ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\Layers">
+      <UniqueIdentifier>{1647c1af-db37-4fd6-a0cf-078ad731e3dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="window.cpp">
@@ -81,6 +84,12 @@
     </ClCompile>
     <ClCompile Include="fileutils.cpp">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="layer.cpp">
+      <Filter>Source Files\Graphics\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="tilelayer.cpp">
+      <Filter>Source Files\Graphics\Layers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +149,12 @@
     </ClInclude>
     <ClInclude Include="fileutils.h">
       <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="layer.h">
+      <Filter>Source Files\Graphics\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="tilelayer.h">
+      <Filter>Source Files\Graphics\Layers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
