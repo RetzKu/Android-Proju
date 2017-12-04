@@ -14,7 +14,10 @@ namespace Engine { namespace Graphics
 		struct VertexData
 		{
 			Maths::vec3 vertex;
-			//Maths::vec4 color;
+			// Tekstuuri koordinaatit
+			Maths::vec2 uv;
+			// Tekstuuri ID
+			unsigned int tid;
 			unsigned int color;
 		};
 
@@ -25,12 +28,13 @@ namespace Engine { namespace Graphics
 			Maths::vec3 _position;
 			Maths::vec2 _size;
 			Maths::vec4 _color;
+			std::vector<Maths::vec2> _UV;
 		protected:
-			Renderable2D(){}
+			Renderable2D() { setUVDefaults(); }
 		public:
 			Renderable2D(Maths::vec3 position, Maths::vec2 size, Maths::vec4 color)
 				: _position(position), _size(size), _color(color)
-			{ }
+			{ setUVDefaults(); }
 
 			virtual ~Renderable2D(){ }
 
@@ -42,6 +46,16 @@ namespace Engine { namespace Graphics
 			inline const Maths::vec3& getPosition() const { return _position; }
 			inline const Maths::vec2& getSize() const { return _size; }
 			inline const Maths::vec4& getColor() const { return _color; }
+			inline const std::vector<Maths::vec2>& getUV() const { return _UV; }
 
+
+		private:
+			void setUVDefaults()
+			{
+				_UV.push_back(Maths::vec2(0, 0));
+				_UV.push_back(Maths::vec2(0, 1));
+				_UV.push_back(Maths::vec2(1, 1));
+				_UV.push_back(Maths::vec2(1, 0));
+			}
 		};
 }}

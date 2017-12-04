@@ -20,9 +20,7 @@
 #include "MikaTestijuttuja.h"
 #include "tilelayer.h"
 #include "group.h"
-
-#define TEST_50K_SPRITES 0
-
+#include "texture.h"
 
 // Jos haluat printit p‰‰lle, t‰ss‰ 1, jos et valitse 0
 #define DEBUG 1
@@ -34,6 +32,7 @@
 	#define CONSOLEND(x)
 #endif
 
+#if 1
 
 int main()
 {
@@ -48,57 +47,42 @@ int main()
 	// Tausta v‰ri
 	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-
 	// Luodaan matriisi
 	float x_axis = 0;
 	float y_axis = 0;
 	mat4 ortho = mat4::orthographic(x_axis, 16.0f, y_axis, 9.0f, -1.0f, 1.0f);
 
-	// Ladataan 2x samanlaisia shadereita
 	Shader* s = new Shader("basic.vert", "basic.frag");
-	Shader* s2 = new Shader("basic.vert", "basic.frag");
-	// Vaihdetaan nime‰mist‰ laiskasti koska ei jaksa muuttaa . merkint‰‰ ->
 	Shader& shader = *s;
-	Shader& shader2 = *s2;
 	shader.enable();
-	shader2.enable();
 
 	// Heitet‰‰n shadereill‰ valotusta
 	shader.setUniformMat2f("light_pos", vec2(4.0f, 1.5f));
-	shader2.setUniformMat2f("light_pos", vec2(4.0f, 1.5f));
 
 	// Tehd‰‰n layeri
 	TileLayer layer(&shader);
 
-#if TEST_50K_SPRITES
-	for (float y = -9.0f; y < 9.0f; y += 0.1)
+	int asd = 0;
+
+	for (float y = -9.0f; y < 9.0f; y+= 0.1f)
 	{
-		for (float x = -16.0f; x < 16.0f; x += 0.1)
+		for (float x = -16.0f; x < 16.0f; x+= 0.1f)
 		{
 			layer.add(new Sprite(x, y, 0.09f, 0.09f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
+			asd++;
 		}
 	}
-#else
 
-	mat4 transform = mat4::translation(vec3(-15.0f, 5.0f, 0.0f)) * mat4::rotation(45.0f, vec3(0, 0, 1));
+	std::cout << "Sprite count on screen: " << asd << std::endl;
 
-	Group* group = new Group(transform);
-	group->add(new Sprite(0, 0, 6, 3, Maths::vec4(1, 1, 1, 1)));
-	
-	Group* button = new Group(mat4::translation(vec3(0.5f, 0.5f, 0.0f)));
-	button->add(new Sprite(0, 0, 5.0f, 2.0f, Maths::vec4(1, 0, 1, 1)));
-	button->add(new Sprite(0.5f, 0.5f, 3.0f, 1.0f, Maths::vec4(0.2f, 0.3f, 0.8f, 1)));
-	group->add(button);
-	
-	layer.add(group);
+	glActiveTexture(GL_TEXTURE0);
+	Texture texture("test.png");
+	texture.bind();
 
-#endif
-
-	// Toinen layeri
-	TileLayer layer2(&shader2);
-	// Yks iso neliˆ
-	layer2.add(new Sprite(-2, -2, 4, 4, Maths::vec4(1, 0, 1, 1)));
-	
+	shader.enable();
+	shader.setUniformMat1i("tex", 0);
+	shader.setUniformMat4("pr_matrix", Maths::mat4::orthographic(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
+			
 	//TestClass* MikanTestit = new TestClass(&window,&shader);
 	
 	// Jatkuva aika
@@ -127,21 +111,17 @@ int main()
 			MikanTestit->MouseUILocation();
 		}
 		*/
+		
 		double x, y;
 		window.GetMousePosition(x, y);
 		// Shaderit p‰‰lle ja valotus seuraamaan hiirt‰
 		shader.enable();
 		shader.setUniformMat2f("light_pos", vec2((float)(x * 32.0f / 960.0f - 16.0f), (float)(9.0f - y * 18.0f / 540.0f)));
-		shader2.enable();
-		shader2.setUniformMat2f("light_pos", vec2((float)(x * 32.0f / 960.0f - 16.0f), (float)(9.0f - y * 18.0f / 540.0f)));
-
-		// Pyˆritet‰‰n toisen layerin isoa neliˆta
-		mat4 mat = mat4::rotation(time.elapsed() * 25.0f, vec3(0, 0, 1));
-		shader2.setUniformMat4("ml_matrix", mat);
 
 		// Piirret‰‰n molemmat layerit
 		layer.render();
-		layer2.render();
+		//layer2.render();
+
 
 		window.update();
 		frames++;
@@ -217,3 +197,63 @@ renderer.end();
 renderer.flush();
 
 */
+
+#endif
+
+#if 0
+int main()
+{
+	const char* filename = "test.png";
+
+	FREE_IMAGE_FORMAT fif = FIF_UNKNOWN;
+
+	FIBITMAP *dib(0);
+
+	BYTE* bits(0);
+
+	unsigned int width(0), height(0);
+
+	GLuint gl_texID;
+
+	fif = FreeImage_GetFileType(filename, 0);
+
+	if (fif == FIF_UNKNOWN)
+		fif = FreeImage_GetFIFFromFilename(filename);
+
+	if (fif == FIF_UNKNOWN)
+		return false;
+
+	if (FreeImage_FIFSupportsReading(fif))
+		dib = FreeImage_Load(fif, filename);
+
+	if (!dib)
+		return false;
+
+	bits = FreeImage_GetBits(dib);
+
+	width = FreeImage_GetWidth(dib);
+	height = FreeImage_GetHeight(dib);
+
+	if ((bits == 0) || (width == 0) || (height == 0))
+		return false;
+
+	unsigned int bitsPerPixel = FreeImage_GetBPP(dib);
+	unsigned int pitch = FreeImage_GetPitch(dib);
+
+	for (int y = 0; y < height;y++)
+	{
+		BYTE *pixel = (BYTE*)bits;
+		for (int x = 0; x < width; x++)
+		{
+			std::cout << +pixel[FI_RGBA_RED] << " " << +pixel[FI_RGBA_GREEN] << " " << +pixel[FI_RGBA_BLUE] << std::endl;
+			pixel += 3;
+		}
+		bits += pitch;
+	}
+
+	FreeImage_Unload(dib);
+
+	system("PAUSE");
+	return 0;
+}
+#endif
