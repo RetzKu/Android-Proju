@@ -114,22 +114,74 @@ int main()
 	// Tehd‰‰n layeri
 	TileLayer layer(&shader);
 
-	int asd = 0; //sexiest variable in whole program
+	int spritecount = 0; 
+	
+#define TUTORIAL 1
 
-	for (float y = -9.0f; y < 9.0f; y+= 0.1f)
+#if !TUTORIAL
+
+	// Nestattu for looppi miss‰ pusketaan layeriin spritej‰
+	// Y suunnassa
+	for (float y = -9.0f; y < 9.0f; y+= 2.0f)
 	{
-		for (float x = -16.0f; x < 16.0f; x+= 0.1f)
+		// X suunnassa
+		for (float x = -16.0f; x < 16.0f; x+= 2.0f)
 		{
-			layer.add(new Sprite(x, y, 0.09f, 0.09f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
-			asd++;
+			layer.add(new Sprite(x, y, 1.8f, 1.8f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
+			spritecount++;
 		}
 	}
-	
 
-	std::cout << "Sprite count on screen: " << asd << std::endl;
+	std::cout << "Sprite count on screen: " << spritecount << std::endl;
+
+#else 
+
+	// // // // // // 
+	// Paikan m‰‰rittely spriteiss‰
+	//
+	// Origo 0, 0
+	// Vasen yl‰ kulma -16, 9
+	// Vasen sein‰ keskell‰ -16, 0
+	// Vasen ala kulma -16, -9
+	// Keski yl‰ kohta 0, 9
+	// Keski ala kohta 0, -9
+	// Oikee yl‰ kulma 16, 9
+	// Oikee sein‰ keskell‰ 16, 0
+	// Oikee ala kulma 16, -9
+	// 
+	// Koko selitetty esim1
+	// // // // // // 
+	
+	// // // // // //
+	// ESIMERKIKSI 1 100% pekka
+	// L‰het‰‰n piirt‰m‰‰n vasemmasta alareunasta (-16, -9)
+	// Piirret‰‰n koko ruudun kokoinen kuva (32, 18)
+	// Miksi 32 ? Menn‰‰n x suunnassa -16 ->  0 = +16
+	//									0 -> 16 = +16
+	//								   16  + 16 = 32
+	// Miksi 18 ? Sama homma y suunnassa
+	// Pit‰‰ p‰‰st‰ -9 aina +9 asti joten koko -> 18
+	//
+	//layer.add(new Sprite(-16, -9, 32, 18, Maths::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+	// // // // // //
+
+	// // // // // //
+	// ESIMERKIKSI 4 25% pekkaa
+	//
+	// Vasen ala kuva
+	//layer.add(new Sprite(-16, -9, 16, 9, Maths::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+	// Oikee yl‰ kuva
+	//layer.add(new Sprite(0, 0, 16, 9, Maths::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+	// Oikea ala kuva
+	//layer.add(new Sprite(0, -9, 16, 9, Maths::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+	// Vasen yl‰ kuva
+	//layer.add(new Sprite(-16, 0, 16, 9, Maths::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+	// // // // // //
+
+#endif
 
 	glActiveTexture(GL_TEXTURE0);
-	Texture texture("test.png");//muutin hieman textureluku koodia mutta en saanut alphaa toimimaan oikein. Ekana tulee mieleen shaderit jotka saattaa jekkuilla sen kanssa.
+	Texture texture("Pekka2.bmp");//muutin hieman textureluku koodia mutta en saanut alphaa toimimaan oikein. Ekana tulee mieleen shaderit jotka saattaa jekkuilla sen kanssa.
 	texture.bind();
 
 	shader.enable();
