@@ -28,7 +28,7 @@
 // musat false -> true
 // laita myös alle if 0, tämä korvaa nykyisen mainin (toistaiseksi kunnes fontit on luotu)
 //jos ei käänny, android projun alla on "OpenAL11CoreSDK.exe" setup
-#define Musat 1
+#define Musat 0
 #if Musat 1
 static void setFlagAndDestroyOnFinish(ga_Handle* in_handle, void* in_context)
 {
@@ -98,15 +98,11 @@ int main()
 	using namespace Engine;
 	using namespace Graphics;
 	using namespace Maths;
+	FileUtils utils;
 	// Asetetaan ikkunan parametrit
 	Window window("Engine", SCREENWIDTH, SCREENHEIGHT);
 	// Tausta väri
 	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-
-	// Luodaan matriisi
-	float x_axis = 0;
-	float y_axis = 0;
-	mat4 ortho = mat4::orthographic(x_axis, 16.0f, y_axis, 9.0f, -1.0f, 1.0f);
 
 	Shader* s = new Shader("basic.vert", "basic.frag");
 	Shader& shader = *s;
@@ -118,7 +114,7 @@ int main()
 	// Tehdään layeri
 	TileLayer layer(&shader);
 
-	int asd = 0;
+	int asd = 0; //sexiest variable in whole program
 
 	for (float y = -9.0f; y < 9.0f; y+= 0.1f)
 	{
@@ -128,51 +124,41 @@ int main()
 			asd++;
 		}
 	}
+	
 
 	std::cout << "Sprite count on screen: " << asd << std::endl;
 
 	glActiveTexture(GL_TEXTURE0);
-	Texture texture("test.png");
+	Texture texture("test.png");//muutin hieman textureluku koodia mutta en saanut alphaa toimimaan oikein. Ekana tulee mieleen shaderit jotka saattaa jekkuilla sen kanssa.
 	texture.bind();
 
 	shader.enable();
 	shader.setUniformMat1i("tex", 0);
-	shader.setUniformMat4("pr_matrix", Maths::mat4::orthographic(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
-			
-	//TestClass* MikanTestit = new TestClass(&window,&shader);
-	
-	// Jatkuva aika
-	Timer time;
-	float timer = 0.0f;
-	unsigned int frames = 0;
 
-	//int spritelistsize = sprites.size();
-	using namespace std::chrono_literals;
-	float TimeInteval = 1 / 60;
-	std::chrono::time_point<std::chrono::system_clock> DeltaTime = std::chrono::system_clock::now();
+	TestClass* MikanTestit = new TestClass(&window,&shader); //i put test here until i decide they are ready.
+	float TimeInteval = (int)((1.0f / 60.0f) * 1000);//giving deltatime tickrate; this is good until hitting under 60fps; ;
+	std::chrono::time_point<std::chrono::system_clock> DeltaTime = std::chrono::system_clock::now();//start point for deltatime;
+	vec2 MousePos; //initting vector that will take in coordinate updates from deltatimed loop;
+	
 	while (!window.closed())
 	{
 		window.clear();
-		/*
-		vec2 MouseLoc = MikanTestit->MouseWorldLocation();
-		auto Delta = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - DeltaTime);
-		if ((float)Delta.count() > TimeInteval)
+		auto Delta = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - DeltaTime);//calculating delta
+		if ((float)Delta.count() > TimeInteval) //this if statement limits program to 60fps; Only for stuff inside this loop. everything else is running freely
 		{
-			DeltaTime += std::chrono::milliseconds(10);
+			DeltaTime += std::chrono::milliseconds((int)TimeInteval); //adding that 
 		    //xrange = abs(middle.x - point.x
 			//y -||-
 			//return xrange < säde.x && yrange < sädey
-			MikanTestit->GetCameraMovement();
-			MikanTestit->MouseWorldLocation();
-			MikanTestit->MouseUILocation();
+			MikanTestit->GetCameraMovement();//funktion that enables WASD movement within world space
+			MousePos = MikanTestit->MouseWorldLocation();//Testversion for correct coordinate handling in world perspective
+			MikanTestit->MouseUILocation();//Testversion for correct coordinate handling in UI perspective or screen perspective;
 		}
-		*/
+		utils.CoutFPS();
 		
-		double x, y;
-		window.GetMousePosition(x, y);
 		// Shaderit päälle ja valotus seuraamaan hiirtä
 		shader.enable();
-		shader.setUniformMat2f("light_pos", vec2((float)(x * 32.0f / 960.0f - 16.0f), (float)(9.0f - y * 18.0f / 540.0f)));
+		shader.setUniformMat2f("light_pos", vec2((float)(MousePos.x* 32.0f / 960.0f - 16.0f), (float)(9.0f - MousePos.y * 18.0f / 540.0f)));
 
 		// Piirretään molemmat layerit
 		layer.render();
@@ -180,13 +166,7 @@ int main()
 
 
 		window.update();
-		frames++;
-		if(time.elapsed() - timer > 1.0f)
-		{
-			timer += 1.0f;
-			printf("%d FPS\n", frames);
-			frames = 0;
-		}
+		
 	}
 	return 0;
 }

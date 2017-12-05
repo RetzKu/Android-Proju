@@ -25,6 +25,16 @@ std::string FileUtils::read_file(const char* filepath)
 	delete[] data;
 	return result;
 }
+void FileUtils::CoutFPS()
+{
+	frames++; 
+	if (time.elapsed() - timer > 1.0f)
+	{
+		timer += 1.0f;
+		printf("%d FPS\n", frames);
+		frames = 0;
+	}
+}
 
 unsigned char* FileUtils::LoadTextureFromFile(const std::string FileName)
 {

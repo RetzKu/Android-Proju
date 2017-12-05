@@ -111,7 +111,7 @@ vec2 TestClass::MouseUILocation()
 {
 	double x, y;
 	WindowObject->GetMousePosition(x, y);
-	std::cout << "\nX: " << x << " Y: " << y;
+	//std::cout << "\nSCREENCOORDINATES: X: " << x << " Y: " << y;
 	return vec2(x, y);
 }
 
@@ -119,7 +119,9 @@ vec2 TestClass::MouseWorldLocation()
 {
 	double x, y;
 	WindowObject->GetMousePosition(x, y);
-	std::cout << "\nX: " << x << " Y: " << y;
+	x += CameraCoordinates.x*30;
+	y -= CameraCoordinates.y*30; //no idea why cameracoordinates are 30 times smaller than screencoordinates but over all this give correct world coordinates even when moving camera
+	//std::cout << "\nWORLD COORDINATES: X: " << x << " Y: " << y;
 	return vec2(x, y);
 }
 
@@ -154,6 +156,6 @@ void TestClass::GetCameraMovement()
 			}
 		}
 	}
-	mat4 ortho = mat4::orthographic(CameraCoordinates.x, AspectRatio.x+ CameraCoordinates.x, CameraCoordinates.y, AspectRatio.y + CameraCoordinates.y, -1.0f, 1.0f);
+	mat4 ortho = mat4::orthographic(-AspectRatio.x + CameraCoordinates.x, AspectRatio.x + CameraCoordinates.x, -AspectRatio.y + CameraCoordinates.y, AspectRatio.y + CameraCoordinates.y , -1.0f, 1.0f);
 	SetUniforMat4("pr_matrix", ortho);
 }

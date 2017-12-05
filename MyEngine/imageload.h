@@ -18,15 +18,30 @@ namespace Engine {
 
 		if (FreeImage_FIFSupportsReading(fif))
 			dib = FreeImage_Load(fif, filename);
+			if (FreeImage_GetBPP(dib) != 32)
+			{
+				FIBITMAP* tempImage = dib;
+				dib = FreeImage_ConvertTo32Bits(tempImage);
+			}
 
 		if (!dib)
 			return nullptr;
 
-		BYTE* result = FreeImage_GetBits(dib);
+		BYTE* pixels = (BYTE*)FreeImage_GetBits(dib);
+
+		BYTE *bits = new BYTE[FreeImage_GetWidth(dib) * FreeImage_GetHeight(dib) * 4];
+
+		for (int pix = 0; pix<FreeImage_GetWidth(dib) * FreeImage_GetHeight(dib); pix++)
+		{
+			bits[pix * 4 + 0] = pixels[pix * 4 + 2];
+			bits[pix * 4 + 1] = pixels[pix * 4 + 1];
+			bits[pix * 4 + 2] = pixels[pix * 4 + 0];
+			bits[pix * 4 + 3] = pixels[pix * 4 + 3];
+		}
 
 		*width = FreeImage_GetWidth(dib);
 		*height = FreeImage_GetHeight(dib);
 
-		return result;
+		return bits;
 	}
 }
