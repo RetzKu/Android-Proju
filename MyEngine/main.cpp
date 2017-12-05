@@ -104,6 +104,7 @@ int main()
 	// Tausta v‰ri
 	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
+	// Ladataan shaderit
 	Shader* s = new Shader("basic.vert", "basic.frag");
 	Shader& shader = *s;
 	shader.enable();
@@ -114,20 +115,41 @@ int main()
 	// Tehd‰‰n layeri
 	TileLayer layer(&shader);
 
+	// Lasketaan montako sprite‰ ruudulle menee
 	int spritecount = 0; 
 	
-#define TUTORIAL 1
+	// Ladataan tekstuurit tekstuuri* arrayhyn
+	Texture* textures[] =
+	{
+		new Texture("ta.png"),
+		new Texture("tb.png"),
+		new Texture("tc.png"),
+		new Texture("Pekka2.bmp")
+	};
+
+#define TUTORIAL 0
 
 #if !TUTORIAL
 
+
 	// Nestattu for looppi miss‰ pusketaan layeriin spritej‰
 	// Y suunnassa
-	for (float y = -9.0f; y < 9.0f; y+= 2.0f)
+	// -9 ikkunan alaosa ja +9 ikkunan yl‰osa.. eli alhaalta ylˆs
+	for (float y = -9.0f; y < 9.0f; y++)
 	{
-		// X suunnassa
-		for (float x = -16.0f; x < 16.0f; x+= 2.0f)
+		// sama X suunnassa -16 to +16
+		// luonnollisesti 16:9 kuva suhteella niin y akseli 9 ja x 16
+		for (float x = -16.0f; x < 16.0f; x++)
 		{
-			layer.add(new Sprite(x, y, 1.8f, 1.8f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
+			// Paikka xy, koko 0.9f, j‰‰ pieni marginaali/borderi, 1.0f olisi vierivieress‰, v‰ri randomilla neliˆille
+			// Arvotaan piirret‰‰nkˆ tekstuuria vai v‰rineliˆt‰
+			if (rand() % 4 == 0)
+				// Piirret‰‰n "v‰rineliˆit‰" ja v‰rit randomilla
+				layer.add(new Sprite(x, y, 0.9f, 0.9f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
+			else
+				// Piirret‰‰n tekstuuriarraysta randomilla jotain (meill‰ on 4 tekstuuria siell‰)
+				layer.add(new Sprite(x, y, 0.9f, 0.9f, textures[rand() % 4]));
+			// Otetaan ylˆs montako sprite‰ piirret‰‰n
 			spritecount++;
 		}
 	}
@@ -153,7 +175,7 @@ int main()
 	// // // // // // 
 	
 	// // // // // //
-	// ESIMERKIKSI 1 100% pekka
+	// ESIMERKIKSI 1 100% kuva
 	// L‰het‰‰n piirt‰m‰‰n vasemmasta alareunasta (-16, -9)
 	// Piirret‰‰n koko ruudun kokoinen kuva (32, 18)
 	// Miksi 32 ? Menn‰‰n x suunnassa -16 ->  0 = +16
@@ -162,30 +184,34 @@ int main()
 	// Miksi 18 ? Sama homma y suunnassa
 	// Pit‰‰ p‰‰st‰ -9 aina +9 asti joten koko -> 18
 	//
-	//layer.add(new Sprite(-16, -9, 32, 18, Maths::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+	// Tekstuuri ladataan ‰rr‰yst‰ ja pekka on nelj‰s ([3])
+	//layer.add(new Sprite(-16, -9, 32, 18, textures[3]));
 	// // // // // //
 
 	// // // // // //
-	// ESIMERKIKSI 4 25% pekkaa
+	// ESIMERKIKSI 4 25% kuvaa
 	//
 	// Vasen ala kuva
-	//layer.add(new Sprite(-16, -9, 16, 9, Maths::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+	//layer.add(new Sprite(-16, -9, 16, 9, textures[0]));
 	// Oikee yl‰ kuva
-	//layer.add(new Sprite(0, 0, 16, 9, Maths::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+	//layer.add(new Sprite(0, 0, 16, 9, textures[1]));
 	// Oikea ala kuva
-	//layer.add(new Sprite(0, -9, 16, 9, Maths::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+	//layer.add(new Sprite(0, -9, 16, 9, textures[2]));
 	// Vasen yl‰ kuva
-	//layer.add(new Sprite(-16, 0, 16, 9, Maths::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+	//layer.add(new Sprite(-16, 0, 16, 9, textures[3]));
 	// // // // // //
 
 #endif
 
-	glActiveTexture(GL_TEXTURE0);
-	Texture texture("Pekka2.bmp");//muutin hieman textureluku koodia mutta en saanut alphaa toimimaan oikein. Ekana tulee mieleen shaderit jotka saattaa jekkuilla sen kanssa.
-	texture.bind();
+	// V‰liaikainene texture ID systeemi, n‰‰ nousee 32 asti ainakin tulevaisuudessa
+	GLint texIDs[] =
+	{
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+	};
 
 	shader.enable();
-	shader.setUniformMat1i("tex", 0);
+	// shader.h:ssa pieni selitys uniformeista
+	shader.setUniformMat1iv("textures", texIDs, 10);
 
 	TestClass* MikanTestit = new TestClass(&window,&shader); //i put test here until i decide they are ready.
 	float TimeInteval = (int)((1.0f / 60.0f) * 1000);//giving deltatime tickrate; this is good until hitting under 60fps; ;
@@ -207,19 +233,20 @@ int main()
 			MikanTestit->MouseUILocation();//Testversion for correct coordinate handling in UI perspective or screen perspective;
 		}
 		utils.CoutFPS();
-		
 		// Shaderit p‰‰lle ja valotus seuraamaan hiirt‰
 		shader.enable();
 		shader.setUniformMat2f("light_pos", vec2((float)(MousePos.x* 32.0f / 960.0f - 16.0f), (float)(9.0f - MousePos.y * 18.0f / 540.0f)));
-
-		// Piirret‰‰n molemmat layerit
+		// Piirret‰‰n layeri
 		layer.render();
-		//layer2.render();
-
-
-		window.update();
-		
+		window.update();	
 	}
+
+	// Tuhotaan meid‰n ladatut tekstuurit
+	for (int i = 0; i < 3; i++)
+	{
+		delete textures[i];
+	}
+
 	return 0;
 }
 

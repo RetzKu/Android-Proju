@@ -20,9 +20,16 @@ namespace Engine { namespace Graphics {
 	public:
 		Shader(const char* vertPath, const char* fragPath);
 		~Shader();
-	
 
+		// Uniformit on tapa jutella vertex & fragment shaderilla niiden ulkopuolelta
+		// Näillä syötetään kamaa siis shadereille
+
+		// Linkkauksen jälkeen voidaan ettiä uniformin sijainti
+		// glGetUniformLocation komennolla ja muokata sitä
+		// glUniform komennolla
 		void setUniformMat1f(const GLchar* name, float value);
+		void setUniformMat1fv(const GLchar* name, float* value, GLsizei count);
+		void setUniformMat1iv(const GLchar* name, int* value, GLsizei count);
 		void setUniformMat2f(const GLchar* name, const Maths::vec2& vector);
 		void setUniformMat3f(const GLchar* name, const Maths::vec3& vector);
 		void setUniformMat4f(const GLchar* name, const Maths::vec4& vector);

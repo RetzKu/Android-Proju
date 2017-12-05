@@ -1,23 +1,24 @@
 #pragma once
 
 #include "Maths.h"
-//#include "buffer.h"
 #include "indexbuffer.h"
 #include "vertexarray.h"
-
 #include "renderer2d.h"
-
 #include "Shader.h"
+#include "texture.h"
 
 namespace Engine { namespace Graphics
 	{
+		// Kama mitä nakataan shadereille
 		struct VertexData
 		{
+			// Tekstuurin positio
 			Maths::vec3 vertex;
 			// Tekstuuri koordinaatit
 			Maths::vec2 uv;
 			// Tekstuuri ID
-			unsigned int tid;
+			float tid;
+			// Tekstuurin väri
 			unsigned int color;
 		};
 
@@ -29,6 +30,7 @@ namespace Engine { namespace Graphics
 			Maths::vec2 _size;
 			Maths::vec4 _color;
 			std::vector<Maths::vec2> _UV;
+			Texture* _texture;
 		protected:
 			Renderable2D() { setUVDefaults(); }
 		public:
@@ -48,7 +50,7 @@ namespace Engine { namespace Graphics
 			inline const Maths::vec4& getColor() const { return _color; }
 			inline const std::vector<Maths::vec2>& getUV() const { return _UV; }
 
-
+			inline const GLuint getTID() const { return _texture == nullptr ? 0 : _texture->getID(); }
 		private:
 			void setUVDefaults()
 			{

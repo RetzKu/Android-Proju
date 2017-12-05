@@ -79,6 +79,16 @@ namespace Engine { namespace Graphics {
 		glUniform1f(getUniformLocation(name), value);
 	}
 
+	void Shader::setUniformMat1fv(const GLchar* name, float* value, GLsizei count)
+	{
+		glUniform1fv(getUniformLocation(name), count, value);
+	}
+
+	void Shader::setUniformMat1iv(const GLchar* name, int* value, GLsizei count)
+	{
+		glUniform1iv(getUniformLocation(name), count, value);
+	}
+
 	void Shader::setUniformMat2f(const GLchar* name, const Maths::vec2& vector)
 	{
 		glUniform2f(getUniformLocation(name), vector.x, vector.y);

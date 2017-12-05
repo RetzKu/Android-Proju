@@ -66,31 +66,83 @@ namespace Engine { namespace Graphics {
 		const Maths::vec2& size = renderable->getSize();
 		const Maths::vec4& color = renderable->getColor();
 		const std::vector<Maths::vec2>& uv = renderable->getUV();
+		const GLuint tid = renderable->getTID();
 
-		int r = color.x * 255.0f;
-		int g = color.y * 255.0f;
-		int b = color.z * 255.0f;
-		int a = color.w * 255.0f;
+		unsigned int c = 0;
 
-		unsigned int c = a << 24 | b << 16 | g << 8 | r;
+		// ts = Texture slot
+		float ts = 0.0f;
+		// tid = Texture ID
+		if(tid > 0)
+		{
+			// Defaulttina ei lˆytynyt
+			bool found = false;
+			// K‰yd‰‰n _textureSlotsit l‰pi jos lˆytyisi oikea tekstuuri
+			for (int i = 0; i < _textureSlots.size(); i++)
+			{
+				// Jos tekstuuri lˆytyy
+				if(_textureSlots[i] == tid)
+				{
+					// Texture slot talteen
+					ts = (float)(i + 1);
+					// Lˆydetty
+					found = true;
+					break;
+				}
+			}
+
+			// Jos ei lˆytynyt, pit‰‰ ladata tekstuuri tekstuurislotteihin
+			if(!found)
+			{
+				// Jos meill‰ loppuu tekstuurislotit kesken
+				if(_textureSlots.size() >= 32)
+				{
+					// Piirret‰‰n kaikki mit‰ pystyttiin, nyt ei en‰‰ pystyt‰ koska
+					// puuttuu tekstuuri, joten piirret‰‰n kaikki mit‰ oli bufferissa
+					end();
+					// Flush updatee texture slotit
+					flush();
+					begin();
+				}
+
+				// Laitetaan puuttuva tekstuuri viimesimp‰‰n slottiin
+				_textureSlots.push_back(tid);
+				// Ja p‰ivitet‰‰n ts uuteen slotti m‰‰r‰‰n
+				ts = (float)_textureSlots.size();
+			}
+		}
+		else
+		{
+			int r = color.x * 255.0f;
+			int g = color.y * 255.0f;
+			int b = color.z * 255.0f;
+			int a = color.w * 255.0f;			
+
+			c = a << 24 | b << 16 | g << 8 | r;
+		}
+
 		
 		_buffer->vertex = *_transformationBack * position;
 		_buffer->uv = uv[0];
+		_buffer->tid = ts;
 		_buffer->color = c;
 		_buffer++;	
 
 		_buffer->vertex = *_transformationBack * Maths::vec3(position.x, position.y + size.y, position.z);
 		_buffer->uv = uv[1];
+		_buffer->tid = ts;
 		_buffer->color = c;
 		_buffer++;
 
 		_buffer->vertex = *_transformationBack * Maths::vec3(position.x + size.x, position.y + size.y, position.z);
 		_buffer->uv = uv[2];
+		_buffer->tid = ts;
 		_buffer->color = c;
 		_buffer++;
 
 		_buffer->vertex = *_transformationBack * Maths::vec3(position.x + size.x, position.y, position.z);
 		_buffer->uv = uv[3];
+		_buffer->tid = ts;
 		_buffer->color = c;
 		_buffer++;
 
@@ -106,16 +158,25 @@ namespace Engine { namespace Graphics {
 
 	void BatchRenderer2D::flush()
 	{
+		// Bindataan tekstuurit
+		for(int i = 0; i < _textureSlots.size(); i++)
+		{
+			glActiveTexture(GL_TEXTURE0 + i);
+			glBindTexture(GL_TEXTURE_2D, _textureSlots[i]);
+		}
+
 		//glBindVertexArray(_VAO);
 
 		glBindBuffer(GL_ARRAY_BUFFER, _VBO);
 
 		glEnableVertexAttribArray(SHADER_VERTEX_INDEX);
 		glEnableVertexAttribArray(SHADER_UV_INDEX);
+		glEnableVertexAttribArray(SHADER_TID_INDEX);
 		glEnableVertexAttribArray(SHADER_COLOR_INDEX);
 
 		glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)0);
 		glVertexAttribPointer(SHADER_UV_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::uv)));
+		glVertexAttribPointer(SHADER_TID_INDEX, 1, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::tid)));
 		glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::color)));
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);

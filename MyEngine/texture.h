@@ -21,6 +21,7 @@ namespace Engine { namespace Graphics {
 		void bind() const;
 		void unbind() const;
 
+		inline const unsigned int getID() const { return _TID; }
 		inline const unsigned int getWidth() const { return _width; }
 		inline const unsigned int getHeight() const { return _height; }
 	private:
