@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyEngine", "MyEngine\MyEngine.vcxproj", "{3A9136F9-5E9B-49D9-82DC-45A28F543A84}"
+	ProjectSection(ProjectDependencies) = postProject
+		{40092632-A0D8-443A-9B1E-777ECEE9AC47} = {40092632-A0D8-443A-9B1E-777ECEE9AC47}
+		{1A4ECD3D-9561-4AF9-9527-8C997005CDCB} = {1A4ECD3D-9561-4AF9-9527-8C997005CDCB}
+		{1B0BC2C5-1A09-4017-BDF5-9F9C1718BFE7} = {1B0BC2C5-1A09-4017-BDF5-9F9C1718BFE7}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libvorbis", "libvorbis\libvorbis.vcxproj", "{1A4ECD3D-9561-4AF9-9527-8C997005CDCB}"
 EndProject

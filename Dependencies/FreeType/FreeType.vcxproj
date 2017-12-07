@@ -92,6 +92,7 @@
       <PreprocessorDefinitions>SP_PLATFORM_WINDOWS;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>include;$(SolutionDir)Dependencies\GLEW\include;</AdditionalIncludeDirectories>
       <BrowseInformation>true</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\GLEW\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
