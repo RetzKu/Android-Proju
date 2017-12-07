@@ -1,1 +1,25 @@
-﻿  libvorbis.vcxproj -> C:\Users\MikaKau\Downloads\Android-Proju6\Dependencies\libvorbis\bin\libvorbis.lib
+﻿  analysis.c
+  bitrate.c
+  block.c
+  codebook.c
+  envelope.c
+  floor0.c
+  floor1.c
+  info.c
+  lookup.c
+  lpc.c
+  lsp.c
+  mapping0.c
+  mdct.c
+  psy.c
+  registry.c
+  res0.c
+  sharedbook.c
+  smallft.c
+  synthesis.c
+  tone.c
+  Compiling...
+  vorbisenc.c
+  vorbisfile.c
+  window.c
+  libvorbis.vcxproj -> C:\Users\Loyalist\Source\Repos\Android-Proju7\Dependencies\libvorbis\bin\libvorbis.lib

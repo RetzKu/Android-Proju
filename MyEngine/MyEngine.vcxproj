@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{3A9136F9-5E9B-49D9-82DC-45A28F543A84}</ProjectGuid>
     <RootNamespace>MyEngine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -70,29 +70,30 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)..\Dependencies\GLEW\include;$(ProjectDir)..\Dependencies\GLFW\include;$(IncludePath);$(SolutionDir)\Dependencies;$(SolutionDir)\Dependencies\FreeImage\include;$(SolutionDir)Dependencies\libvorbis\include;$(SolutionDir)Dependencies\OpenAL\include</IncludePath>
-    <LibraryPath>$(ProjectDir)..\Dependencies\GLEW\libs;$(ProjectDir)..\Dependencies\GLFW\lib-vc2015;$(SolutionDir)Dependencies\FreeImage\lib;$(LibraryPath);$(SolutionDir)Dependencies\OpenAL\libs\Win32;$(SolutionDir)Dependencies\libvorbis\bin;$(SolutionDir)Dependencies\libogg\bin;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\Dependencies\GLEW\include;$(SolutionDir)Dpendencies\libogg\include;$(ProjectDir)..\Dependencies\GLFW\include;$(IncludePath);$(SolutionDir)\Dependencies;$(SolutionDir)\Dependencies\FreeImage\include;$(SolutionDir)Dependencies\libvorbis\include;$(SolutionDir)Dependencies\OpenAL\include</IncludePath>
+    <LibraryPath>$(ProjectDir)..\Dependencies\GLEW\libs;$(ProjectDir)..\Dependencies\GLFW\lib-vc2015;$(SolutionDir)Dependencies\FreeImage\lib;$(LibraryPath);$(SolutionDir)Dependencies\OpenAL\libs\Win32;$(SolutionDir)Dependencies\libvorbis\bin;$(SolutionDir)Dependencies\libogg\bin</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\$(Configuration)\Intermediates\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\$(Configuration)\Intermediates\</IntDir>
-    <IncludePath>$(ProjectDir)..\Dependencies\GLEW\include;$(SolutionDir)Freetype;$(SolutionDir)Freetype\include;$(ProjectDir)..\Dependencies\GLFW\include;$(IncludePath);$(SolutionDir)\Dependencies;$(SolutionDir)\Dependencies\FreeImage\include;$(SolutionDir)Dependencies\libvorbis\include;$(SolutionDir)Dependencies\OpenAL\include</IncludePath>
-    <LibraryPath>$(ProjectDir)..\Dependencies\GLEW\libs;$(ProjectDir)..\Dependencies\GLFW\lib-vc2015;$(SolutionDir)Dependencies\FreeImage\lib;$(LibraryPath);$(SolutionDir)Dependencies\OpenAL\libs\Win32;$(SolutionDir)Dependencies\libvorbis\bin;$(SolutionDir)Dependencies\libogg\bin;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\Dependencies\GLEW\include;$(SolutionDir)Dpendencies\libogg\include;$(ProjectDir)..\Dependencies\GLFW\include;$(IncludePath);$(SolutionDir)\Dependencies;$(SolutionDir)\Dependencies\FreeImage\include;$(SolutionDir)Dependencies\libvorbis\include;$(SolutionDir)Dependencies\OpenAL\include</IncludePath>
+    <LibraryPath>$(ProjectDir)..\Dependencies\GLEW\libs;$(ProjectDir)..\Dependencies\GLFW\lib-vc2015;$(SolutionDir)Dependencies\FreeImage\lib;$(LibraryPath);$(SolutionDir)Dependencies\OpenAL\libs\Win32;$(SolutionDir)Dependencies\libvorbis\bin;$(SolutionDir)Dependencies\libogg\bin</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\Dependencies\GLEW\include;$(ProjectDir)..\Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Dependencies\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>UninitializedLocalUsageCheck</BasicRuntimeChecks>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;FreeImage.lib;OpenAL32.lib;libvorbis.lib;libogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;SPFont.lib;opengl32.lib;glew32s.lib;FreeImage.lib;OpenAL32.lib;libvorbis.lib;libogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
