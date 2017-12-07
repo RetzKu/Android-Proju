@@ -5,6 +5,12 @@
 #include "renderable2d.h"
 #include "indexbuffer.h"
 
+
+namespace ftgl {
+	struct texture_atlas_t;
+	struct texture_font_t;
+}
+
 namespace Engine { namespace Graphics {
 
 #define RENDERER_MAX_SPRITES	60000
@@ -28,11 +34,14 @@ namespace Engine { namespace Graphics {
 		VertexData* _bufferStart;
 
 		std::vector<GLuint> _textureSlots;
+		ftgl::texture_atlas_t* m_FTAtlas;
+		ftgl::texture_font_t* m_FTFont;
 	public:
 		BatchRenderer2D();
 		~BatchRenderer2D();
 		void begin() override;
 		void submit(const Renderable2D* renderable);
+		void drawString(const std::string& text,const Maths::vec3& position,const Maths::vec4& color) override;
 		void end() override;
 		void flush();
 	private:

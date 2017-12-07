@@ -108,7 +108,7 @@
     </ClCompile>
     <ClCompile Include="texture.cpp">
       <Filter>Source Files\Graphics</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="ext\gorilla-audio\ga.c">
       <Filter>Source Files\ext\gorilla-audio</Filter>
     </ClCompile>
@@ -126,6 +126,9 @@
     </ClCompile>
     <ClCompile Include="ext\gorilla-audio\common\gc_thread.c">
       <Filter>Source Files\ext\gorilla-audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>Source Files\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -200,7 +203,7 @@
     </ClInclude>
     <ClInclude Include="imageload.h">
       <Filter>Source Files\Utils</Filter>
-	</ClInclude>  
+    </ClInclude>
     <ClInclude Include="ext\gorilla-audio\ga.h">
       <Filter>Header Files\ext\gorilla-audio</Filter>
     </ClInclude>
@@ -221,6 +224,9 @@
     </ClInclude>
     <ClInclude Include="ext\gorilla-audio\common\gc_types.h">
       <Filter>Header Files\ext\gorilla-audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

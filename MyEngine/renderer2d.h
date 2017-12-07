@@ -55,6 +55,7 @@ namespace Engine { namespace Graphics {
 
 			virtual void begin(){}
 			virtual void end(){}
+			virtual void drawString(const std::string& text,const Maths::vec3& position,const Maths::vec4& color) {}
 			virtual void submit(const Renderable2D* renderable) = 0;
 			virtual void flush() = 0;
 		

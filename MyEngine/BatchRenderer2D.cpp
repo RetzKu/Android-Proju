@@ -1,7 +1,7 @@
 #include "BatchRenderer2D.h"
+#include <../Dependencies/FreeType/freetype-gl/freetype-gl.h>
 
 // Tässä filussa oleviin kommentteihin älkää kajotko voi käyttää myöhemmin hyväks et kattoo jos on PC nii käyttää sit VAO:ta
-
 
 namespace Engine { namespace Graphics {
 
@@ -51,6 +51,8 @@ namespace Engine { namespace Graphics {
 		//glBindVertexArray(0);
 
 		_bufferStart = _buffer = new VertexData[RENDERER_MAX_SPRITES * 4];
+		m_FTAtlas = ftgl::texture_atlas_new(512,512,1);
+		m_FTFont = ftgl::texture_font_new_from_file(m_FTAtlas, 20, "arial.ttf");
 	}
 
 	void BatchRenderer2D::begin()
@@ -144,6 +146,56 @@ namespace Engine { namespace Graphics {
 		_buffer->uv = uv[3];
 		_buffer->tid = ts;
 		_buffer->color = c;
+		_buffer++;
+
+		_indexCount += 6;
+	}
+
+	void BatchRenderer2D::drawString(const std::string& text,const Maths::vec3& position,const Maths::vec4& color)
+	{
+		using namespace ftgl;
+
+		float ts = 0.0f;
+		bool found = false;
+		for (int i = 0; i < _textureSlots.size(); i++)
+		{
+			if (_textureSlots[i] == m_FTAtlas->id)
+			{
+				ts = (float)(i + 1);
+				found = true;
+				break;
+			}
+		}
+		if (!found)
+		{
+			if (_textureSlots.size() >= 32)
+			{
+				end();
+				flush();
+				begin();
+			}
+			_textureSlots.push_back(m_FTAtlas->id);
+			ts = (float)(_textureSlots.size());
+		}
+
+		_buffer->vertex = Maths::vec3(-8,-8,0);
+		_buffer->uv = Maths::vec2(0,1);
+		_buffer->tid = ts;
+		_buffer++;
+
+		_buffer->vertex = Maths::vec3(-8, 8, 0);
+		_buffer->uv = Maths::vec2(0,1);
+		_buffer->tid = ts;
+		_buffer++;
+
+		_buffer->vertex = Maths::vec3(8, 8, 0);
+		_buffer->uv = Maths::vec2(0,1);
+		_buffer->tid = ts;
+		_buffer++;
+
+		_buffer->vertex = Maths::vec3(8, -8, 0);
+		_buffer->uv = Maths::vec2(0, 1);
+		_buffer->tid = ts;
 		_buffer++;
 
 		_indexCount += 6;

@@ -78,7 +78,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\$(Configuration)\Intermediates\</IntDir>
-    <IncludePath>$(ProjectDir)..\Dependencies\GLEW\include;$(ProjectDir)..\Dependencies\GLFW\include;$(IncludePath);$(SolutionDir)\Dependencies;$(SolutionDir)\Dependencies\FreeImage\include;$(SolutionDir)Dependencies\libvorbis\include;$(SolutionDir)Dependencies\OpenAL\include</IncludePath>
+    <IncludePath>$(ProjectDir)..\Dependencies\GLEW\include;$(SolutionDir)Freetype;$(SolutionDir)Freetype\include;$(ProjectDir)..\Dependencies\GLFW\include;$(IncludePath);$(SolutionDir)\Dependencies;$(SolutionDir)\Dependencies\FreeImage\include;$(SolutionDir)Dependencies\libvorbis\include;$(SolutionDir)Dependencies\OpenAL\include</IncludePath>
     <LibraryPath>$(ProjectDir)..\Dependencies\GLEW\libs;$(ProjectDir)..\Dependencies\GLFW\lib-vc2015;$(SolutionDir)Dependencies\FreeImage\lib;$(LibraryPath);$(SolutionDir)Dependencies\OpenAL\libs\Win32;$(SolutionDir)Dependencies\libvorbis\bin;$(SolutionDir)Dependencies\libogg\bin;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -119,7 +119,10 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;FreeImage.lib;OpenAL32.lib;libvorbis.lib;libogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;FreeImage.lib;OpenAL32.lib;libvorbis.lib;SPFont.lib;libogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>
+      </SubSystem>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,6 +150,7 @@
     <ClCompile Include="fileutils.cpp" />
     <ClCompile Include="group.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
+    <ClCompile Include="Label.cpp" />
     <ClCompile Include="layer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mat4.cpp" />
@@ -176,6 +180,7 @@
     <ClInclude Include="group.h" />
     <ClInclude Include="imageload.h" />
     <ClInclude Include="indexbuffer.h" />
+    <ClInclude Include="Label.h" />
     <ClInclude Include="layer.h" />
     <ClInclude Include="mat4.h" />
     <ClInclude Include="Maths.h" />
