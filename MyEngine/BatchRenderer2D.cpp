@@ -57,6 +57,7 @@ namespace Engine { namespace Graphics {
 		_bufferStart = _buffer = new VertexData[RENDERER_MAX_SPRITES * 4];
 		m_FTAtlas = ftgl::texture_atlas_new(512,512,1);
 		m_FTFont = ftgl::texture_font_new_from_file(m_FTAtlas, 20, "arial.ttf");
+		std::cout << m_FTFont->filename;
 	}
 
 	void BatchRenderer2D::begin()
@@ -159,6 +160,13 @@ namespace Engine { namespace Graphics {
 	{
 		using namespace ftgl;
 
+		int r = color.x * 255.0f;
+		int g = color.y * 255.0f;
+		int b = color.z * 255.0f;
+		int a = color.w * 255.0f;
+
+		unsigned int c = a << 24 | b << 16 | g << 8 | r;
+
 		float ts = 0.0f;
 		bool found = false;
 		for (int i = 0; i < _textureSlots.size(); i++)
@@ -180,6 +188,31 @@ namespace Engine { namespace Graphics {
 			}
 			_textureSlots.push_back(m_FTAtlas->id);
 			ts = (float)(_textureSlots.size());
+		}
+
+		for (int i = 0; i < text.length(); i++)
+		{
+			char c = text.at(i);
+			texture_glyph_t* glyph = texture_font_get_glyph(m_FTFont, c);
+			if (glyph != NULL)
+			{
+				float x0 = position.x + glyph->offset_x;
+				float y0 = position.y + glyph->offset_y;
+				float x1 = x0 + glyph->width;
+				float y1 = y0 - glyph->height;
+
+				float u0 = glyph->s0;
+				float v0 = glyph->t0;
+				float u1 = glyph->s1;
+				float v1 = glyph->t1;
+
+				_buffer->vertex = Maths::vec3(x0, y0, 0);
+				_buffer->uv = Maths::vec2(u0, v0);
+				_buffer->tid = ts;
+				_buffer->color = c;
+				_buffer++;
+				//ensimmäinen // videon kohta 48:13;
+			}
 		}
 
 		_buffer->vertex = Maths::vec3(-8,-8,0);

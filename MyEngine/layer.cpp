@@ -39,7 +39,7 @@ namespace Engine { namespace Graphics {
 			renderable->submit(_renderer);
 		}
 
-		_renderer->drawString("", Maths::vec3(0, 0, 0), Maths::vec4(0, 0, 0, 0));
+		_renderer->drawString("s", Maths::vec3(0, 0, 0), Maths::vec4(255, 0, 0, 0));
 
 		_renderer->end();
 		_renderer->flush();
