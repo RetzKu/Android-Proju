@@ -1,3 +1,4 @@
+#include <cassert>
 #include "BatchRenderer2D.h"
 #include <../Dependencies/FreeType/freetype-gl/freetype-gl.h>
 
@@ -14,6 +15,9 @@ namespace Engine { namespace Graphics {
 	{
 		delete _IBO;
 		glDeleteBuffers(1, &_VBO);
+
+		delete _buffer;
+		_buffer = _bufferStart = nullptr;
 	}
 
 	void BatchRenderer2D::init()
@@ -203,7 +207,12 @@ namespace Engine { namespace Graphics {
 	
 	void BatchRenderer2D::end()
 	{
-		glBufferSubData(GL_ARRAY_BUFFER, 0, RENDERER_MAX_SPRITES * RENDERER_SPRITE_SIZE, _bufferStart);
+		int currentSize = (_buffer - _bufferStart) * RENDERER_SPRITE_SIZE;
+
+		assert(currentSize < RENDERER_MAX_SPRITES * RENDERER_SPRITE_SIZE); // Note(Eetu): ei voida rendata noin montaa nosta Renderer max sizea
+		glBufferSubData(GL_ARRAY_BUFFER, 0, currentSize, _bufferStart);
+		// std::cout << _buffer - _bufferStart << std::endl;
+
 		//glUnmapBuffer(GL_ARRAY_BUFFER);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
