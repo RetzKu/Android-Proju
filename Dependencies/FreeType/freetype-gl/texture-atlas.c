@@ -328,7 +328,7 @@ texture_atlas_upload( texture_atlas_t * self )
 
 	self->dirty = 1;
 
-#if 0
+#if 1
     if( !self->id )
     {
         glGenTextures( 1, &self->id );
@@ -359,6 +359,7 @@ texture_atlas_upload( texture_atlas_t * self )
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE_ALPHA, self->width, self->height,
 			0, GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE, self->data);
 	}
+
     else
     {
         glTexImage2D( GL_TEXTURE_2D, 0, GL_RED, self->width, self->height,

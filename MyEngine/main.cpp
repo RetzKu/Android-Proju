@@ -20,6 +20,7 @@
 #include "MikaTestijuttuja.h"
 #include "tilelayer.h"
 #include "group.h"
+#include "Label.h"
 #include "texture.h"
 #include "ext\gorilla-audio\ga.h"
 #include "ext\gorilla-audio\gau.h"
@@ -135,25 +136,31 @@ int main()
 	// Nestattu for looppi miss‰ pusketaan layeriin spritej‰
 	// Y suunnassa
 	// -9 ikkunan alaosa ja +9 ikkunan yl‰osa.. eli alhaalta ylˆs
-	for (float y = -9.0f; y < 9.0f; y++)
-	{
-		// sama X suunnassa -16 to +16
-		// luonnollisesti 16:9 kuva suhteella niin y akseli 9 ja x 16
-		for (float x = -16.0f; x < 16.0f; x++)
-		{
-			// Paikka xy, koko 0.9f, j‰‰ pieni marginaali/borderi, 1.0f olisi vierivieress‰, v‰ri randomilla neliˆille
-			// Arvotaan piirret‰‰nkˆ tekstuuria vai v‰rineliˆt‰
-			if (rand() % 4 == 0)
-				// Piirret‰‰n "v‰rineliˆit‰" ja v‰rit randomilla
-				layer.add(new Sprite(x, y, 0.9f, 0.9f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
-			else
-				// Piirret‰‰n tekstuuriarraysta randomilla jotain (meill‰ on 4 tekstuuria siell‰)
-				layer.add(new Sprite(x, y, 0.9f, 0.9f, textures[rand() % 4]));
-			// Otetaan ylˆs montako sprite‰ piirret‰‰n
-			spritecount++;
-		}
-	}
 
+	//for (float y = -9.0f; y < 9.0f; y++)
+	//{
+	//	// sama X suunnassa -16 to +16
+	//	// luonnollisesti 16:9 kuva suhteella niin y akseli 9 ja x 16
+	//	for (float x = -16.0f; x < 16.0f; x++)
+	//	{
+	//		// Paikka xy, koko 0.9f, j‰‰ pieni marginaali/borderi, 1.0f olisi vierivieress‰, v‰ri randomilla neliˆille
+	//		// Arvotaan piirret‰‰nkˆ tekstuuria vai v‰rineliˆt‰
+	//		if (rand() % 4 == 0)
+	//			// Piirret‰‰n "v‰rineliˆit‰" ja v‰rit randomilla
+	//			layer.add(new Sprite(x, y, 0.9f, 0.9f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
+	//		else
+	//			// Piirret‰‰n tekstuuriarraysta randomilla jotain (meill‰ on 4 tekstuuria siell‰)
+	//			layer.add(new Sprite(x, y, 0.9f, 0.9f, textures[rand() % 4]));
+	//		// Otetaan ylˆs montako sprite‰ piirret‰‰n
+	//		spritecount++;
+	//	}
+	//}
+	Group* g = new Group(Maths::mat4::translation(Maths::vec3(-15.8f, 7.0f, 0.0f)));
+	
+	g->add(new Sprite(0, 0, 5, 1.5f, Maths::vec4(0.3f,0.3f,0.3f,0.3f)));//lis‰t‰‰n haalea neliˆ grouppiin
+	g->add(new Label("A!k", 0.1f, 0.3f, vec4(1, 1, 1, 1))); //lis‰t‰‰n teksti sen p‰‰lle ja offsetataan groupista 0.1 ja 0.3 verran
+
+ 	layer.add(g); //Labelin voi suoraan adata layeriin
 	std::cout << "Sprite count on screen: " << spritecount << std::endl;
 
 #else 
@@ -168,6 +175,7 @@ int main()
 	// Keski yl‰ kohta 0, 9
 	// Keski ala kohta 0, -9
 	// Oikee yl‰ kulma 16, 9
+	}
 	// Oikee sein‰ keskell‰ 16, 0
 	// Oikee ala kulma 16, -9
 	// 
@@ -217,10 +225,11 @@ int main()
 	float TimeInteval = (int)((1.0f / 60.0f) * 1000);//giving deltatime tickrate; this is good until hitting under 60fps; ;
 	std::chrono::time_point<std::chrono::system_clock> DeltaTime = std::chrono::system_clock::now();//start point for deltatime;
 	vec2 MousePos; //initting vector that will take in coordinate updates from deltatimed loop;
-	
+	//fps->Text = "fps";
 	while (!window.closed())
 	{
 		window.clear();
+		auto ms = MikanTestit->MouseWorldLocation();
 		auto Delta = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - DeltaTime);//calculating delta
 		if ((float)Delta.count() > TimeInteval) //this if statement limits program to 60fps; Only for stuff inside this loop. everything else is running freely
 		{
@@ -232,7 +241,6 @@ int main()
 			MousePos = MikanTestit->MouseWorldLocation();//Testversion for correct coordinate handling in world perspective
 			MikanTestit->MouseUILocation();//Testversion for correct coordinate handling in UI perspective or screen perspective;
 		}
-		utils.CoutFPS();
 		// Shaderit p‰‰lle ja valotus seuraamaan hiirt‰
 		shader.enable();
 		shader.setUniformMat2f("light_pos", vec2((float)(MousePos.x* 32.0f / 960.0f - 16.0f), (float)(9.0f - MousePos.y * 18.0f / 540.0f)));

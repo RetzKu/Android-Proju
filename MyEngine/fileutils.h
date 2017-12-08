@@ -15,7 +15,7 @@ namespace Engine {
 	public:
 		static std::string read_file(const char* filepath);
 		static unsigned char* LoadTextureFromFile(const std::string Filename);
-		void CoutFPS();
+		int CoutFPS();
 	private:
 		Timer time;
 		float timer = 0.0f;

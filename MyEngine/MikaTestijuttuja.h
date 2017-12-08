@@ -55,12 +55,12 @@ public:
 		}
 		std::cout << "\nAspectRatio is " << this->AspectRatio.x << ":" << this->AspectRatio.y << "\n";
 	}
+	vec2 AspectRatio;
 private:
 	Shader* ShaderObject;
 	Window* WindowObject;
 	vec2 CameraCoordinates;
 	double CameraSpeed = 1;
-	vec2 AspectRatio;
 	bool Cooldown;
 };
 

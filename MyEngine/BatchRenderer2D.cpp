@@ -55,9 +55,9 @@ namespace Engine { namespace Graphics {
 		//glBindVertexArray(0);
 
 		_bufferStart = _buffer = new VertexData[RENDERER_MAX_SPRITES * 4];
-		m_FTAtlas = ftgl::texture_atlas_new(512,512,1);
-		m_FTFont = ftgl::texture_font_new_from_file(m_FTAtlas, 20, "arial.ttf");
-		std::cout << m_FTFont->filename;
+
+		m_FTAtlas = ftgl::texture_atlas_new(512, 512, 2);
+		m_FTFont = ftgl::texture_font_new_from_file(m_FTAtlas, 32, "arial.ttf");
 	}
 
 	void BatchRenderer2D::begin()
@@ -118,16 +118,13 @@ namespace Engine { namespace Graphics {
 				ts = (float)_textureSlots.size();
 			}
 		}
-		else
-		{
-			int r = color.x * 255.0f;
-			int g = color.y * 255.0f;
-			int b = color.z * 255.0f;
-			int a = color.w * 255.0f;			
 
-			c = a << 24 | b << 16 | g << 8 | r;
-		}
+		int r = color.x * 255.0f;
+		int g = color.y * 255.0f;
+		int b = color.z * 255.0f;
+		int a = color.w * 255.0f;			
 
+		c = a << 24 | b << 16 | g << 8 | r;
 		
 		_buffer->vertex = *_transformationBack * position;
 		_buffer->uv = uv[0];
@@ -165,7 +162,7 @@ namespace Engine { namespace Graphics {
 		int b = color.z * 255.0f;
 		int a = color.w * 255.0f;
 
-		unsigned int c = a << 24 | b << 16 | g << 8 | r;
+		unsigned int unsintcolor = a << 24 | b << 16 | g << 8 | r;
 
 		float ts = 0.0f;
 		bool found = false;
@@ -190,52 +187,63 @@ namespace Engine { namespace Graphics {
 			ts = (float)(_textureSlots.size());
 		}
 
+		float x = position.x;
+		float scaley = 540.0f / 18.0f;
+		float scalex = 960.0f / 32.0f;
+
 		for (int i = 0; i < text.length(); i++)
 		{
 			char c = text.at(i);
 			texture_glyph_t* glyph = texture_font_get_glyph(m_FTFont, c);
 			if (glyph != NULL)
 			{
-				float x0 = position.x + glyph->offset_x;
-				float y0 = position.y + glyph->offset_y;
-				float x1 = x0 + glyph->width;
-				float y1 = y0 - glyph->height;
+
+				if (i < 0)
+				{
+					float kerning = ftgl::texture_glyph_get_kerning(glyph, text[i - 1]);
+					x += kerning / scalex;
+				}
+
+				float x0 = x + glyph->offset_x / scalex;
+				float y0 = position.y + glyph->offset_y / scaley;
+				float x1 = x0 + glyph->width / scalex;
+				float y1 = y0 - glyph->height / scaley;
 
 				float u0 = glyph->s0;
 				float v0 = glyph->t0;
 				float u1 = glyph->s1;
 				float v1 = glyph->t1;
 
-				_buffer->vertex = Maths::vec3(x0, y0, 0);
+				_buffer->vertex = *_transformationBack* Maths::vec3(x0, y0, 0);
 				_buffer->uv = Maths::vec2(u0, v0);
 				_buffer->tid = ts;
-				_buffer->color = c;
+				_buffer->color = unsintcolor;
 				_buffer++;
-				//ensimmäinen // videon kohta 48:13;
+				
+				_buffer->vertex = *_transformationBack* Maths::vec3(x0, y1, 0);
+				_buffer->uv = Maths::vec2(u0, v1);
+				_buffer->tid = ts;
+				_buffer->color = unsintcolor;;
+				_buffer++;
+
+				_buffer->vertex = *_transformationBack* Maths::vec3(x1, y1, 0);
+				_buffer->uv = Maths::vec2(u1, v1);
+				_buffer->tid = ts;
+				_buffer->color = unsintcolor;
+				_buffer++;
+
+				_buffer->vertex = *_transformationBack* Maths::vec3(x1, y0, 0);
+				_buffer->uv = Maths::vec2(u1, v0);
+				_buffer->tid = ts;
+				_buffer->color = unsintcolor;
+				_buffer++;
+				_indexCount += 6;
+
+				x += glyph->advance_x / scalex;
+
 			}
 		}
 
-		_buffer->vertex = Maths::vec3(-8,-8,0);
-		_buffer->uv = Maths::vec2(0,1);
-		_buffer->tid = ts;
-		_buffer++;
-
-		_buffer->vertex = Maths::vec3(-8, 8, 0);
-		_buffer->uv = Maths::vec2(0,1);
-		_buffer->tid = ts;
-		_buffer++;
-
-		_buffer->vertex = Maths::vec3(8, 8, 0);
-		_buffer->uv = Maths::vec2(0,1);
-		_buffer->tid = ts;
-		_buffer++;
-
-		_buffer->vertex = Maths::vec3(8, -8, 0);
-		_buffer->uv = Maths::vec2(0, 1);
-		_buffer->tid = ts;
-		_buffer++;
-
-		_indexCount += 6;
 	}
 	
 	void BatchRenderer2D::end()

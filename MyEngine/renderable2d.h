@@ -32,10 +32,10 @@ namespace Engine { namespace Graphics
 			std::vector<Maths::vec2> _UV;
 			Texture* _texture;
 		protected:
-			Renderable2D() { setUVDefaults(); }
+			Renderable2D() : _texture(nullptr) { setUVDefaults(); }
 		public:
 			Renderable2D(Maths::vec3 position, Maths::vec2 size, Maths::vec4 color)
-				: _position(position), _size(size), _color(color)
+				: _position(position), _size(size), _color(color),_texture(nullptr)
 			{ setUVDefaults(); }
 
 			virtual ~Renderable2D(){ }
@@ -50,7 +50,7 @@ namespace Engine { namespace Graphics
 			inline const Maths::vec4& getColor() const { return _color; }
 			inline const std::vector<Maths::vec2>& getUV() const { return _UV; }
 
-			inline const GLuint getTID() const { return _texture == nullptr ? 0 : _texture->getID(); }
+			inline const GLuint getTID() const { return _texture ? _texture->getID() : 0; }
 		private:
 			void setUVDefaults()
 			{

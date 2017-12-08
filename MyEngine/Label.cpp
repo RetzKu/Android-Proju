@@ -2,13 +2,14 @@
 
 namespace Engine {namespace Graphics
 {
-	Label::Label(std::string text, Maths::vec3 position, Maths::vec4 color): Renderable2D(), m_Text(text)
+	Label::Label(std::string text, float x, float y, Maths::vec4 color) : Renderable2D(), Position(_position), Text(text)
 	{
-		m_Position = position;
-		m_Color = color;
+		_position = Maths::vec3(x, y, 0);
+		_color = color;
 	}
+	
 	void Label::submit(Renderer2D* renderer) const
 	{
-		renderer->drawString(m_Text, m_Position, m_Color);
+		renderer->drawString(Text, _position, _color);
 	}
 }}
