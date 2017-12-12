@@ -102,6 +102,9 @@ int main()
 	FileUtils utils;
 	// Asetetaan ikkunan parametrit
 	Window window("Engine", SCREENWIDTH, SCREENHEIGHT);
+	
+	std::cout << "Window Width: " << window.getWidth() << +" Height: " << window.getHeight() << std::endl;
+
 	// Tausta v‰ri
 	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -137,24 +140,24 @@ int main()
 	// Y suunnassa
 	// -9 ikkunan alaosa ja +9 ikkunan yl‰osa.. eli alhaalta ylˆs
 
-	//for (float y = -9.0f; y < 9.0f; y++)
-	//{
-	//	// sama X suunnassa -16 to +16
-	//	// luonnollisesti 16:9 kuva suhteella niin y akseli 9 ja x 16
-	//	for (float x = -16.0f; x < 16.0f; x++)
-	//	{
-	//		// Paikka xy, koko 0.9f, j‰‰ pieni marginaali/borderi, 1.0f olisi vierivieress‰, v‰ri randomilla neliˆille
-	//		// Arvotaan piirret‰‰nkˆ tekstuuria vai v‰rineliˆt‰
-	//		if (rand() % 4 == 0)
-	//			// Piirret‰‰n "v‰rineliˆit‰" ja v‰rit randomilla
-	//			layer.add(new Sprite(x, y, 0.9f, 0.9f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
-	//		else
-	//			// Piirret‰‰n tekstuuriarraysta randomilla jotain (meill‰ on 4 tekstuuria siell‰)
-	//			layer.add(new Sprite(x, y, 0.9f, 0.9f, textures[rand() % 4]));
-	//		// Otetaan ylˆs montako sprite‰ piirret‰‰n
-	//		spritecount++;
-	//	}
-	//}
+	for (float y = -9.0f; y < 9.0f; y++)
+	{
+		// sama X suunnassa -16 to +16
+		// luonnollisesti 16:9 kuva suhteella niin y akseli 9 ja x 16
+		for (float x = -16.0f; x < 16.0f; x++)
+		{
+			// Paikka xy, koko 0.9f, j‰‰ pieni marginaali/borderi, 1.0f olisi vierivieress‰, v‰ri randomilla neliˆille
+			// Arvotaan piirret‰‰nkˆ tekstuuria vai v‰rineliˆt‰
+			if (rand() % 4 == 0)
+				// Piirret‰‰n "v‰rineliˆit‰" ja v‰rit randomilla
+				layer.add(new Sprite(x, y, 0.9f, 0.9f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
+			else
+				// Piirret‰‰n tekstuuriarraysta randomilla jotain (meill‰ on 4 tekstuuria siell‰)
+				layer.add(new Sprite(x, y, 0.9f, 0.9f, textures[rand() % 4]));
+			// Otetaan ylˆs montako sprite‰ piirret‰‰n
+			spritecount++;
+		}
+	}
 	Group* g = new Group(Maths::mat4::translation(Maths::vec3(-15.8f, 7.0f, 0.0f)));
 	
 	g->add(new Sprite(0, 0, 5, 1.5f, Maths::vec4(0.3f,0.3f,0.3f,0.3f)));//lis‰t‰‰n haalea neliˆ grouppiin
@@ -243,7 +246,7 @@ int main()
 		}
 		// Shaderit p‰‰lle ja valotus seuraamaan hiirt‰
 		shader.enable();
-		shader.setUniformMat2f("light_pos", vec2((float)(MousePos.x* 32.0f / 960.0f - 16.0f), (float)(9.0f - MousePos.y * 18.0f / 540.0f)));
+		shader.setUniformMat2f("light_pos", vec2((float)(MousePos.x* 32.0f / window.getWidth() - 16.0f), (float)(9.0f - MousePos.y * 18.0f / window.getHeight())));
 		// Piirret‰‰n layeri
 		layer.render();
 		window.update();	

@@ -7,8 +7,12 @@ namespace Engine
 	{
 		//array johon voi laittaa nappeja
 		bool Window::_keys[MAX_KEYS];
+		bool Window::_keystate[MAX_KEYS];
+		bool Window::_keytyped[MAX_KEYS];
 		//array johon tulee hiiren napit &/ joystick
 		bool Window::_buttons[MAX_BUTTONS];
+		bool Window::_mouseclicked[MAX_BUTTONS];
+		bool Window::_mousestate[MAX_BUTTONS];
 		//mouse pos
 		double Window::_mouseX;
 		double Window::_mouseY;
@@ -27,11 +31,15 @@ namespace Engine
 			}
 			for (int i = 0; i < MAX_KEYS; i++)
 			{
-				_keys[1] = false;
+				_keys[i] = false;
+				_keystate[i] = false;
+				_keytyped[i] = false;
 			}
 			for (int i = 0; i < MAX_BUTTONS; i++)
 			{
-				_buttons[1] = false;
+				_buttons[i] = false;
+				_mousestate[i] = false;
+				_mouseclicked[i] = false;
 			}
 		}
 		// -||- dekonstruktori
@@ -58,7 +66,7 @@ namespace Engine
 			//
 			glfwMakeContextCurrent(_window);
 			glfwSetWindowUserPointer(_window, this);
-			glfwSetWindowSizeCallback(_window, WindowResize);
+			glfwSetFramebufferSizeCallback(_window, WindowResize);
 			//input hommia
 			glfwSetKeyCallback(_window, key_callback);
 			glfwSetMouseButtonCallback(_window, button_callback);
@@ -83,6 +91,26 @@ namespace Engine
 
 		}
 		//näppäimet
+		bool Window::isKeyTyped(unsigned int keycode)
+		{
+			if (keycode >= MAX_KEYS)
+			{
+				return false;
+				std::cout << "Keycode is out of range!" << std::endl;
+			}
+			return _keytyped[keycode];
+		}
+
+		bool Window::isMouseButtonClicked(unsigned int button)
+		{
+			if (button >= MAX_BUTTONS)
+			{
+				return false;
+				std::cout << "Keycode is out of range!" << std::endl;
+			}
+			return _mouseclicked[button];
+		}
+		
 		bool Window::isKeyPressed(unsigned int keycode)
 		{
 			if (keycode >= MAX_KEYS)
@@ -119,6 +147,18 @@ namespace Engine
 		//update metodi
 		void Window::update()
 		{
+			for (int i = 0; i < MAX_KEYS; i++)
+				_keytyped[i] = _keys[i] && !_keystate[i];
+
+
+			for (int i = 0; i < MAX_KEYS; i++)
+				_keystate[i] = _keys[i];
+
+			for (int i = 0; i < MAX_BUTTONS; i++)
+				_mouseclicked[i] = _buttons[i] && !_mousestate[i];
+
+			for (int i = 0; i < MAX_BUTTONS; i++)
+				_keystate[i] = _buttons[i];
 			// Error check
 			GLenum error = glGetError();
 			if(error != GL_NO_ERROR)
@@ -139,6 +179,9 @@ namespace Engine
 		void WindowResize(GLFWwindow *window, int width, int height)
 		{
 			glViewport(0, 0, width, height); // (resize function) ** kokeile kommentoida rivi ja resize ikkunaa **
+			Window* win = (Window*)glfwGetWindowUserPointer(window);
+			win->_width = width;
+			win->_height = height;
 		}
 		//Näppäimistö -> openGL:n callback funktio (osa inputtia)
 		void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)

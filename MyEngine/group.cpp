@@ -8,6 +8,14 @@ namespace Engine { namespace Graphics {
 		: _transformationMatrix(transform)
 	{		
 	}
+	
+	Group::~Group()
+	{
+		for (int i = 0; i < _renderables.size(); i++)
+		{
+			delete _renderables[i];
+		}
+	}
 
 	void Group::add(Renderable2D* renderable)
 	{
