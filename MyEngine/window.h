@@ -5,6 +5,8 @@
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
 
+#include "sound_manager.h"
+
 namespace Engine 
 {
 	namespace Graphics

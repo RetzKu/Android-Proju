@@ -184,6 +184,7 @@ struct ga_Sound {
 #define GA_HANDLE_STATE_FINISHED 4
 #define GA_HANDLE_STATE_DESTROYED 5
 
+
 struct ga_Handle {
   ga_Mixer* mixer;
   ga_FinishCallback callback;
@@ -196,6 +197,7 @@ struct ga_Handle {
   gc_Link mixLink;
   gc_Mutex* handleMutex;
   ga_SampleSource* sampleSrc;
+  void* sound;
   volatile gc_int32 finished;
 };
 

@@ -29,6 +29,7 @@ namespace Engine
 			{
 				glfwTerminate(); // tuhoaa ikkunan / dekonstruktori
 			}
+			Audio::SoundManager::init();
 			for (int i = 0; i < MAX_KEYS; i++)
 			{
 				_keys[i] = false;
@@ -45,6 +46,7 @@ namespace Engine
 		// -||- dekonstruktori
 		Window::~Window()
 		{
+			Audio::SoundManager::clean();
 			glfwTerminate();
 		}
 		// varsinainen ikkunan teko
