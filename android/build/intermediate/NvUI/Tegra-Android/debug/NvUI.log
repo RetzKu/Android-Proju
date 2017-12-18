@@ -1,0 +1,262 @@
+﻿  NvTweakVar.cpp
+  NvUIGraphic.cpp
+  NvUIText.cpp
+  NvBitFont.cpp
+  NvUI.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from ../src/NvUI/NvUIInternal.h:37,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIGraphic.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from ../src/NvUI/NvUIInternal.h:37,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIGraphic.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvUIGraphicFrame.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIText.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIText.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvUITexture.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\src\NvUI\NvBitFontInternal.h(58): includes this header: 0,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvBitFont.cpp(36): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\limits.h(38): includes this header: 0,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/wchar.h:31,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/cwchar:44,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/bits/postypes.h:40,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/bits/char_traits.h:40,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/string:40,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/stdexcept:39,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/array:38,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/tuple:39,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/bits/stl_map.h:63,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/map:61,
+                   from ../src/NvUI/NvAFont.h:40,
+                   from ../src/NvUI/NvBitFontInternal.h:38,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvBitFont.cpp(36): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvEmbeddedAsset.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from ../src/NvUI/NvUIInternal.h:37,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUI.cpp(40): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from ../src/NvUI/NvUIInternal.h:37,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUI.cpp(40): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvUIButton.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from ../src/NvUI/NvUIInternal.h:37,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIGraphicFrame.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from ../src/NvUI/NvUIInternal.h:37,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIGraphicFrame.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvUIPopup.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from ../src/NvUI/NvUIInternal.h:37,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUITexture.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from ../src/NvUI/NvUIInternal.h:37,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUITexture.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvUIValueBar.cpp
+  NvGestureDetector.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIButton.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIButton.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvUIContainer.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvVec2.h:37,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvFoundationMath.h:33,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvGestureDetector.cpp(44): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvVec2.h:37,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvFoundationMath.h:33,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvGestureDetector.cpp(44): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvTweakBar.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIPopup.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIPopup.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvUISlider.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIValueBar.cpp(40): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIValueBar.cpp(40): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvUIValueText.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIContainer.cpp(40): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIContainer.cpp(40): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvUIWindow.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUISlider.cpp(40): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUISlider.cpp(40): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvTweakBar.h:38,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvTweakBar.cpp(35): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvTweakBar.h:38,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvTweakBar.cpp(35): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from ../src/NvUI/NvUIInternal.h:37,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIWindow.cpp(40): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from ../src/NvUI/NvUIInternal.h:37,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIWindow.cpp(40): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIValueText.cpp(40): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvUI\NvUIValueText.cpp(40): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvUI.vcxproj -> C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\../lib/Tegra-Android\libNvUID.a

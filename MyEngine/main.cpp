@@ -1,25 +1,20 @@
-#ifdef _WIN32 // Win32 || Win64
+//#define androidinpaska
+
+#ifndef androidinpaska // Win32 || Win64
+#define WINDOWS
 
 #include <iostream>
 #include <windows.h>
+#include "window.h"
 #include "ext\gorilla-audio\ga.h"
 #include "ext\gorilla-audio\gau.h"
 #include "timer.h"
 #include "MikaTestijuttuja.h"
 #include "sound_manager.h"
-//#include <stdio.h>
-
-#else // Android
-
-
-#endif
-
-
+#include <stdio.h>
 #include <time.h>
 #include <chrono>
-//#include <thread>
-
-#include "window.h"
+#include <thread>
 #include "Maths.h"
 #include "fileutils.h"
 #include "Shader.h"
@@ -37,9 +32,37 @@
 #include "Label.h"
 #include "texture.h"
 
+#else // Android
+
+#include "../android/include/NvAppBase/NvInputTransformer.h"
+#include "../android/include/NvAssetLoader/NvAssetLoader.h"
+#include "../android/include/NvGLUtils/NvGLSLProgram.h"
+#include "../android/include/NvGLUtils/NvShapesGL.h"
+#include "../android/include/NvUI/NvTweakBar.h"
+#include "../android/include/NV/NvLogs.h"
+
+#include "../MyEngine/include/Maths.h"
+#include "../MyEngine/include/fileutils.h"
+#include "../MyEngine/include/Shader.h"
+#include "../MyEngine/include/buffer.h"
+#include "../MyEngine/include/indexbuffer.h"
+#include "../MyEngine/include/vertexarray.h"
+#include "../MyEngine/include/renderer2d.h"
+#include "../MyEngine/include/renderable2d.h"
+#include "../MyEngine/include/simple2drenderer.h"
+#include "../MyEngine/include/static_sprite.h"
+#include "../MyEngine/include/BatchRenderer2D.h"
+#include "../MyEngine/include/sprite.h"
+#include "../MyEngine/include/tilelayer.h"
+#include "../MyEngine/include/group.h"
+#include "../MyEngine/include/Label.h"
+#include "../MyEngine/include/texture.h"
+
+#endif
+
 // Jos haluat printit p‰‰lle, t‰ss‰ 1, jos et valitse 0
 
-#ifdef _WIN32
+#ifndef androidinpaska
 	#define CONSOLE(x) std::cout << x
 	#define CONSOLEND(x) std::cout << x << std::endl
 #else
@@ -52,6 +75,8 @@
 
 int main()
 {
+#ifdef WINDOWS
+
 	#define SCREENWIDTH 960
 	#define SCREENHEIGHT 540
 
@@ -65,6 +90,12 @@ int main()
 	Window window("Engine", SCREENWIDTH, SCREENHEIGHT);
 	
 	CONSOLEND("Window width: " << window.getWidth() << " || Height: " << window.getHeight());
+
+#else
+	// Define android juttuja
+
+#endif // WINDOWS
+
 
 	// Tausta v‰ri
 	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -112,10 +143,12 @@ int main()
 			// Arvotaan piirret‰‰nkˆ tekstuuria vai v‰rineliˆt‰
 			if (rand() % 4 == 0)
 				// Piirret‰‰n "v‰rineliˆit‰" ja v‰rit randomilla
-				layer.add(new Sprite(x, y, 0.9f, 0.9f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
+				layer.add(new Sprite(x, y, 0.9f, 0.9f, Maths::vec4(1, 0, 1, 1)));
+			
 			else
 				// Piirret‰‰n tekstuuriarraysta randomilla jotain (meill‰ on 4 tekstuuria siell‰)
 				layer.add(new Sprite(x, y, 0.9f, 0.9f, textures[rand() % 4]));
+			
 			// Otetaan ylˆs montako sprite‰ piirret‰‰n
 			spritecount++;
 		}
@@ -193,15 +226,17 @@ int main()
 	float gain = 0.3f;
 
 	
-
+	
 	TestClass* MikanTestit = new TestClass(&window,&shader); //i put test here until i decide they are ready.
 	float TimeInteval = (int)((1.0f / 60.0f) * 1000);//giving deltatime tickrate; this is good until hitting under 60fps; ;
 	std::chrono::time_point<std::chrono::system_clock> DeltaTime = std::chrono::system_clock::now();//start point for deltatime;
 	vec2 MousePos; //initting vector that will take in coordinate updates from deltatimed loop;
 	//fps->Text = "fps";
+	
 	while (!window.closed())
 	{
 		window.clear();
+		
 		auto ms = MikanTestit->MouseWorldLocation();
 		auto Delta = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - DeltaTime);//calculating delta
 		if ((float)Delta.count() > TimeInteval) //this if statement limits program to 60fps; Only for stuff inside this loop. everything else is running freely
@@ -239,9 +274,14 @@ int main()
 			gain == 0.0f;
 			SoundManager::get("testi")->setGain(gain);
 		}
+
+		
+
 		// Shaderit p‰‰lle ja valotus seuraamaan hiirt‰
 		shader.enable();
 		shader.setUniformMat2f("light_pos", vec2((float)(MousePos.x* 32.0f / window.getWidth() - 16.0f), (float)(9.0f - MousePos.y * 18.0f / window.getHeight())));
+		//shader.setUniformMat2f("light_pos", vec2(0, 0));
+
 		// Piirret‰‰n layeri
 		layer.render();
 		SoundManager::update();

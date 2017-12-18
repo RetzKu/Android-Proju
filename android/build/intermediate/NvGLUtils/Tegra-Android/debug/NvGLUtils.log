@@ -1,0 +1,198 @@
+﻿  NvBitFontGL.cpp
+  NvLogsGL.cpp
+  NvModelExtGL.cpp
+  NvTimers.cpp
+  NvUIGL.cpp
+  NvMaterialGL.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\src\NvUI\NvBitFontInternal.h(58): includes this header: 0,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvBitFontGL.cpp(34): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\limits.h(38): includes this header: 0,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/wchar.h:31,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/cwchar:44,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/bits/postypes.h:40,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/bits/char_traits.h:40,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/string:40,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/stdexcept:39,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/array:38,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/tuple:39,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/bits/stl_map.h:63,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/map:61,
+                   from ../src/NvGLUtils/../../src/NvUI/NvAFont.h:40,
+                   from ../src/NvGLUtils/../../src/NvUI/NvBitFontInternal.h:38,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvBitFontGL.cpp(34): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvGLSLProgram.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NV\NvMath.h(62): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvGLUtils/NvModelExtGL.h:39,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvModelExtGL.cpp(35): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\KHR\khrplatform.h(95): includes this header: 0,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/EGL/eglplatform.h:37,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/EGL/egl.h:36,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvPlatformGL.h:64,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvGLUtils/NvModelExtGL.h:38,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvModelExtGL.cpp(35): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvModelGL.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NV\NvMath.h(62): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvGLUtils/NvMaterialGL.h:39,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvMaterialGL.cpp(34): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\KHR\khrplatform.h(95): includes this header: 0,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/EGL/eglplatform.h:37,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/EGL/egl.h:36,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvPlatformGL.h:64,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvGLUtils/NvMaterialGL.h:38,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvMaterialGL.cpp(34): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvMeshExtGL.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\src\NvUI\NvBitFontInternal.h(58): includes this header: 0,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvUIGL.cpp(34): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\limits.h(38): includes this header: 0,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/wchar.h:31,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/cwchar:44,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/bits/postypes.h:40,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/bits/char_traits.h:40,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/string:40,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/stdexcept:39,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/array:38,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/tuple:39,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/bits/stl_map.h:63,
+                   from C:/NVPACK/android-ndk-r12b/sources/cxx-stl/gnu-libstdc++/4.9/include/map:61,
+                   from ../src/NvGLUtils/../../src/NvUI/NvAFont.h:40,
+                   from ../src/NvGLUtils/../../src/NvUI/NvBitFontInternal.h:38,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvUIGL.cpp(34): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvUIGraphicFrameGL.cpp
+  NvImageGL.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NV\NvMath.h(62): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvGLUtils/NvModelGL.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvModelGL.cpp(36): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\KHR\khrplatform.h(95): includes this header: 0,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/EGL/eglplatform.h:37,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/EGL/egl.h:36,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvPlatformGL.h:64,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvGLUtils/NvModelGL.h:41,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvModelGL.cpp(36): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvShapesGL.cpp
+  NvUIGraphicGL.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NV\NvMath.h(62): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvGLUtils/NvMeshExtGL.h:41,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvMeshExtGL.cpp(35): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\KHR\khrplatform.h(95): includes this header: 0,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/EGL/eglplatform.h:37,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/EGL/egl.h:36,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvPlatformGL.h:64,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvGLUtils/NvMeshExtGL.h:38,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvMeshExtGL.cpp(35): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvUIGraphicFrameGL.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvUIGraphicFrameGL.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NV\NvMath.h(62): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvGLUtils\NvShapesGL.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvShapesGL.cpp(36): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\KHR\khrplatform.h(95): includes this header: 0,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/EGL/eglplatform.h:37,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/EGL/egl.h:36,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvPlatformGL.h:64,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvGLUtils\NvShapesGL.h:41,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvShapesGL.cpp(36): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvUIGraphicGL.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvUIGraphicGL.cpp(39): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvUIShadersGL.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from ../src/NvGLUtils/NvUIShadersGL.h:37,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvUIShadersGL.cpp(35): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\KHR\khrplatform.h(95): includes this header: 0,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/EGL/eglplatform.h:37,
+                   from C:/NVPACK/android-ndk-r12b/platforms/android-16/arch-arm/usr/include/EGL/egl.h:36,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvPlatformGL.h:64,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvUIShadersGL.cpp(34): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvUITextureRenderGL.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\include\NvFoundation\NvMath.h(43): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from ../src/NvGLUtils/NvUITextureRenderGL.h:40,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvUITextureRenderGL.cpp(34): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(20): includes this header: 0,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvFoundation/NvMath.h:43,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NV/NvVector.h:50,
+                   from C:/Users/tervepaterve/Documents/GitHub/Android-Proju/android/build/../include/NvUI/NvUI.h:42,
+                   from ../src/NvGLUtils/NvUITextureRenderGL.h:40,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGLUtils\NvUITextureRenderGL.cpp(34): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvGLUtils.vcxproj -> C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\../lib/Tegra-Android\libNvGLUtilsD.a

@@ -1,0 +1,11 @@
+﻿  NvGamepadAndroid.cpp
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\src\NvGamepad\android\NvGamepadAndroid.cpp(40): includes this header: 0:
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\math.h(24): 0: warning: "__pure2" redefined
+   #define __pure2
+   ^
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\unistd.h(32): includes this header: 0,
+  C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\from\src\NvGamepad\android\NvGamepadAndroid.cpp(35): 
+  C:\NVPACK\android-ndk-r12b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h(198): 0: note: this is the location of the previous definition
+   #define __pure2 __attribute__((__const__)) /* Android-added: used by FreeBSD libm */
+   ^
+  NvGamepad.vcxproj -> C:\Users\tervepaterve\Documents\GitHub\Android-Proju\android\build\../lib/Tegra-Android\libNvGamepadD.a

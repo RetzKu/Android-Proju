@@ -25,6 +25,7 @@ std::string FileUtils::read_file(const char* filepath)
 	delete[] data;
 	return result;
 }
+/*
 int FileUtils::CoutFPS()
 {
 	frames++; 
@@ -37,7 +38,7 @@ int FileUtils::CoutFPS()
 		return tmp;
 	}
 }
-
+*/
 unsigned char* FileUtils::LoadTextureFromFile(const std::string FileName)
 {
 		int x, y;
