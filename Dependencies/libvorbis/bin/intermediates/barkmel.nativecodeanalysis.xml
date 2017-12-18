@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\tervepaterve\documents\github\android-proju\dependencies\libvorbis\lib\</FILEPATH>
+      <FILENAME>barkmel.c</FILENAME>
+      <LINE>55</LINE>
+      <COLUMN>10</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'i' hides declaration of the same name in outer scope. For additional information, see previous declaration at line '21' of 'c:\users\tervepaterve\documents\github\android-proju\dependencies\libvorbis\lib\barkmel.c'.</DESCRIPTION>
+    <FUNCTION>main</FUNCTION>
+    <DECORATED>main</DECORATED>
+    <FUNCLINE>20</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\tervepaterve\documents\github\android-proju\dependencies\libvorbis\lib\</FILEPATH>
+        <FILENAME>barkmel.c</FILENAME>
+        <LINE>21</LINE>
+        <COLUMN>6</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>

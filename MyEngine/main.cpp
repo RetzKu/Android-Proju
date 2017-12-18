@@ -1,6 +1,25 @@
-#include "window.h"
-#include <windows.h>
+#ifdef _WIN32 // Win32 || Win64
+
 #include <iostream>
+#include <windows.h>
+#include "ext\gorilla-audio\ga.h"
+#include "ext\gorilla-audio\gau.h"
+#include "timer.h"
+#include "MikaTestijuttuja.h"
+#include "sound_manager.h"
+//#include <stdio.h>
+
+#else // Android
+
+
+#endif
+
+
+#include <time.h>
+#include <chrono>
+//#include <thread>
+
+#include "window.h"
 #include "Maths.h"
 #include "fileutils.h"
 #include "Shader.h"
@@ -11,31 +30,23 @@
 #include "renderable2d.h"
 #include "simple2drenderer.h"
 #include "static_sprite.h"
-#include <chrono>
 #include "BatchRenderer2D.h"
 #include "sprite.h"
-#include <time.h>
-#include "timer.h"
-#include <thread>
-#include "MikaTestijuttuja.h"
 #include "tilelayer.h"
 #include "group.h"
 #include "Label.h"
 #include "texture.h"
-#include "ext\gorilla-audio\ga.h"
-#include "ext\gorilla-audio\gau.h"
-#include <stdio.h>
-#include "sound_manager.h"
 
 // Jos haluat printit p‰‰lle, t‰ss‰ 1, jos et valitse 0
-#define DEBUG 1
-#if DEBUG
+
+#ifdef _WIN32
 	#define CONSOLE(x) std::cout << x
 	#define CONSOLEND(x) std::cout << x << std::endl
 #else
 	#define CONSOLE(x)
 	#define CONSOLEND(x)
 #endif
+
 
 #if 1
 
@@ -49,11 +60,11 @@ int main()
 	using namespace Audio;
 	using namespace Maths;
 
-	FileUtils utils;
+	//FileUtils utils;
 	// Asetetaan ikkunan parametrit
 	Window window("Engine", SCREENWIDTH, SCREENHEIGHT);
 	
-	std::cout << "Window Width: " << window.getWidth() << +" Height: " << window.getHeight() << std::endl;
+	CONSOLEND("Window width: " << window.getWidth() << " || Height: " << window.getHeight());
 
 	// Tausta v‰ri
 	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -76,10 +87,10 @@ int main()
 	// Ladataan tekstuurit tekstuuri* arrayhyn
 	Texture* textures[] =
 	{
-		new Texture("ta.png"),
-		new Texture("tb.png"),
-		new Texture("tc.png"),
-		new Texture("Pekka2.bmp")
+		new Texture("../Assets/ta.png"),
+		new Texture("../Assets/tb.png"),
+		new Texture("../Assets/tc.png"),
+		new Texture("../Assets/Pekka2.bmp")
 	};
 
 #define TUTORIAL 0
@@ -115,7 +126,8 @@ int main()
 	g->add(new Label("A!k", 0.1f, 0.3f, vec4(1, 1, 1, 1))); //lis‰t‰‰n teksti sen p‰‰lle ja offsetataan groupista 0.1 ja 0.3 verran
 
  	layer.add(g); //Labelin voi suoraan adata layeriin
-	std::cout << "Sprite count on screen: " << spritecount << std::endl;
+	CONSOLEND("Sprite count on screen: " << spritecount);
+
 
 #else 
 
@@ -245,68 +257,6 @@ int main()
 	return 0;
 }
 
-/*
-
-// shadereitten latauksen j‰lkeen
-
-shader.enable();
-// Heitet‰‰n matriisi shaderille
-shader.setUniformMat4("pr_matrix", ortho);
-// Vaihdetaan kuvion paikkaa, 0 0 0 vasen alareuna
-//shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
-
-// Esimerkki rotatesta, 45 astetta z suunnassa
-//shader.setUniformMat4("ml_matrix", mat4::rotation(45.0f, vec3(0, 0, 1)));
-
-// Luodaan uusia spritej‰
-// M‰‰ritell‰‰n paikka, koko, v‰ri ja shader
-//shader.setUniformMat4("ml_matrix", mat4::rotation(15.0f, vec3(0, 0, 1)));
-
-std::vector<Renderable2D*> sprites;
-
-srand(time(NULL));
-
-FileUtils::LoadTextureFromFile("Pekka.png");
-
-
-Sprite sprite(5, 5, 4, 4, Maths::vec4(1, 0, 1, 1));
-Sprite sprite3(7, 1, 7, 2, Maths::vec4(0.2f, 0, 1, 1));
-BatchRenderer2D renderer;
-for (float y = 0; y < 9.0f; y += 0.05f)
-{
-for(float x = 0; x < 16.0f; x += 0.05f)
-{
-sprites.push_back(new Sprite(x, y, 0.04f, 0.04f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
-}
-}
-
-
-// Valot shaderiin, 0.0f 0.0f on vasen alareuna
-// Jos objekti on vaikka 4.0f 2.0f kokoinen, luonnollisesti valo keskell‰ 2.0f 1.0f
-//shader.setUniformMat2f("light_pos", vec2(4.0f, 2.0f));
-// Shaderin v‰rin vaihto
-//shader.setUniformMat4f("colour", vec4(0.2f, 0.3f, 0.8f, 1.0f));
-
-
-printf("Sprites: %d\n", sprites.size());
-
-
-// ikkuna loopista
-
-mat4 mat = mat4::translation(vec3(5, 5, 5));
-mat = mat * mat4::rotation(time.elapsed() * 10.0f, vec3(0, 0, 1));
-mat = mat * mat4::translation(vec3(-5, -5, -5));
-shader.setUniformMat4("ml_matrix", mat);
-
-renderer.begin();
-for(int i = 0; i < spritelistsize; i++)
-{
-renderer.submit(sprites[i]); //choke point
-}
-renderer.end();
-renderer.flush();
-
-*/
 
 #endif
 

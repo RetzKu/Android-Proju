@@ -5,13 +5,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Source">
-      <UniqueIdentifier>{cf57118f-fce9-4055-896d-f54c1e008161}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -19,23 +12,11 @@
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{1273bf2c-1671-4dae-832c-9a526b9c7172}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Input">
-      <UniqueIdentifier>{df735c84-7a78-497f-afe6-74a3399da142}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Maths">
-      <UniqueIdentifier>{11e35f84-c6c4-4c36-93bd-b3fbbeb74fcb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Utils">
-      <UniqueIdentifier>{ab5a3f18-ffd8-47f5-be39-5d8c10b27fbe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Shaders">
       <UniqueIdentifier>{048eac76-8a0e-41a1-9c27-9188739f51ff}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Graphics\Buffers">
       <UniqueIdentifier>{b73b6091-314f-4760-898a-ea369feca937}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Utils">
-      <UniqueIdentifier>{7a54c35b-6cf6-4cfe-b5be-d20d926411ab}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Graphics\Layers">
       <UniqueIdentifier>{1647c1af-db37-4fd6-a0cf-078ad731e3dd}</UniqueIdentifier>
@@ -55,63 +36,32 @@
     <Filter Include="Source Files\Audio">
       <UniqueIdentifier>{0c2aa3f6-ded5-4627-aef9-f1e7ac05530e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Maths">
+      <UniqueIdentifier>{dd36b815-eb87-4ad5-8b20-257b5e4d32bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{6330df75-0ffc-482c-8bc4-b9a0365536fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Audio">
+      <UniqueIdentifier>{2d7a3a9c-75be-4d7c-90a8-42e517d5fbc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics">
+      <UniqueIdentifier>{0b38298b-8958-4f76-85ff-2ba46081f099}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\Buffers">
+      <UniqueIdentifier>{b1b07b91-3268-49f9-b662-81f2598fa76f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\Layers">
+      <UniqueIdentifier>{5bc524fd-4625-4a95-b457-12b395eb7df7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Maths">
+      <UniqueIdentifier>{3797637d-e841-4110-8170-9ef318c3b469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{836497b4-e60e-44a0-a9a1-1b2ebac04b98}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="window.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="vec2.cpp">
-      <Filter>Source Files\Maths</Filter>
-    </ClCompile>
-    <ClCompile Include="vec3.cpp">
-      <Filter>Source Files\Maths</Filter>
-    </ClCompile>
-    <ClCompile Include="vec4.cpp">
-      <Filter>Source Files\Maths</Filter>
-    </ClCompile>
-    <ClCompile Include="mat4.cpp">
-      <Filter>Source Files\Maths</Filter>
-    </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="buffer.cpp">
-      <Filter>Source Files\Graphics\Buffers</Filter>
-    </ClCompile>
-    <ClCompile Include="indexbuffer.cpp">
-      <Filter>Source Files\Graphics\Buffers</Filter>
-    </ClCompile>
-    <ClCompile Include="vertexarray.cpp">
-      <Filter>Source Files\Graphics\Buffers</Filter>
-    </ClCompile>
-    <ClCompile Include="simple2drenderer.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="BatchRenderer2D.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="sprite.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="static_sprite.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="fileutils.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="layer.cpp">
-      <Filter>Source Files\Graphics\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="tilelayer.cpp">
-      <Filter>Source Files\Graphics\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="group.cpp">
-      <Filter>Source Files\Graphics\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="texture.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="ext\gorilla-audio\ga.c">
       <Filter>Source Files\ext\gorilla-audio</Filter>
     </ClCompile>
@@ -130,89 +80,72 @@
     <ClCompile Include="ext\gorilla-audio\common\gc_thread.c">
       <Filter>Source Files\ext\gorilla-audio</Filter>
     </ClCompile>
-    <ClCompile Include="Label.cpp">
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\mat4.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="source\vec2.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="source\vec3.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="source\vec4.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="source\buffer.cpp">
+      <Filter>Source Files\Graphics\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\indexbuffer.cpp">
+      <Filter>Source Files\Graphics\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\layer.cpp">
+      <Filter>Source Files\Graphics\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\tilelayer.cpp">
+      <Filter>Source Files\Graphics\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\static_sprite.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="sound.cpp">
+    <ClCompile Include="source\sprite.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\simple2drenderer.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BatchRenderer2D.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\sound.cpp">
       <Filter>Source Files\Audio</Filter>
     </ClCompile>
-    <ClCompile Include="sound_manager.cpp">
+    <ClCompile Include="source\sound_manager.cpp">
       <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FileUtils.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="source\group.cpp">
+      <Filter>Source Files\Graphics\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Label.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Shader.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\texture.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\vertexarray.cpp">
+      <Filter>Source Files\Graphics\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\window.cpp">
+      <Filter>Source Files\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="window.h">
-      <Filter>Source Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="vec2.h">
-      <Filter>Source Files\Maths</Filter>
-    </ClInclude>
-    <ClInclude Include="vec3.h">
-      <Filter>Source Files\Maths</Filter>
-    </ClInclude>
-    <ClInclude Include="vec4.h">
-      <Filter>Source Files\Maths</Filter>
-    </ClInclude>
-    <ClInclude Include="Maths.h">
-      <Filter>Source Files\Maths</Filter>
-    </ClInclude>
-    <ClInclude Include="mat4.h">
-      <Filter>Source Files\Maths</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Source Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="buffer.h">
-      <Filter>Source Files\Graphics\Buffers</Filter>
-    </ClInclude>
-    <ClInclude Include="indexbuffer.h">
-      <Filter>Source Files\Graphics\Buffers</Filter>
-    </ClInclude>
-    <ClInclude Include="vertexarray.h">
-      <Filter>Source Files\Graphics\Buffers</Filter>
-    </ClInclude>
-    <ClInclude Include="renderable2d.h">
-      <Filter>Source Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="renderer2d.h">
-      <Filter>Source Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="simple2drenderer.h">
-      <Filter>Source Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="BatchRenderer2D.h">
-      <Filter>Source Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="sprite.h">
-      <Filter>Source Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="static_sprite.h">
-      <Filter>Source Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="MikaTestijuttuja.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="timer.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="fileutils.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="layer.h">
-      <Filter>Source Files\Graphics\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="tilelayer.h">
-      <Filter>Source Files\Graphics\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="group.h">
-      <Filter>Source Files\Graphics\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="texture.h">
-      <Filter>Source Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="imageload.h">
-      <Filter>Source Files\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="ext\gorilla-audio\ga.h">
       <Filter>Header Files\ext\gorilla-audio</Filter>
     </ClInclude>
@@ -234,14 +167,86 @@
     <ClInclude Include="ext\gorilla-audio\common\gc_types.h">
       <Filter>Header Files\ext\gorilla-audio</Filter>
     </ClInclude>
-    <ClInclude Include="Label.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="include\sound.h">
+      <Filter>Header Files\Audio</Filter>
     </ClInclude>
-    <ClInclude Include="sound.h">
-      <Filter>Source Files\Audio</Filter>
+    <ClInclude Include="include\sound_manager.h">
+      <Filter>Header Files\Audio</Filter>
     </ClInclude>
-    <ClInclude Include="sound_manager.h">
-      <Filter>Source Files\Audio</Filter>
+    <ClInclude Include="include\group.h">
+      <Filter>Header Files\Graphics\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\layer.h">
+      <Filter>Header Files\Graphics\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tilelayer.h">
+      <Filter>Header Files\Graphics\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\buffer.h">
+      <Filter>Header Files\Graphics\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vertexarray.h">
+      <Filter>Header Files\Graphics\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\indexbuffer.h">
+      <Filter>Header Files\Graphics\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BatchRenderer2D.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Label.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\simple2drenderer.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sprite.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\static_sprite.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\texture.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\window.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vec4.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vec2.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vec3.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Maths.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="include\mat4.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="include\fileutils.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imageload.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MikaTestijuttuja.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\timer.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\renderable2d.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\renderer2d.h">
+      <Filter>Header Files\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
