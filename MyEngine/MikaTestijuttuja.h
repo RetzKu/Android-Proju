@@ -162,7 +162,7 @@ void TestClass::GetCameraMovement()
 	//	//}
 	//}
 	mat4 ortho = mat4::orthographic( -AspectRatio.x + CameraCoordinates.x, AspectRatio.x + CameraCoordinates.x, -AspectRatio.y + CameraCoordinates.y, AspectRatio.y + CameraCoordinates.y , -1.0f, 1.0f);
-	//ortho = ortho * mat4::rotation(time, Maths::vec3(0, 0, 1));
+	ortho = ortho * mat4::rotation(time, Maths::vec3(0, 0, 1));
 	SetUniforMat4("pr_matrix", ortho);
 }
 

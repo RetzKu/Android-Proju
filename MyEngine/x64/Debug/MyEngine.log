@@ -1,40 +1,52 @@
 ﻿  window.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\window.h(5): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+e:\codes\android-proju\myengine\window.h(5): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
   vertexarray.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\vertexarray.h(4): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+e:\codes\android-proju\myengine\vertexarray.h(4): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  vec4.cpp
+  vec3.cpp
+  vec2.cpp
   tilelayer.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android_proju2\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+e:\codes\android-proju\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+e:\codes\android-proju\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
   texture.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\texture.h(3): fatal error C1083: Cannot open include file: 'FreeImage.h': No such file or directory
+e:\codes\android-proju\myengine\texture.h(3): fatal error C1083: Cannot open include file: 'FreeImage.h': No such file or directory
   static_sprite.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android_proju2\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+e:\codes\android-proju\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+e:\codes\android-proju\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
   sprite.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android_proju2\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
-  simple2drenderer.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android_proju2\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
-  main.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\window.h(5): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
-  layer.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android_proju2\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
-  indexbuffer.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
-  group.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android_proju2\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
-  fileutils.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\fileutils.h(6): fatal error C1083: Cannot open include file: 'stb_image.h': No such file or directory
-  buffer.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\buffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+e:\codes\android-proju\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+e:\codes\android-proju\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  sound_manager.cpp
+  sound.cpp
   Shader.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\fileutils.h(6): fatal error C1083: Cannot open include file: 'stb_image.h': No such file or directory
+e:\codes\android-proju\myengine\fileutils.h(6): fatal error C1083: Cannot open include file: 'stb_image.h': No such file or directory
+  simple2drenderer.cpp
+e:\codes\android-proju\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+e:\codes\android-proju\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  renderable2d.cpp
+e:\codes\android-proju\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+e:\codes\android-proju\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  mat4.cpp
+e:\codes\android-proju\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  main.cpp
+e:\codes\android-proju\myengine\window.h(5): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  layer.cpp
+e:\codes\android-proju\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+e:\codes\android-proju\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
   Label.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android_proju2\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+e:\codes\android-proju\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+e:\codes\android-proju\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  indexbuffer.cpp
+e:\codes\android-proju\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  group.cpp
+e:\codes\android-proju\myengine\maths.h(17): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+e:\codes\android-proju\myengine\indexbuffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  Generating Code...
+  Compiling...
+  fileutils.cpp
+e:\codes\android-proju\myengine\fileutils.h(6): fatal error C1083: Cannot open include file: 'stb_image.h': No such file or directory
+  buffer.cpp
+e:\codes\android-proju\myengine\buffer.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
   BatchRenderer2D.cpp
-c:\users\loyalist\source\repos\android_proju2\myengine\renderer2d.h(4): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+e:\codes\android-proju\myengine\renderer2d.h(4): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
   Generating Code...

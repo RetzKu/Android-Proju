@@ -90,10 +90,9 @@ public:
 void Menu();
 void InitGame();
 int GameLoop(Game* GameObject);
-void DeltaTimedLoop(Game* GameObject);
 
 #if 1
-
+#endif
 int main()
 {
 #define SCREENWIDTH 960
@@ -108,6 +107,7 @@ int main()
 	// Asetetaan ikkunan parametrit
 
 	std::cout << "Window Width: " << window->getWidth() << +" Height: " << window->getHeight() << std::endl;
+	Menu();
 
 	// Tausta v‰ri
 	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -271,83 +271,83 @@ layer.add(RightColliders);
 layer.add(LeftColliders);
 layer.add(UpColliders);
 layer.add(DownColliders);
-while (!window->closed())
-{
-	window->clear();
-	auto ms = MikanTestit->MouseWorldLocation();
-	auto Delta = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - DeltaTime);//calculating delta
-	if ((float)Delta.count() > TimeInteval) //this if statement limits program to 60fps; Only for stuff inside this loop. everything else is running freely
-	{
-		DeltaTime += std::chrono::milliseconds((int)TimeInteval); //adding that
-		
-		if (LeftColliders != nullptr)
-		{
-			degrees += 0.1f;
-			LeftColliders->SetMatrix(Maths::mat4::translation(Maths::vec3(10 - degrees, 0.5f, 0.0f)));
-			RightColliders->SetMatrix(Maths::mat4::translation(Maths::vec3(-10 + degrees, 0.5f, 0.0f)));
-			UpColliders->SetMatrix(Maths::mat4::translation(Maths::vec3(.5f, 10 - degrees, 0.0f)));
-			DownColliders->SetMatrix(Maths::mat4::translation(Maths::vec3(.5f, -10 + degrees, 0.0f)));
-
-			//Colliders->CheckCollisionWithPoint(PlayerGroup->GetCenter(Player->getPosition(),Player->getSize()));
-			//Used to rotatecamera with time
-			MikanTestit->GetCameraMovement();
-			//Used to add extra rotation to player with time
-			MikanTestit->RotatePlayerTimed(PlayerGroup, vec2(0, 0), vec2(Player->getSize().y, Player->getSize().y));
-
-			//COLLISION CHECKS
-			if (UpColliders->AABBCollisionCheck(*PlayerGroup->GetMatrix(), Player->getPosition(), Player->getSize())) { Menu(); }
-			if (DownColliders->AABBCollisionCheck(*PlayerGroup->GetMatrix(), Player->getPosition(), Player->getSize())) { Menu(); }
-			if (LeftColliders->AABBCollisionCheck(*PlayerGroup->GetMatrix(), Player->getPosition(), Player->getSize())) { Menu(); }
-			if (RightColliders->AABBCollisionCheck(*PlayerGroup->GetMatrix(), Player->getPosition(), Player->getSize())) { Menu(); }
-		}
-		PlayerGroup->GetCenter(Player->getPosition(), Player->getSize());
-		MikanTestit->RotatePlayer(PlayerGroup, vec2(0,0), vec2(Player->getSize().y , Player->getSize().y));
-		//xrange = abs(middle.x - point.x
-		//y -||-
-		//return xrange < s‰de.x && yrange < s‰dey
-		//MikanTestit->GetCameraMovement();//funktion that enables WASD movement within world space
-		MousePos = MikanTestit->MouseWorldLocation();//Testversion for correct coordinate handling in world perspective
-	}
-	if (window->isKeyTyped(GLFW_KEY_K))
-	{
-		LeftColliders->AddFromOrigin(new Sprite(0, -2, 1, 4, vec4(1, 1, 1, 1), true), Maths::vec3(degrees, 0, 0));
-		RightColliders->AddFromOrigin(new Sprite(0, -2, 1, 4, vec4(1, 1, 1, 1), true), Maths::vec3(-degrees, 0, 0));
-		UpColliders->AddFromOrigin(new Sprite(-2, 0, 4, 1, vec4(1, 1, 1, 1), true), Maths::vec3(0, degrees, 0));
-		DownColliders->AddFromOrigin(new Sprite(-2, 0, 4, 1, vec4(1, 1, 1, 1), true), Maths::vec3(0, -degrees, 0));
-	}
-
-	if (window->isKeyTyped(GLFW_KEY_1))
-	{
-		//hakee ladatun audio filun ja laittaa sen soimaan
-		SoundManager::get("testi")->play();
-		//asettaa gainiksi nolla eli jos taustalla soi musa 30db niin p‰‰lle tuleva ei tule 30db + 30db.
-		//voit kokeilla kommentoida gain rivin ja painella 1 nappia
-		gain == 0.0f;
-		//gainia ei voi asettaa jos mik‰‰n ei soi.
-		SoundManager::get("testi")->setGain(gain);
-	}
-	if (window->isKeyTyped(GLFW_KEY_2))
-	{
-		SoundManager::get("testi")->stop();
-	}
-	if (window->isKeyTyped(GLFW_KEY_3))
-	{
-		SoundManager::get("testi")->pause();
-	}
-	if (window->isKeyTyped(GLFW_KEY_4))
-	{
-		SoundManager::get("testi")->resume();
-
-		gain == 0.0f;
-		SoundManager::get("testi")->setGain(gain);
-	}
-	// Shaderit p‰‰lle ja valotus seuraamaan hiirt‰
-	shader.enable();
-	shader.setUniformMat2f("light_pos", vec2((float)(MousePos.x* 32.0f / window->getWidth() - 16.0f), (float)(9.0f - MousePos.y * 18.0f / window->getHeight())));
-	// Piirret‰‰n layeri
-	layer.render();
-	SoundManager::update();
-	window->update();
+//while (!window->closed())
+//{
+//	window->clear();
+//	auto ms = MikanTestit->MouseWorldLocation();
+//	auto Delta = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - DeltaTime);//calculating delta
+//	if ((float)Delta.count() > TimeInteval) //this if statement limits program to 60fps; Only for stuff inside this loop. everything else is running freely
+//	{
+//		DeltaTime += std::chrono::milliseconds((int)TimeInteval); //adding that
+//		
+//		if (LeftColliders != nullptr)
+//		{
+//			degrees += 0.1f;
+//			LeftColliders->SetMatrix(Maths::mat4::translation(Maths::vec3(10 - degrees, 0.5f, 0.0f)));
+//			RightColliders->SetMatrix(Maths::mat4::translation(Maths::vec3(-10 + degrees, 0.5f, 0.0f)));
+//			UpColliders->SetMatrix(Maths::mat4::translation(Maths::vec3(.5f, 10 - degrees, 0.0f)));
+//			DownColliders->SetMatrix(Maths::mat4::translation(Maths::vec3(.5f, -10 + degrees, 0.0f)));
+//
+//			//Colliders->CheckCollisionWithPoint(PlayerGroup->GetCenter(Player->getPosition(),Player->getSize()));
+//			//Used to rotatecamera with time
+//			MikanTestit->GetCameraMovement();
+//			//Used to add extra rotation to player with time
+//			MikanTestit->RotatePlayerTimed(PlayerGroup, vec2(0, 0), vec2(Player->getSize().y, Player->getSize().y));
+//
+//			//COLLISION CHECKS
+//			if (UpColliders->AABBCollisionCheck(*PlayerGroup->GetMatrix(), Player->getPosition(), Player->getSize())) { Menu(); }
+//			if (DownColliders->AABBCollisionCheck(*PlayerGroup->GetMatrix(), Player->getPosition(), Player->getSize())) { Menu(); }
+//			if (LeftColliders->AABBCollisionCheck(*PlayerGroup->GetMatrix(), Player->getPosition(), Player->getSize())) { Menu(); }
+//			if (RightColliders->AABBCollisionCheck(*PlayerGroup->GetMatrix(), Player->getPosition(), Player->getSize())) { Menu(); }
+//		}
+//		PlayerGroup->GetCenter(Player->getPosition(), Player->getSize());
+//		MikanTestit->RotatePlayer(PlayerGroup, vec2(0,0), vec2(Player->getSize().y , Player->getSize().y));
+//		//xrange = abs(middle.x - point.x
+//		//y -||-
+//		//return xrange < s‰de.x && yrange < s‰dey
+//		//MikanTestit->GetCameraMovement();//funktion that enables WASD movement within world space
+//		MousePos = MikanTestit->MouseWorldLocation();//Testversion for correct coordinate handling in world perspective
+//	}
+//	if (window->isKeyTyped(GLFW_KEY_K))
+//	{
+//		LeftColliders->AddFromOrigin(new Sprite(0, -2, 1, 4, vec4(1, 1, 1, 1), true), Maths::vec3(degrees, 0, 0));
+//		RightColliders->AddFromOrigin(new Sprite(0, -2, 1, 4, vec4(1, 1, 1, 1), true), Maths::vec3(-degrees, 0, 0));
+//		UpColliders->AddFromOrigin(new Sprite(-2, 0, 4, 1, vec4(1, 1, 1, 1), true), Maths::vec3(0, degrees, 0));
+//		DownColliders->AddFromOrigin(new Sprite(-2, 0, 4, 1, vec4(1, 1, 1, 1), true), Maths::vec3(0, -degrees, 0));
+//	}
+//
+//	if (window->isKeyTyped(GLFW_KEY_1))
+//	{
+//		//hakee ladatun audio filun ja laittaa sen soimaan
+//		SoundManager::get("testi")->play();
+//		//asettaa gainiksi nolla eli jos taustalla soi musa 30db niin p‰‰lle tuleva ei tule 30db + 30db.
+//		//voit kokeilla kommentoida gain rivin ja painella 1 nappia
+//		gain == 0.0f;
+//		//gainia ei voi asettaa jos mik‰‰n ei soi.
+//		SoundManager::get("testi")->setGain(gain);
+//	}
+//	if (window->isKeyTyped(GLFW_KEY_2))
+//	{
+//		SoundManager::get("testi")->stop();
+//	}
+//	if (window->isKeyTyped(GLFW_KEY_3))
+//	{
+//		SoundManager::get("testi")->pause();
+//	}
+//	if (window->isKeyTyped(GLFW_KEY_4))
+//	{
+//		SoundManager::get("testi")->resume();
+//
+//		gain == 0.0f;
+//		SoundManager::get("testi")->setGain(gain);
+//	}
+//	// Shaderit p‰‰lle ja valotus seuraamaan hiirt‰
+//	shader.enable();
+//	shader.setUniformMat2f("light_pos", vec2((float)(MousePos.x* 32.0f / window->getWidth() - 16.0f), (float)(9.0f - MousePos.y * 18.0f / window->getHeight())));
+//	// Piirret‰‰n layeri
+//	layer.render();
+//	SoundManager::update();
+//	window->update();
 }
 
 // Tuhotaan meid‰n ladatut tekstuurit
@@ -355,17 +355,34 @@ while (!window->closed())
 //	{
 //		delete textures[i];
 //	}
-	return 0;
-}
+//}
 
 void Menu()
 {
 	bool WaitingForAnswer = true;
+	Shader* menushader = new Shader("basic.vert", "basic.frag");
+	menushader->enable();
+	menushader->setUniformMat2f("light_pos", vec2(4.0f, 1.5f));
+
+	Layer* menulayer = new TileLayer(menushader);
+	menulayer->add(new Label("Press Space to start", 0, 0, vec4(1, 1, 1, 1)));
+	
+	GLint texIDs[] =
+	{
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+	};
+
+	menushader->enable();
+	// shader.h:ssa pieni selitys uniformeista
+	menushader->setUniformMat1iv("textures", texIDs, 10);
+
 	while (WaitingForAnswer == true)
 	{
+		window->clear();
 		if (window->isKeyTyped(GLFW_KEY_SPACE))
 		{
 			//Resets everything and re-enters gameloop
+			delete menulayer;
 			InitGame();
 		}
 		if (window->isKeyTyped(GLFW_KEY_ESCAPE))
@@ -373,6 +390,8 @@ void Menu()
 			CONSOLEND("Exiting Game");
 			WaitingForAnswer = false;
 		}
+		menulayer->render();
+		window->update();
 	}
 }
 void InitGame()
@@ -389,124 +408,165 @@ void InitGame()
 }
 int GameLoop(Game* GameObject)
 {
-	return 0;
+	using namespace Audio;
 	bool Running = true;
+	float gain = 0.3f;
 
 	/*Updatable Variables*/
 	Maths::vec2 MousePos;
 
-
+	glClearColor(.15f, .15f, .15f, 1);
+	SoundManager::add(new Sound("testi", "testi.wav"));
+	if (SoundManager::get("testi")->isPlaying() == false)
+	{
+		SoundManager::get("testi")->loop();
+	}
+	else
+	{
+		SoundManager::get("testi")->stop();
+		SoundManager::get("testi")->loop();
+	}
 	float degrees = 0;
 	Group* LeftColliders = new Group(Maths::mat4::translation(Maths::vec3(10.0f, 0.0f, 0.0f)));
-	LeftColliders->add(new Sprite(0, -2, 1, 4, vec4(1, 1, 1, 1), true));
 
 
 	Group* UpColliders = new Group(Maths::mat4::translation(Maths::vec3(0.0f, 10.0f, 0.0f)));
-	UpColliders->add(new Sprite(-2, 0, 4, 1, vec4(1, 1, 1, 1), true));
 
 	Group* DownColliders = new Group(Maths::mat4::translation(Maths::vec3(0, -10.0f, 0.0f)));
-	DownColliders->add(new Sprite(-2, 0, 4, 1, vec4(1, 1, 1, 1), true));
 	//Colliders->add(new Sprite(0, -2.0f, 1, 4, vec4(1, 1, 1, 1), true));
 
 	Group* RightColliders = new Group(Maths::mat4::translation(Maths::vec3(-10.0f, 0.0f, 0.0f)));
-	RightColliders->add(new Sprite(0, -2, 1, 4, vec4(1, 1, 1, 1), true));
 	
 	GameObject->Layers[0]->add(RightColliders);
 	GameObject->Layers[0]->add(LeftColliders);
 	GameObject->Layers[0]->add(UpColliders);
 	GameObject->Layers[0]->add(DownColliders);
+
+	Sprite* Player = new Sprite(0, 0, 1, 1, new Texture("Pekka2.bmp"), true);
+	Group* PlayerGroup = new Group(Maths::mat4::translation(Maths::vec3(3.0f, 0.0f, 0.0f)));
+	GameObject->Layers[0]->add(new Sprite(.25f, .25f, 0.5f, 0.5f, vec4(1, 1, 1, 1), false));
+	PlayerGroup->add(Player);
+	GameObject->Layers[0]->add(PlayerGroup);
+	std::chrono::time_point<std::chrono::system_clock> DeltaTime = std::chrono::system_clock::now();//start point for deltatime;
+	std::chrono::time_point<std::chrono::system_clock> DeltaTimeSeconds = std::chrono::system_clock::now();//start point for deltatime;
+	float TimeInteval = (int)((1.0f / 60.0f) * 1000);//giving deltatime tickrate; this is good until hitting under 60fps; ;
+	float Loops = 0;
+	float Score = 0;
 	while (Running)
 	{
+		window->clear();
+
+		auto Delta = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - DeltaTime);//calculating delta
+		if ((float)Delta.count() > TimeInteval) //this if statement limits program to 60fps; Only for stuff inside this loop. everything else is running freely
+		{
+			Loops++;
+			
+			DeltaTime += std::chrono::milliseconds((int)TimeInteval); //adding tha
+			if (Loops >= 30-Score)
+			{
+				Loops = 0;
+				Score += 0.1f;
+				std::cout << "Score: " + std::to_string(Score) << std::endl;
+				if (rand() %4 == 0)
+				{
+					DownColliders->AddFromOrigin(new Sprite(-2, 0, 4, 1, vec4(0.25f, 1, 1, 1), true), Maths::vec3(0, -degrees, 0));
+				}
+				if (rand() % 4 == 1)
+				{
+					RightColliders->AddFromOrigin(new Sprite(0, -2, 1, 4, vec4(.25f, 1, 1, 1), true), Maths::vec3(-degrees, 0, 0));
+				}
+				if (rand() % 4 == 2)
+				{
+					UpColliders->AddFromOrigin(new Sprite(-2, 0, 4, 1, vec4(.25f, 1, 1, 1), true), Maths::vec3(0, degrees, 0));
+				}
+				if (rand() % 4 == 3)
+				{
+					LeftColliders->AddFromOrigin(new Sprite(0, -2, 1, 4, vec4(.25f, 1, 1, 1), true), Maths::vec3(degrees, 0, 0));
+				}
+			}
+			degrees += 0.1f;
+			LeftColliders->SetMatrix(Maths::mat4::translation(Maths::vec3(10 - degrees, 0.5f, 0.0f)));
+			RightColliders->SetMatrix(Maths::mat4::translation(Maths::vec3(-10 + degrees, 0.5f, 0.0f)));
+			UpColliders->SetMatrix(Maths::mat4::translation(Maths::vec3(.5f, 10 - degrees, 0.0f)));
+			DownColliders->SetMatrix(Maths::mat4::translation(Maths::vec3(.5f, -10 + degrees, 0.0f)));
+
+			//Used to rotatecamera with time
+			GameObject->ControlFunktionality->GetCameraMovement();
+			//Used to add extra rotation to player with time
+			GameObject->ControlFunktionality->RotatePlayerTimed(PlayerGroup, vec2(0, 0), vec2(Player->getSize().y, Player->getSize().y));
+
+			//COLLISION CHECKS
+			if (UpColliders->AABBCollisionCheck(*PlayerGroup->GetMatrix(), Player->getPosition(), Player->getSize())) { Menu(); }
+			if (DownColliders->AABBCollisionCheck(*PlayerGroup->GetMatrix(), Player->getPosition(), Player->getSize())) { Menu(); }
+			if (LeftColliders->AABBCollisionCheck(*PlayerGroup->GetMatrix(), Player->getPosition(), Player->getSize())) { Menu(); }
+			if (RightColliders->AABBCollisionCheck(*PlayerGroup->GetMatrix(), Player->getPosition(), Player->getSize())) { Menu(); }
+			PlayerGroup->GetCenter(Player->getPosition(), Player->getSize());
+			GameObject->ControlFunktionality->RotatePlayer(PlayerGroup, vec2(0, 0), vec2(Player->getSize().y, Player->getSize().y));
+			//xrange = abs(middle.x - point.x
+			//y -||-
+			//return xrange < s‰de.x && yrange < s‰dey
+			//MikanTestit->GetCameraMovement();//funktion that enables WASD movement within world space
+			MousePos = GameObject->ControlFunktionality->MouseWorldLocation();//Testversion for correct coordinate handling in world perspective
 
 
+
+
+		}
+		if (window->isKeyTyped(GLFW_KEY_1))
+		{
+			//hakee ladatun audio filun ja laittaa sen soimaan
+			SoundManager::get("testi")->loop();
+			//asettaa gainiksi nolla eli jos taustalla soi musa 30db niin p‰‰lle tuleva ei tule 30db + 30db.
+			//voit kokeilla kommentoida gain rivin ja painella 1 nappia
+			gain == 0.0f;
+			//gainia ei voi asettaa jos mik‰‰n ei soi.
+			SoundManager::get("testi")->setGain(gain);
+		}
+		if (window->isKeyTyped(GLFW_KEY_2))
+		{
+			SoundManager::get("testi")->stop();
+		}
+		if (window->isKeyTyped(GLFW_KEY_3))
+		{
+			SoundManager::get("testi")->pause();
+		}
+		if (window->isKeyTyped(GLFW_KEY_4))
+		{
+			SoundManager::get("testi")->resume();
+
+			gain == 0.0f;
+			SoundManager::get("testi")->setGain(gain);
+		}
+
+		if (window->isKeyTyped(GLFW_KEY_K))
+		{
+			DownColliders->AddFromOrigin(new Sprite(-2, 0, 4, 1, vec4(1, 1, 1, 1), true), Maths::vec3(0, -degrees, 0));
+		}
+		if (window->isKeyTyped(GLFW_KEY_L))
+		{
+			RightColliders->AddFromOrigin(new Sprite(0, -2, 1, 4, vec4(1, 1, 1, 1), true), Maths::vec3(-degrees, 0, 0));
+		}
+		if (window->isKeyTyped(GLFW_KEY_J))
+		{
+			LeftColliders->AddFromOrigin(new Sprite(0, -2, 1, 4, vec4(1, 1, 1, 1), true), Maths::vec3(degrees, 0, 0));
+		}
+		if (window->isKeyTyped(GLFW_KEY_I))
+		{
+			UpColliders->AddFromOrigin(new Sprite(-2, 0, 4, 1, vec4(1, 1, 1, 1), true), Maths::vec3(0, degrees, 0));
+		}
+		
 		/*RENDERING UPDATES*/
-		DeltaTimedLoop(GameObject);
 		MousePos = GameObject->ControlFunktionality->MouseWorldLocation();
 		GameObject->shader->enable();
-		GameObject->shader->setUniformMat2f("light_pos", vec2((float)(MousePos.x* 32.0f / window->getWidth() - 16.0f), (float)(9.0f - MousePos.y * 18.0f / window->getHeight())));
+		GameObject->shader->setUniformMat2f("light_pos", vec2(0,0));
 		// Piirret‰‰n layeri
-		GameObject->RenderLayers();
+		//GameObject->RenderLayers();
+		GameObject->Layers[0]->render();
 		Audio::SoundManager::update();
 		window->update();
 	}
+	return 0;
 }
-float TimeInteval = (int)((1.0f / 60.0f) * 1000);//giving deltatime tickrate; this is good until hitting under 60fps; ;
-void DeltaTimedLoop(Game* GameObject)
-{
-	std::chrono::time_point<std::chrono::system_clock> DeltaTime = std::chrono::system_clock::now();//start point for deltatime;
-	auto Delta = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - DeltaTime);//calculating delta
-	if ((float)Delta.count() > TimeInteval) //this if statement limits program to 60fps; Only for stuff inside this loop. everything else is running freely
-	{
-		DeltaTime += std::chrono::milliseconds((int)TimeInteval); //adding that
-
-	}
-}
-
-/*
-
-// shadereitten latauksen j‰lkeen
-
-shader.enable();
-// Heitet‰‰n matriisi shaderille
-shader.setUniformMat4("pr_matrix", ortho);
-// Vaihdetaan kuvion paikkaa, 0 0 0 vasen alareuna
-//shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
-
-// Esimerkki rotatesta, 45 astetta z suunnassa
-//shader.setUniformMat4("ml_matrix", mat4::rotation(45.0f, vec3(0, 0, 1)));
-
-// Luodaan uusia spritej‰
-// M‰‰ritell‰‰n paikka, koko, v‰ri ja shader
-//shader.setUniformMat4("ml_matrix", mat4::rotation(15.0f, vec3(0, 0, 1)));
-
-std::vector<Renderable2D*> sprites;
-
-srand(time(NULL));
-
-FileUtils::LoadTextureFromFile("Pekka.png");
-
-
-Sprite sprite(5, 5, 4, 4, Maths::vec4(1, 0, 1, 1));
-Sprite sprite3(7, 1, 7, 2, Maths::vec4(0.2f, 0, 1, 1));
-BatchRenderer2D renderer;
-for (float y = 0; y < 9.0f; y += 0.05f)
-{
-for(float x = 0; x < 16.0f; x += 0.05f)
-{
-sprites.push_back(new Sprite(x, y, 0.04f, 0.04f, Maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
-}
-}
-
-
-// Valot shaderiin, 0.0f 0.0f on vasen alareuna
-// Jos objekti on vaikka 4.0f 2.0f kokoinen, luonnollisesti valo keskell‰ 2.0f 1.0f
-//shader.setUniformMat2f("light_pos", vec2(4.0f, 2.0f));
-// Shaderin v‰rin vaihto
-//shader.setUniformMat4f("colour", vec04(0.2f, 0.3f, 0.8f, 1.0f));
-
-
-printf("Sprites: %d\n", sprites.size());
-
-
-// ikkuna loopista
-
-mat4 mat = mat4::translation(vec3(5, 5, 5));
-mat = mat * mat4::rotation(time.elapsed() * 10.0f, vec3(0, 0, 1));
-mat = mat * mat4::translation(vec3(-5, -5, -5));
-shader.setUniformMat4("ml_matrix", mat);
-
-renderer.begin();
-for(int i = 0; i < spritelistsize; i++)
-{
-renderer.submit(sprites[i]); //choke point
-}
-renderer.end();0
-renderer.flush();
-
-*/
-
-#endif
-
 #if 0
 int main()
 {

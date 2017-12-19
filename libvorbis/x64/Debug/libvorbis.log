@@ -1,56 +1,56 @@
 ﻿  window.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\os.h(25): fatal error C1083: Cannot open include file: 'ogg/os_types.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\os.h(25): fatal error C1083: Cannot open include file: 'ogg/os_types.h': No such file or directory
   vorbisfile.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\vorbisfile.c(24): fatal error C1083: Cannot open include file: 'vorbis/codec.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\vorbisfile.c(24): fatal error C1083: Cannot open include file: 'vorbis/codec.h': No such file or directory
   vorbisenc.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\vorbisenc.c(22): fatal error C1083: Cannot open include file: 'vorbis/codec.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\vorbisenc.c(22): fatal error C1083: Cannot open include file: 'vorbis/codec.h': No such file or directory
   tone.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\tone.c(18): warning C4013: 'alloca' undefined; assuming extern returning int
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\tone.c(18): warning C4047: '=': 'double *' differs in levels of indirection from 'int'
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\tone.c(19): warning C4047: '=': 'double *' differs in levels of indirection from 'int'
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\tone.c(40): error C2065: 'M_PI': undeclared identifier
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\tone.c(40): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\tone.c(41): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\tone.c(43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\tone.c(44): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+e:\codes\android-proju\dependencies\libvorbis\lib\tone.c(18): warning C4013: 'alloca' undefined; assuming extern returning int
+e:\codes\android-proju\dependencies\libvorbis\lib\tone.c(18): warning C4047: '=': 'double *' differs in levels of indirection from 'int'
+e:\codes\android-proju\dependencies\libvorbis\lib\tone.c(19): warning C4047: '=': 'double *' differs in levels of indirection from 'int'
+e:\codes\android-proju\dependencies\libvorbis\lib\tone.c(40): error C2065: 'M_PI': undeclared identifier
+e:\codes\android-proju\dependencies\libvorbis\lib\tone.c(40): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+e:\codes\android-proju\dependencies\libvorbis\lib\tone.c(41): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\codes\android-proju\dependencies\libvorbis\lib\tone.c(43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+e:\codes\android-proju\dependencies\libvorbis\lib\tone.c(44): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   synthesis.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\synthesis.c(19): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\synthesis.c(19): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
   smallft.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\smallft.h(21): fatal error C1083: Cannot open include file: 'vorbis/codec.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\smallft.h(21): fatal error C1083: Cannot open include file: 'vorbis/codec.h': No such file or directory
   sharedbook.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\sharedbook.c(21): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\sharedbook.c(21): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
   res0.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\res0.c(26): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\res0.c(26): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
   registry.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\registry.c(18): fatal error C1083: Cannot open include file: 'vorbis/codec.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\registry.c(18): fatal error C1083: Cannot open include file: 'vorbis/codec.h': No such file or directory
   psy.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\psy.c(21): fatal error C1083: Cannot open include file: 'vorbis/codec.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\psy.c(21): fatal error C1083: Cannot open include file: 'vorbis/codec.h': No such file or directory
   mdct.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\mdct.c(44): fatal error C1083: Cannot open include file: 'vorbis/codec.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\mdct.c(44): fatal error C1083: Cannot open include file: 'vorbis/codec.h': No such file or directory
   mapping0.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\mapping0.c(22): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\mapping0.c(22): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
   lsp.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\os.h(25): fatal error C1083: Cannot open include file: 'ogg/os_types.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\os.h(25): fatal error C1083: Cannot open include file: 'ogg/os_types.h': No such file or directory
   lpc.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\os.h(25): fatal error C1083: Cannot open include file: 'ogg/os_types.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\os.h(25): fatal error C1083: Cannot open include file: 'ogg/os_types.h': No such file or directory
   lookup.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\os.h(25): fatal error C1083: Cannot open include file: 'ogg/os_types.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\os.h(25): fatal error C1083: Cannot open include file: 'ogg/os_types.h': No such file or directory
   info.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\info.c(24): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\info.c(24): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
   floor1.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\floor1.c(21): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\floor1.c(21): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
   floor0.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\floor0.c(21): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\floor0.c(21): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
   envelope.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\envelope.c(22): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\envelope.c(22): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
   codebook.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\codebook.c(21): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\codebook.c(21): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
   Generating Code...
   Compiling...
   block.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\block.c(24): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\block.c(24): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
   bitrate.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\bitrate.c(21): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\bitrate.c(21): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
   analysis.c
-c:\users\loyalist\source\repos\android_proju2\dependencies\libvorbis\lib\analysis.c(21): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
+e:\codes\android-proju\dependencies\libvorbis\lib\analysis.c(21): fatal error C1083: Cannot open include file: 'ogg/ogg.h': No such file or directory
   Generating Code...

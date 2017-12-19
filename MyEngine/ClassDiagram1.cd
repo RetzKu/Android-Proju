@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Engine::Graphics::BatchRenderer2D" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAFABiAABAABAAAIACAAAQAAAAAAIAAAgIAAAAAAE=</HashCode>
+      <FileName>BatchRenderer2D.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::Buffer" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAIAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQRAA=</HashCode>
+      <FileName>buffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::Group" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAEAAAAAAAAACACAACAiAsAAAAAAQAAAAEAACAAM=</HashCode>
+      <FileName>group.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::IndexBuffer" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAEAABAAAAAAAAAACAAAAERAA=</HashCode>
+      <FileName>indexbuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::Label" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAgAAAAAAAAAAAAAAAAAABgCAAAAAE=</HashCode>
+      <FileName>Label.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::Layer" Collapsed="true">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAIAAAAAAAAAAgAEAAAAAAEAAAAAAASAAA=</HashCode>
+      <FileName>layer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::Renderable2D" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQIAAAAYAJQBAACAAACQEAAAAApAAAAAgAgAIAAEE=</HashCode>
+      <FileName>renderable2d.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::Renderer2D" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAECACAAAAAAAAAAAAAIAQAAAAQCAAAAgIAAAAAAE=</HashCode>
+      <FileName>renderer2d.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::Shader" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAgAIAAAAEIAEAAAAAAAAgAAEAAJBAAAAABoAA=</HashCode>
+      <FileName>Shader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::Simple2DRenderer" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAE=</HashCode>
+      <FileName>simple2drenderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::Sprite" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>sprite.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::StaticSprite" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIIAAAQAAgAAAAAAAAAAgAIAAAABAAAQAA=</HashCode>
+      <FileName>static_sprite.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::Texture" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAICAgASAACAAAAAAABAAQAAAAAIAAAAABAA=</HashCode>
+      <FileName>texture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::TileLayer" Collapsed="true">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>tilelayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::VertexArray" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIIAAAQAAAAAAAAAAAAAAAAAAACAAAEAABAA=</HashCode>
+      <FileName>vertexarray.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Graphics::Window" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QEAQAAAAAoCAAAgAwAAAAAAAgRAB4AYAbIAACAAEAAA=</HashCode>
+      <FileName>window.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Engine::Graphics::VertexData" Collapsed="true">
+    <Position X="10" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAQAAAAAAAAAAAACAAAAAAAAAAgA=</HashCode>
+      <FileName>renderable2d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
