@@ -1,1 +1,31 @@
-﻿
+﻿  analysis.c
+  barkmel.c
+  bitrate.c
+  block.c
+  codebook.c
+  envelope.c
+  floor0.c
+  floor1.c
+  info.c
+  lookup.c
+  lpc.c
+  lsp.c
+  mapping0.c
+  mdct.c
+  psy.c
+  registry.c
+  res0.c
+  sharedbook.c
+  smallft.c
+  synthesis.c
+  Compiling...
+  tone.c
+  vorbisenc.c
+  vorbisfile.c
+  window.c
+tone.obj : warning LNK4006: _main already defined in tone.obj; second definition ignored
+analysis.obj : warning LNK4006: _analysis_noisy already defined in analysis.obj; second definition ignored
+analysis.obj : warning LNK4006: __analysis_output already defined in analysis.obj; second definition ignored
+analysis.obj : warning LNK4006: __analysis_output_always already defined in analysis.obj; second definition ignored
+analysis.obj : warning LNK4006: _vorbis_analysis already defined in analysis.obj; second definition ignored
+  libvorbis.vcxproj -> C:\Users\Joona\source\repos\git\Engine\Android-Proju\Dependencies\libvorbis\bin\libvorbis.lib
