@@ -145,10 +145,16 @@ void TestClass::GetCameraMovement()
 			case GLFW_KEY_S:
 				CameraCoordinates.y -= 0.1*CameraSpeed;
 				break;
-			case GLFW_KEY_Q:
+			//case GLFW_KEY_Q:
+			//	CameraZnear = CameraZnear - 0.1f;
+			//	break;
+			//case GLFW_KEY_E:
+			//	CameraZfar = CameraZfar + 0.1f;
+			//	break;
+			case GLFW_KEY_R:
 				CameraSpeed += 0.1f;
 				break;
-			case GLFW_KEY_E:
+			case GLFW_KEY_F:
 				if (CameraSpeed > 0) { CameraSpeed -= 0.1f; }
 				break;
 			default:
@@ -156,7 +162,7 @@ void TestClass::GetCameraMovement()
 			}
 		}
 	}
-	mat4 ortho = mat4::orthographic(-AspectRatio.x + CameraCoordinates.x, AspectRatio.x + CameraCoordinates.x, -AspectRatio.y + CameraCoordinates.y, AspectRatio.y + CameraCoordinates.y , -1.0f, 1.0f);
-	ortho.rotation(10.0f, vec3(0, 0, 1));
+	mat4 ortho = mat4::orthographic(-AspectRatio.x + CameraCoordinates.x, AspectRatio.x + CameraCoordinates.x, -AspectRatio.y + CameraCoordinates.y, AspectRatio.y + CameraCoordinates.y , -1.f, 1.f);
+	ortho.rotation(100.0f, vec3(0, 0, 1));
 	SetUniforMat4("pr_matrix", ortho);
 }

@@ -1,6 +1,3 @@
-//#define androidinpaska
-
-#ifndef androidinpaska // Win32 || Win64
 #define WINDOWS
 
 #include <iostream>
@@ -32,51 +29,11 @@
 #include "Label.h"
 #include "texture.h"
 
-#else // Android
-
-#include "../android/include/NvAppBase/NvInputTransformer.h"
-#include "../android/include/NvAssetLoader/NvAssetLoader.h"
-#include "../android/include/NvGLUtils/NvGLSLProgram.h"
-#include "../android/include/NvGLUtils/NvShapesGL.h"
-#include "../android/include/NvUI/NvTweakBar.h"
-#include "../android/include/NV/NvLogs.h"
-
-#include "../MyEngine/include/Maths.h"
-#include "../MyEngine/include/fileutils.h"
-#include "../MyEngine/include/Shader.h"
-#include "../MyEngine/include/buffer.h"
-#include "../MyEngine/include/indexbuffer.h"
-#include "../MyEngine/include/vertexarray.h"
-#include "../MyEngine/include/renderer2d.h"
-#include "../MyEngine/include/renderable2d.h"
-#include "../MyEngine/include/simple2drenderer.h"
-#include "../MyEngine/include/static_sprite.h"
-#include "../MyEngine/include/BatchRenderer2D.h"
-#include "../MyEngine/include/sprite.h"
-#include "../MyEngine/include/tilelayer.h"
-#include "../MyEngine/include/group.h"
-#include "../MyEngine/include/Label.h"
-#include "../MyEngine/include/texture.h"
-
-#endif
-
-// Jos haluat printit p‰‰lle, t‰ss‰ 1, jos et valitse 0
-
-#ifndef androidinpaska
-	#define CONSOLE(x) std::cout << x
-	#define CONSOLEND(x) std::cout << x << std::endl
-#else
-	#define CONSOLE(x)
-	#define CONSOLEND(x)
-#endif
-
-
-#if 1
+#define CONSOLE(x) std::cout << x
+#define CONSOLEND(x) std::cout << x << std::endl
 
 int main()
 {
-#ifdef WINDOWS
-
 	#define SCREENWIDTH 960
 	#define SCREENHEIGHT 540
 
@@ -90,12 +47,6 @@ int main()
 	Window window("Engine", SCREENWIDTH, SCREENHEIGHT);
 	
 	CONSOLEND("Window width: " << window.getWidth() << " || Height: " << window.getHeight());
-
-#else
-	// Define android juttuja
-
-#endif // WINDOWS
-
 
 	// Tausta v‰ri
 	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -121,33 +72,34 @@ int main()
 		new Texture("../Assets/ta.png"),
 		new Texture("../Assets/tb.png"),
 		new Texture("../Assets/tc.png"),
-		new Texture("../Assets/Pekka2.bmp")
+		new Texture("../Assets/Pekka2.bmp"),
+		new Texture("../Assets/64x64_24bit.png")
 	};
 
-#define TUTORIAL 0
+#define TUTORIAL
 
-#if !TUTORIAL
+#ifndef TUTORIAL
 
 
 	// Nestattu for looppi miss‰ pusketaan layeriin spritej‰
 	// Y suunnassa
 	// -9 ikkunan alaosa ja +9 ikkunan yl‰osa.. eli alhaalta ylˆs
 
-	for (float y = -9.0f; y < 9.0f; y++)
+	for (float y = -9.f; y < 9.f; y+=4)
 	{
 		// sama X suunnassa -16 to +16
 		// luonnollisesti 16:9 kuva suhteella niin y akseli 9 ja x 16
-		for (float x = -16.0f; x < 16.0f; x++)
+		for (float x = -16.f; x < 16.f; x+=4)
 		{
 			// Paikka xy, koko 0.9f, j‰‰ pieni marginaali/borderi, 1.0f olisi vierivieress‰, v‰ri randomilla neliˆille
 			// Arvotaan piirret‰‰nkˆ tekstuuria vai v‰rineliˆt‰
 			if (rand() % 4 == 0)
 				// Piirret‰‰n "v‰rineliˆit‰" ja v‰rit randomilla
-				layer.add(new Sprite(x, y, 0.9f, 0.9f, Maths::vec4(1, 0, 1, 1)));
+				layer.add(new Sprite(x, y, 3.6f, 3.6f, Maths::vec4(1, 0, 1, 1)));
 			
 			else
 				// Piirret‰‰n tekstuuriarraysta randomilla jotain (meill‰ on 4 tekstuuria siell‰)
-				layer.add(new Sprite(x, y, 0.9f, 0.9f, textures[rand() % 4]));
+				layer.add(new Sprite(x, y, 3.6f, 3.6f, textures[rand() % 5]));
 			
 			// Otetaan ylˆs montako sprite‰ piirret‰‰n
 			spritecount++;
@@ -174,7 +126,6 @@ int main()
 	// Keski yl‰ kohta 0, 9
 	// Keski ala kohta 0, -9
 	// Oikee yl‰ kulma 16, 9
-	}
 	// Oikee sein‰ keskell‰ 16, 0
 	// Oikee ala kulma 16, -9
 	// 
@@ -199,14 +150,16 @@ int main()
 	// ESIMERKIKSI 4 25% kuvaa
 	//
 	// Vasen ala kuva
-	//layer.add(new Sprite(-16, -9, 16, 9, textures[0]));
+	layer.add(new Sprite(-16, -9, 16, 9, textures[0]));
 	// Oikee yl‰ kuva
-	//layer.add(new Sprite(0, 0, 16, 9, textures[1]));
+	layer.add(new Sprite(0, 0, 16, 9, textures[1]));
 	// Oikea ala kuva
-	//layer.add(new Sprite(0, -9, 16, 9, textures[2]));
+	layer.add(new Sprite(0, -9, 16, 9, textures[2]));
 	// Vasen yl‰ kuva
-	//layer.add(new Sprite(-16, 0, 16, 9, textures[3]));
+	layer.add(new Sprite(-16, 0, 16, 9, textures[4]));
 	// // // // // //
+
+
 
 #endif
 
@@ -275,8 +228,6 @@ int main()
 			SoundManager::get("testi")->setGain(gain);
 		}
 
-		
-
 		// Shaderit p‰‰lle ja valotus seuraamaan hiirt‰
 		shader.enable();
 		shader.setUniformMat2f("light_pos", vec2((float)(MousePos.x* 32.0f / window.getWidth() - 16.0f), (float)(9.0f - MousePos.y * 18.0f / window.getHeight())));
@@ -296,64 +247,3 @@ int main()
 
 	return 0;
 }
-
-
-#endif
-
-#if 0
-int main()
-{
-	const char* filename = "test.png";
-
-	FREE_IMAGE_FORMAT fif = FIF_UNKNOWN;
-
-	FIBITMAP *dib(0);
-
-	BYTE* bits(0);
-
-	unsigned int width(0), height(0);
-
-	GLuint gl_texID;
-
-	fif = FreeImage_GetFileType(filename, 0);
-
-	if (fif == FIF_UNKNOWN)
-		fif = FreeImage_GetFIFFromFilename(filename);
-
-	if (fif == FIF_UNKNOWN)
-		return false;
-
-	if (FreeImage_FIFSupportsReading(fif))
-		dib = FreeImage_Load(fif, filename);
-
-	if (!dib)
-		return false;
-
-	bits = FreeImage_GetBits(dib);
-
-	width = FreeImage_GetWidth(dib);
-	height = FreeImage_GetHeight(dib);
-
-	if ((bits == 0) || (width == 0) || (height == 0))
-		return false;
-
-	unsigned int bitsPerPixel = FreeImage_GetBPP(dib);
-	unsigned int pitch = FreeImage_GetPitch(dib);
-
-	for (int y = 0; y < height;y++)
-	{
-		BYTE *pixel = (BYTE*)bits;
-		for (int x = 0; x < width; x++)
-		{
-			std::cout << +pixel[FI_RGBA_RED] << " " << +pixel[FI_RGBA_GREEN] << " " << +pixel[FI_RGBA_BLUE] << std::endl;
-			pixel += 3;
-		}
-		bits += pitch;
-	}
-
-	FreeImage_Unload(dib);
-
-	system("PAUSE");
-	return 0;
-}
-#endif
